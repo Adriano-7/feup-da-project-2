@@ -10,21 +10,21 @@
 class Menu {
     public:
         Menu(Database& database) : database(database) {};
-        void showDataSelectionMenu();
+        void showDataSelectionMenu()
 
     private:
         Database database;
-
-        void showSubsetMenu();
+        void showSmallGraphMenu();
+        void showMediumGraphMenu();
+        void showExtraMenu();
         void showMainMenu();
-        void showStationInfoMenu();
-        void showTwoStationsInfoMenu();
-        void showNetworkInfoMenu();
-        void showChangeCapacityMenu();
+        void showBacktrackingMenu();
+        void showTriangularMenu();
+        void showSpecialHeuristicMenu();
 
-        int getIntFromUser();
-
+        pair<int, int> getNodesFromUser();
         void waitForInput();
+        int getIntFromUser();
 };
 
 #endif 
