@@ -28,8 +28,7 @@ void Menu::showDataSelectionMenu() {
 }
 
 void Menu::showSmallGraphMenu() {
-    map<int, string> optionToPath = {1: "../data/Toy-Graphs/shipping.csv", 2: "../data/Toy-Graphs/stadiums.csv", 3: "../data/Toy-Graphs/tourism.csv"};
-    
+    map<int, string> optionToPath = {{1, "../data/Toy-Graphs/shipping.csv"}, {2, "../data/Toy-Graphs/stadiums.csv"}, {3, "../data/Toy-Graphs/tourism.csv"}};
     cout << "_________________________________________________" << endl;
     cout << "Please the graph you want to load:" << endl;
     cout << "1 - shipping.csv" << endl;
@@ -55,15 +54,15 @@ void Menu::showMediumGraphMenu() {
         showMediumGraphMenu();
     }
 
-    string nodesPath = "../data/Real-world-graphs/graph" + graph + to_string(option) + "/nodes.csv";
-    string edgesPath = "../data/Real-world-graphs/graph" + graph + to_string(option) + "/edges.csv";
+    string nodesPath = "../data/Real-world-graphs/graph" + to_string(option) + "/nodes.csv";
+    string edgesPath = "../data/Real-world-graphs/graph" + to_string(option) + "/edges.csv";
 
     database.loadMedium(nodesPath, edgesPath);
     showMainMenu();
 }
 
 void Menu::showExtraMenu() {
-    map<int, int> optionToNumEdges = {1:25, 2:50, 3:75, 4:100, 5:200, 6:300, 7:400, 8:500, 9:600, 10:700, 11:800, 12:900};
+    map<int, int> optionToNumEdges = {{1,25}, {2,50}, {3,75}, {4,100}, {5,200}, {6,300}, {7,400}, {8,500}, {9,600}, {10,700}, {11,800}, {12,900}};
     
     cout << "_________________________________________________" << endl;
     cout << "Please the graph you want to load:" << endl;

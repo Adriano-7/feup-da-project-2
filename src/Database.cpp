@@ -15,7 +15,7 @@ origem,destino,distancia
 0,5,4.0
 */
 
-void Database::readToyGraph(string path){
+void Database::loadSmall(string path){
     ifstream file(path);
     file.ignore(1000, '\n'); // ignore first line
 
@@ -42,6 +42,15 @@ void Database::readToyGraph(string path){
         
 }
 }
+
+void Database::loadMedium(string nodesPath, string edgesPath){;}
+void Database::loadExtra(string path, int numEdges){;}
+bool Database::nodeExists(int id){return true;}
+
+vector<int> Database::backtracking(int origin, int dest, int* distance){return vector<int>();}
+vector<int> Database::triangular(int source, int destination, int* distance){return vector<int>();}
+vector<int> Database::specialHeuristic(int source, int destination, int* distance){return vector<int>();}
+
 
 /*
 void Database::readStations(set<string> stations, set<string> lines) {

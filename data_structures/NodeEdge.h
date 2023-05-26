@@ -48,6 +48,7 @@ public:
     Edge* getReverse();
 
     void setDistance(int distance);
+    void setReverse(Edge *reverse);
 
     bool operator<(Edge& edge);
 

@@ -3,6 +3,12 @@
 
 #include "Database.h"
 #include <iostream>
+#include <map>
+#include <unistd.h>
+#include <limits>
+
+
+using namespace std;
 
 /**
  * @brief Class responsible for the user interface
@@ -10,7 +16,7 @@
 class Menu {
     public:
         Menu(Database& database) : database(database) {};
-        void showDataSelectionMenu()
+        void showDataSelectionMenu();
 
     private:
         Database database;

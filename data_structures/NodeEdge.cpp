@@ -42,6 +42,10 @@ void Node::setDistance(double distance){
     this->distance = distance;
 }
 
+void Edge::setReverse(Edge* reverse) {
+    this->reverse = reverse;
+}
+
 void Node::setPath(Edge *path){
     this->path = path;
 }

@@ -7,15 +7,15 @@
 
 using namespace std;
 
-bool addNode(int id){
+bool Graph::addNode(int id){
     nodes.push_back(new Node(id));
 }
 
-bool addNode(int id, double latitude, double longitude) {
+bool Graph::addNode(int id, double latitude, double longitude) {
     nodes.push_back(new Node(id, latitude, longitude));
 }
 
-bool addEdge(Node* source, Node* dest, int distance) {
+bool Graph::addEdge(Node* sourceNode, Node* destNode, int distance) {
     Edge* e1 = sourceNode->addEdge(destNode, distance);
     Edge* e2 = destNode->addEdge(sourceNode, distance);
 
@@ -25,6 +25,6 @@ bool addEdge(Node* source, Node* dest, int distance) {
     return true;
 }
 
-Node* getNode(int id){    
+Node* Graph::getNode(int id){
     return nodes[id];
 }
