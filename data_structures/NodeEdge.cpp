@@ -38,6 +38,18 @@ vector<Edge *> Node::getIncoming(){
     return incoming;
 }
 
+double Node::getLatitude(){
+    return latitude;
+}
+
+double Node::getLongitude(){
+    return longitude;
+}
+
+static bool ascendingDistance(Node* a, Node* b) {
+    return a->getDistance() < b->getDistance();
+}
+
 void Node::setVisited(bool visited){
     this->visited = visited;
 }

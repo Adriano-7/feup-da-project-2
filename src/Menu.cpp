@@ -152,13 +152,14 @@ void Menu::showBacktrackingMenu(){
     vector<int> path = database.backtracking(source, destination, &distance);
 
     cout << "_________________________________________________" << endl;
+    /*
     cout << "The shortest path is: " << endl;
     for (int i = 0; i < path.size(); i++) {
         cout << path[i] << " ";
     }
     cout << endl;
     cout << "The distance is: " << distance << endl;
-
+    */
     waitForInput();
 }
 
@@ -170,6 +171,7 @@ void Menu::showTriangularMenu(){
 
     vector<int> path = database.triangular(source, destination, &distance);
 
+    /*
     cout << "_________________________________________________" << endl;
     cout << "The shortest path is: " << endl;
     for (int i = 0; i < path.size(); i++) {
@@ -177,7 +179,7 @@ void Menu::showTriangularMenu(){
     }
     cout << endl;
     cout << "The distance is: " << distance << endl;
-
+    */
     waitForInput();
 }
 

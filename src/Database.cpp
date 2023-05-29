@@ -120,8 +120,10 @@ void Database::loadExtra(string path, int numEdges){;}
 
 bool Database::nodeExists(int id){return true;}
 
-vector<int> Database::backtracking(int origin, int dest, int* distance){return vector<int>();}
-vector<int> Database::triangular(int source, int destination, int* distance){return vector<int>();}
+vector<int> Database::backtracking(int origin, int dest, int* distance){graph.primMST();}
+vector<int> Database::triangular(int source, int destination, int* distance){
+    graph.primMST();
+}
 vector<int> Database::specialHeuristic(int source, int destination, int* distance){return vector<int>();}
 
 

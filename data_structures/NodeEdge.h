@@ -16,6 +16,10 @@ public:
     double getDistance();
     Edge *getPath();
     vector<Edge *> getIncoming();
+    double getLatitude();
+    double getLongitude();
+
+    static bool ascendingDistance(Node* a, Node* b);
 
     void setVisited(bool visited);
     void setProcessing(bool processing);
