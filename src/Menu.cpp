@@ -39,7 +39,6 @@ void Menu::showSmallGraphMenu() {
     int option = getIntFromUser();
 
     database.loadSmall(optionToPath[option], optionToNumNodes[option]);
-    database.printGraph();
     showMainMenu();
 }
 
