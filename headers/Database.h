@@ -6,6 +6,12 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <iomanip>
+
+#include <fstream>
+#include <iostream>
+#include <filesystem>
+
 #include "../data_structures/Graph.h"
 #include "../data_structures/NodeEdge.h"
 
@@ -14,7 +20,7 @@ using namespace std;
 class Database {
 public:
     void loadSmall(string path, int nNodes);
-    void loadMedium(string nodesPath, string edgesPath);
+    bool loadMedium(const string& nodesPath, const string& edgesPath);
     void loadExtra(string path, int numEdges);
 
     bool nodeExists(int id);
@@ -24,6 +30,7 @@ public:
     vector<int> specialHeuristic(int source, int destination, int* distance);
 
     void printGraph();
+    void drawProgressBar(int progress, int fileSize);
 
 private:
     Graph graph;

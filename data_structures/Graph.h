@@ -15,7 +15,7 @@ public:
     Node* getNode(int id);
     vector<Node*> getNodes();
 
-    
+    ~Graph();
 private:
     vector<Node*> nodes;
 };

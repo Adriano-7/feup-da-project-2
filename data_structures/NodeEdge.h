@@ -12,7 +12,6 @@ public:
     Node(int id);
     Node(int id, double latitude, double longitude);
 
-    vector<Edge *> getAdj();
     bool isVisited();
     double getDistance();
     Edge *getPath();
@@ -25,7 +24,7 @@ public:
     Edge *addEdge(Node *dest, double distance);
     bool removeEdgeTo(Node *dest);
     int getId();
-    vector<Edge *> getAdj() const;
+    vector<Edge *> getAdj();
 
 
 private:

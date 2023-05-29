@@ -9,7 +9,6 @@ void Menu::showDataSelectionMenu() {
     cout << "3 - Choose a medium/large graph extra connected" << endl;
 
     int option = getIntFromUser();
-    cin >> option;
 
     switch (option) {
         case 1:
