@@ -26,6 +26,10 @@ double Node::getDistance(){
     return distance;
 }
 
+int Node::getId(){
+    return id;
+}
+
 Edge *Node::getPath(){
     return path;
 }
@@ -50,7 +54,7 @@ void Node::setPath(Edge *path){
     this->path = path;
 }
 
-Edge *Node::addEdge(Node *dest, int distance){
+Edge *Node::addEdge(Node *dest, double distance){
     Edge *edge = new Edge(this, dest, distance);
     adj.push_back(edge);
     dest->incoming.push_back(edge);
@@ -71,11 +75,11 @@ bool Node::removeEdgeTo(Node *dest){
 /********************** Edge  ****************************/
 
 
-Edge::Edge(Node *orig, Node *dest, int distance): orig(orig), dest(dest), distance(distance) {}
+Edge::Edge(Node *orig, Node *dest, double distance): orig(orig), dest(dest), distance(distance) {}
 
 Node* Edge::getDest(){return this->dest;}
 
-int Edge::getDistance() {return this->distance;}
+double Edge::getDistance() {return this->distance;}
 
 Node* Edge::getOrig(){
     return this->orig;
@@ -85,7 +89,7 @@ Edge* Edge::getReverse(){
     return this->reverse;
 }
 
-void Edge::setDistance(int distance){
+void Edge::setDistance(double distance){
     this->distance = distance;
 }
 

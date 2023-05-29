@@ -15,7 +15,7 @@ bool Graph::addNode(int id, double latitude, double longitude) {
     nodes.push_back(new Node(id, latitude, longitude));
 }
 
-bool Graph::addEdge(Node* sourceNode, Node* destNode, int distance) {
+bool Graph::addEdge(Node* sourceNode, Node* destNode, double distance) {
     Edge* e1 = sourceNode->addEdge(destNode, distance);
     Edge* e2 = destNode->addEdge(sourceNode, distance);
 
@@ -27,4 +27,8 @@ bool Graph::addEdge(Node* sourceNode, Node* destNode, int distance) {
 
 Node* Graph::getNode(int id){
     return nodes[id];
+}
+
+vector<Node*> Graph::getNodes(){
+    return nodes;
 }

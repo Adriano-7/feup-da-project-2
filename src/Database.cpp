@@ -1,9 +1,5 @@
 #include "../headers/Database.h"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <sstream>
-#include <vector>
+
 #include "../data_structures/Graph.h"
 
 
@@ -15,7 +11,12 @@ origem,destino,distancia
 0,5,4.0
 */
 
-void Database::loadSmall(string path){
+void Database::loadSmall(string path, int nNodes) {
+    //Initialize graph with nodes
+    for (int i = 0; i < nNodes; i++) {
+        graph.addNode(i);
+    }
+
     ifstream file(path);
     file.ignore(1000, '\n'); // ignore first line
 
@@ -39,10 +40,19 @@ void Database::loadSmall(string path){
         string origin_id = fields[0];
         string dest_id = fields[1];
         string distance = fields[2];
-        
-}
-}
 
+        graph.addEdge(graph.getNode(stoi(origin_id)), graph.getNode(stoi(dest_id)), stod(distance));
+    }
+    file.close();
+}
+void Database::printGraph(){
+    for(auto node : graph.getNodes()){
+        cout << "Node " << node->getId() << endl;
+        for(auto edge : node->getAdj()){
+            cout << "Edge to " << edge->getDest()->getId() << " with distance " << edge->getDistance() << endl;
+        }
+    }
+}
 void Database::loadMedium(string nodesPath, string edgesPath){;}
 void Database::loadExtra(string path, int numEdges){;}
 bool Database::nodeExists(int id){return true;}

@@ -22,8 +22,11 @@ public:
     void setProcessing(bool processing);
     void setDistance(double distance);
     void setPath(Edge *path);
-    Edge *addEdge(Node *dest, int distance);
+    Edge *addEdge(Node *dest, double distance);
     bool removeEdgeTo(Node *dest);
+    int getId();
+    vector<Edge *> getAdj() const;
+
 
 private:
     int id;
@@ -40,21 +43,21 @@ private:
 
 class Edge {
 public:
-    Edge(Node *orig, Node *dest, int distance);
+    Edge(Node *orig, Node *dest, double distance);
 
     Node* getDest();
-    int getDistance();
+    double getDistance();
     Node* getOrig();
     Edge* getReverse();
 
-    void setDistance(int distance);
+    void setDistance(double distance);
     void setReverse(Edge *reverse);
 
     bool operator<(Edge& edge);
 
 private:
     Node * dest;
-    int distance;
+    double distance;
 
     bool selected = false;
 

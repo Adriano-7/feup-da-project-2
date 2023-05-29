@@ -6,6 +6,7 @@
  */
 int main(){
     Database database;
+    database.printGraph();
     Menu menu(database);
     menu.showDataSelectionMenu();
     return 0;

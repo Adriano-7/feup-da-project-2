@@ -10,9 +10,11 @@ class Graph {
 public:
     bool addNode(int id);
     bool addNode(int id, double latitude, double longitude);
-    bool addEdge(Node* source, Node* dest, int distance);
+    bool addEdge(Node* source, Node* dest, double distance);
 
     Node* getNode(int id);
+    vector<Node*> getNodes();
+
     
 private:
     vector<Node*> nodes;
