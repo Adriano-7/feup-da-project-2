@@ -38,53 +38,146 @@ double Graph::haversineDistance(Node* source, Node* dest) {
     return 6371 * 2 * asin(sqrt(a));
 }
 
-struct compareNodes{
-    bool operator()(Node* a, Node* b) {
-        if (a == nullptr) return false;
-        if (b == nullptr) return true;
-        return a->getDistance() > b->getDistance();
-    }
-};
-
-void Graph::primMST(){
-    //go through all nodes and set distance to infinity and path to null
-    priority_queue<Node*, vector<Node*>, compareNodes> pq;
-    for(Node* node : nodes){
-        node->setDistance(numeric_limits<double>::infinity());
-        node->setPath(nullptr);
-        if (pq.empty() || pq.top() != node) {
-            pq.push(node);
-        }
-    }
-
-    //set first node distance to 0
-    nodes[0]->setDistance(0);
-
-    while(!pq.empty()){
-        Node* node = pq.top();
-        pq.pop();
-
-        for(Edge* edge : node->getAdj()){
-            Node* dest = edge->getDest();
-            if(dest->isVisited()) continue;
-
-            double distance = edge->getDistance();
-            if(distance < dest->getDistance()){
-                dest->setDistance(distance);
-                dest->setPath(edge);
-                pq.push(dest);
-            }
-        }
-        node->setVisited(true);
-    }
-
-    //print MST
-    for(Node* node : nodes){
-        if(node->getPath() != nullptr){
-            cout << node->getPath()->getOrig()->getId() << " " << node->getPath()->getDest()->getId() << " " << node->getPath()->getDistance() << endl;
+void Graph::dfs(Node* node, vector<Node*>& res) {
+    node->setVisited(true);
+    for(Edge* edge : node->getAdj()){
+        Node* dest = edge->getDest();
+        if(!dest->isVisited()){
+            res.push_back(dest);
+            res.push_back(node);
+            dfs(dest, res);
         }
     }
 }
+
+vector<Node *> Graph::primMST() {
+    MutablePriorityQueue<Node> q;
+    vector<Node *> res;
+
+    for(Node* node: nodes){
+        node->setDistance(numeric_limits<double>::infinity());
+        node->setPath(nullptr);
+        node->setVisited(false);
+        q.insert(node);
+    }
+
+    nodes[0]->setDistance(0);
+    q.decreaseKey(nodes[0]);
+
+    while(!q.empty()){
+        Node* node = q.extractMin();
+        node->setVisited(true);
+        res.push_back(node);
+
+        for(Edge* edge : node->getAdj()){
+            Node* dest = edge->getDest();
+            if(!dest->isVisited() && edge->getDistance() < dest->getDistance()){
+                dest->setDistance(edge->getDistance());
+                dest->setPath(edge);
+                q.decreaseKey(dest);
+            }
+        }
+    }
+
+    return res;
+}
+
+
+vector<int> Graph::tspTriangular(int source, int destination, double* distance){
+    Node* sourceNode = getNode(source);
+    if(sourceNode == nullptr) {
+        cout << "Source node not found" << endl;
+        return vector<int>();
+    }
+
+    Node* destinationNode = getNode(destination);
+    if(destinationNode == nullptr) {
+        cout << "Destination node not found" << endl;
+        return vector<int>();
+    }
+
+    // Step 1: Compute minimum spanning tree and pseudotour
+    auto res = primMST();
+
+    cout << "MST: " << endl;
+    for(Node* const node : res){
+        if(node->getPath() != nullptr){
+            cout << node->getPath()->getOrig()->getId() << " --- " << node->getId() << " cost: " << node->getPath()->getDistance() << endl;
+        }
+    }
+
+    return vector<int>();
+
+    /*
+     *     for(const auto v : res) {
+        ss << v->getId() << "<-";
+        if ( v->getPath() != nullptr ) {
+            ss << v->getPath()->getOrig()->getId();
+        }
+        ss << "|";
+    }
+     *
+    dfs(sourceNode, res);
+
+    // Step 2: Create tour from pseudotour
+    set<Node*> visited;
+    vector<int> tour;
+    for(Node* node : res){
+        if(visited.find(node) == visited.end()){
+            visited.insert(node);
+            tour.push_back(node->getId());
+        }
+    }
+
+    // Add the last edge from the destination node to the source node
+    tour.push_back(sourceNode->getId());
+    
+    return tour;
+     */
+}
+
+
+/*
+vector<int> Graph::tspTriangular(int source, int destination, double* distance){
+    Node* sourceNode = getNode(source);
+    if(sourceNode == nullptr) cout << "Source node not found" << endl; return vector<int>();
+
+    Node* destinationNode = getNode(destination);
+    if(destinationNode == nullptr) cout << "Destination node not found" << endl; return vector<int>();
+
+    
+    auto res = primMST();
+    dfs(sourceNode, res);
+    
+    return vector<int>();
+
+
+    vector<bool> visited(nodes.size(), false);
+    vector<int> path;
+    path.push_back(source);
+    visited[source] = true;
+    *distance = dfsTriangular(source, destination, visited, path);
+
+    vector<int> t_star;
+    for (int i = 0; i < path.size(); i++) {
+        int vertex = path[i];
+        if (find(t_star.begin(), t_star.end(), vertex) == t_star.end()) {
+            t_star.push_back(vertex);
+        }
+    }
+
+    double t_star_cost = 0;
+    for (int i = 0; i < t_star.size() - 1; i++) {
+        int u = t_star[i];
+        int v = t_star[i+1];
+        Edge* edge = nodes[u]->getEdgeTo(v);
+        t_star_cost += edge->getDistance();
+    }
+
+    return t_star;
+     */
+
+
 
 
 Node* Graph::getNode(int id){

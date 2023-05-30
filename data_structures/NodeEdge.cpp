@@ -14,6 +14,10 @@ Node::Node(int id, double latitude, double longitude){
     this->longitude = longitude;
 }
 
+bool Node::operator<(Node & node) const{
+    return this->distance < node.distance;
+}
+
 vector<Edge *> Node::getAdj(){
     return adj;
 }
@@ -50,6 +54,15 @@ static bool ascendingDistance(Node* a, Node* b) {
     return a->getDistance() < b->getDistance();
 }
 
+Edge* Node::getEdgeTo(int v){
+    for(Edge* edge : adj){
+        if(edge->getDest()->getId() == v){
+            return edge;
+        }
+    }
+    return nullptr;
+}
+
 void Node::setVisited(bool visited){
     this->visited = visited;
 }
@@ -60,6 +73,10 @@ void Node::setDistance(double distance){
 
 void Edge::setReverse(Edge* reverse) {
     this->reverse = reverse;
+}
+
+void Edge::setSelected(bool selected) {
+    this->selected = selected;
 }
 
 void Node::setPath(Edge *path){
@@ -99,6 +116,10 @@ Node* Edge::getOrig(){
 
 Edge* Edge::getReverse(){
     return this->reverse;
+}
+
+bool Edge::isSelected() {
+    return this->selected;
 }
 
 void Edge::setDistance(double distance){

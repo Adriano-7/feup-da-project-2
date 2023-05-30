@@ -8,4 +8,4 @@ include_directories(data_structures)
 include_directories(headers)
 include_directories(src)
 
-add_executable(Project_DA src/main.cpp src/Menu.cpp src/Database.cpp data_structures/Graph.cpp data_structures/NodeEdge.cpp)
+add_executable(Project_DA src/main.cpp src/Menu.cpp src/Database.cpp data_structures/Graph.cpp data_structures/MutablePriorityQueue.h data_structures/NodeEdge.cpp)

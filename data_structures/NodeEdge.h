@@ -12,6 +12,8 @@ public:
     Node(int id);
     Node(int id, double latitude, double longitude);
 
+    bool operator<(Node & node) const;
+
     bool isVisited();
     double getDistance();
     Edge *getPath();
@@ -20,6 +22,7 @@ public:
     double getLongitude();
 
     static bool ascendingDistance(Node* a, Node* b);
+    Edge* getEdgeTo(int v);
 
     void setVisited(bool visited);
     void setProcessing(bool processing);
@@ -30,12 +33,15 @@ public:
     int getId();
     vector<Edge *> getAdj();
 
+    int queueIndex = 0;
 
-private:
+
+protected:
     int id;
     double latitude;
     double longitude;
     vector<Edge *> adj;
+
 
     bool visited = false;
     double distance = 0;
@@ -53,8 +59,11 @@ public:
     Node* getOrig();
     Edge* getReverse();
 
+    bool isSelected();
+
     void setDistance(double distance);
     void setReverse(Edge *reverse);
+    void setSelected(bool selected);
 
     bool operator<(Edge& edge);
 

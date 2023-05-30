@@ -41,7 +41,7 @@ void Menu::showSmallGraphMenu() {
     showMainMenu();
 }
 
-void Menu::showMediumGraphMenu() {    
+void Menu::showMediumGraphMenu() {
     cout << "_________________________________________________" << endl;
     cout << "Please the graph you want to load:" << endl;
     cout << "1 - graph1" << endl;
@@ -63,7 +63,7 @@ void Menu::showMediumGraphMenu() {
 
 void Menu::showExtraMenu() {
     map<int, int> optionToNumEdges = {{1,25}, {2,50}, {3,75}, {4,100}, {5,200}, {6,300}, {7,400}, {8,500}, {9,600}, {10,700}, {11,800}, {12,900}};
-    
+
     cout << "_________________________________________________" << endl;
     cout << "Please the graph you want to load:" << endl;
     cout << "1 - edges_25.csv" << endl;
@@ -130,14 +130,14 @@ pair<int, int> Menu::getNodesFromUser() {
     int source = getIntFromUser();
     while(!database.nodeExists(source)){
         cout << "Invalid node" << endl;
-        source = getIntFromUser();    
+        source = getIntFromUser();
     }
 
     cout << "Destination node: ";
     int destination = getIntFromUser();
     while(!database.nodeExists(destination)){
         cout << "Invalid node" << endl;
-        destination = getIntFromUser();    
+        destination = getIntFromUser();
     }
 
     return make_pair(source, destination);
@@ -160,27 +160,23 @@ void Menu::showBacktrackingMenu(){
     cout << endl;
     cout << "The distance is: " << distance << endl;
     */
-    waitForInput();
 }
 
 void Menu::showTriangularMenu(){
     pair<int, int> nodes = getNodesFromUser();
     int source = nodes.first;
     int destination = nodes.second;
-    int distance;
+    double distance;
 
     vector<int> path = database.triangular(source, destination, &distance);
 
-    /*
     cout << "_________________________________________________" << endl;
     cout << "The shortest path is: " << endl;
     for (int i = 0; i < path.size(); i++) {
         cout << path[i] << " ";
     }
     cout << endl;
-    cout << "The distance is: " << distance << endl;
-    */
-    waitForInput();
+
 }
 
 void Menu::showSpecialHeuristicMenu(){
@@ -199,7 +195,6 @@ void Menu::showSpecialHeuristicMenu(){
     cout << endl;
     cout << "The distance is: " << distance << endl;
 
-    waitForInput();
 }
 
 void Menu::waitForInput() {
