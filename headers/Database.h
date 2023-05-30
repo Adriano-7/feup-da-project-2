@@ -26,7 +26,7 @@ public:
     bool nodeExists(int id);
 
     vector<int> backtracking(int origin, int dest, int* distance);
-    vector<int> triangular(int source, int destination, double* distance);
+    vector<Node*> triangular(int source, int destination, double* distance);
     vector<int> specialHeuristic(int source, int destination, int* distance);
 
     void printGraph();

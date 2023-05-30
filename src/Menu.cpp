@@ -168,15 +168,15 @@ void Menu::showTriangularMenu(){
     int destination = nodes.second;
     double distance;
 
-    vector<int> path = database.triangular(source, destination, &distance);
+    vector<Node*> path = database.triangular(source, destination, &distance);
 
     cout << "_________________________________________________" << endl;
     cout << "The shortest path is: " << endl;
     for (int i = 0; i < path.size(); i++) {
-        cout << path[i] << " ";
+        cout << path[i]->getId() << " ";
     }
     cout << endl;
-
+    cout << "The distance is: " << distance << endl;
 }
 
 void Menu::showSpecialHeuristicMenu(){
@@ -190,7 +190,7 @@ void Menu::showSpecialHeuristicMenu(){
     cout << "_________________________________________________" << endl;
     cout << "The shortest path is: " << endl;
     for (int i = 0; i < path.size(); i++) {
-        cout << path[i] << " ";
+        cout << path[i] << " -> ";
     }
     cout << endl;
     cout << "The distance is: " << distance << endl;

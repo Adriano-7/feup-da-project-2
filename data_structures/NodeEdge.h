@@ -36,7 +36,7 @@ public:
     int queueIndex = 0;
 
 
-protected:
+private:
     int id;
     double latitude;
     double longitude;

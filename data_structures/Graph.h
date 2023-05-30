@@ -6,8 +6,10 @@
 #include <math.h>
 #include <queue>
 #include <sstream>
-#include <set>
 #include "MutablePriorityQueue.h"
+
+#include <stack>
+#include <unordered_set>
 
 #include "NodeEdge.h"
 using namespace std;
@@ -19,11 +21,10 @@ public:
     bool addEdge(Node* source, Node* dest, double distance);
 
     double haversineDistance(Node* source, Node* dest);
-    void dfs(Node* node, vector<Node*>& res);
-    vector<Node *> primMST();
+    void primMST(Node* start, double* cost);
 
-    double dfsTriangular(int source, int destination, vector<bool> &visited, vector<int> &path);
-    vector<int> tspTriangular(int source, int destination, double* distance);
+    vector<Node*> tspTriangular(int source, int destination, double* distance);
+    vector<Node*> dfsTriangular(Node* start);
 
     Node* getNode(int id);
     vector<Node*> getNodes();
