@@ -15,9 +15,19 @@ public:
     Node* getNode(int id);
     vector<Node*> getNodes();
 
-    
+    void Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double &ans, vector<unsigned int> &path, vector<vector<unsigned int>> paths);
+
+    pair<double, vector<unsigned int>> Backtracking_TSP();
+
+
+
+
 private:
     vector<Node*> nodes;
+
+    unsigned int getNumberNodes();
+
+    void resetNodes();
 };
 
 #endif

@@ -19,7 +19,7 @@ public:
 
     bool nodeExists(int id);
 
-    vector<int> backtracking(int origin, int dest, int* distance);
+    pair<double, vector<unsigned int>> backtracking();
     vector<int> triangular(int source, int destination, int* distance);
     vector<int> specialHeuristic(int source, int destination, int* distance);
 

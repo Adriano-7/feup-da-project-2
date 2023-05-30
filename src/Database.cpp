@@ -1,3 +1,4 @@
+#include <limits>
 #include "../headers/Database.h"
 
 #include "../data_structures/Graph.h"
@@ -57,10 +58,16 @@ void Database::loadMedium(string nodesPath, string edgesPath){;}
 void Database::loadExtra(string path, int numEdges){;}
 bool Database::nodeExists(int id){return true;}
 
-vector<int> Database::backtracking(int origin, int dest, int* distance){return vector<int>();}
-vector<int> Database::triangular(int source, int destination, int* distance){return vector<int>();}
-vector<int> Database::specialHeuristic(int source, int destination, int* distance){return vector<int>();}
 
+pair<double, vector<unsigned int>> Database::backtracking() {
+    return graph.Backtracking_TSP();
+}
+vector<int> Database::triangular(int source, int destination, int* distance){
+    return vector<int>();
+}
+vector<int> Database::specialHeuristic(int source, int destination, int* distance){
+    return vector<int>();
+}
 
 /*
 void Database::readStations(set<string> stations, set<string> lines) {

@@ -28,6 +28,8 @@ public:
     vector<Edge *> getAdj() const;
 
 
+    unsigned int getDistanceToAdjacentNode(unsigned int i);
+
 private:
     int id;
     double latitude;
@@ -45,9 +47,9 @@ class Edge {
 public:
     Edge(Node *orig, Node *dest, double distance);
 
-    Node* getDest();
-    double getDistance();
-    Node* getOrig();
+    Node* getDest() const;
+    double getDistance() const;
+    Node* getOrig() const;
     Edge* getReverse();
 
     void setDistance(double distance);
