@@ -20,9 +20,9 @@ using namespace std;
 
 class Database {
 public:
-    void loadSmall(string path, int nNodes);
+    bool loadSmall(string path);
     bool loadMedium(const string& nodesPath, const string& edgesPath);
-    void loadExtra(string path, int numEdges);
+    bool loadExtra(string path);
 
     bool nodeExists(int id);
 

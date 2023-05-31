@@ -2,20 +2,17 @@
 
 using namespace std;
 
-void Database::loadSmall(string path, int nNodes) {
-    for (int i = 0; i < nNodes; i++) {
-        graph.addNode(i);
-    }
-
+bool Database::loadSmall(string path) {
     ifstream file(path);
     file.ignore(1000, '\n');
 
     if (!file.is_open()) {
         cout << "Error opening toy graph" << endl;
-        return;
+        return false;
     }
 
     string line;
+
     while (getline(file, line)) {
         vector<string> fields;
         istringstream stream(line);
@@ -25,17 +22,22 @@ void Database::loadSmall(string path, int nNodes) {
         }
         if (fields.size() != 3) {
             cout << "The following line is invalid: " << line << endl;
-            return;
+            return false;
         }
         string origin_id = fields[0];
+        graph.addNode(stoi(origin_id));
+
         string dest_id = fields[1];
+        graph.addNode(stoi(dest_id));
+
         string distance = fields[2];
 
         graph.addEdge(graph.getNode(stoi(origin_id)), graph.getNode(stoi(dest_id)), stod(distance));
     }
-    file.close();
-}
 
+    file.close();
+    return true;
+}
 
 bool Database::loadMedium(const string& nodesPath, const string& edgesPath) {
     ifstream nodesInput(nodesPath);
@@ -114,7 +116,39 @@ bool Database::loadMedium(const string& nodesPath, const string& edgesPath) {
     return true;
 }
 
-void Database::loadExtra(string path, int numEdges){;}
+bool Database::loadExtra(string path){
+    ifstream file(path);
+    if(!file.is_open()){
+        cout << "Error opening extra graph" << endl;
+        return false;
+    }
+
+    string line;
+    while(getline(file, line)){
+        vector<string> fields;
+        istringstream stream(line);
+        string field;
+        while(getline(stream, field, ',')){
+            fields.push_back(field);
+        }
+        if(fields.size() != 3){
+            cout << "The following line is invalid: " << line << endl;
+            return false;
+        }
+        string origin_id = fields[0];
+        graph.addNode(stoi(origin_id));
+
+        string dest_id = fields[1];
+        graph.addNode(stoi(dest_id));
+
+        string distance = fields[2];
+
+        graph.addEdge(graph.getNode(stoi(origin_id)), graph.getNode(stoi(dest_id)), stod(distance));
+    }
+
+    file.close();
+    return true;
+}
 
 bool Database::nodeExists(int id){
     return graph.getNode(id) != nullptr;

@@ -28,7 +28,6 @@ void Menu::showDataSelectionMenu() {
 
 void Menu::showSmallGraphMenu() {
     map<int, string> optionToPath = {{1, "../data/Toy-Graphs/shipping.csv"}, {2, "../data/Toy-Graphs/stadiums.csv"}, {3, "../data/Toy-Graphs/tourism.csv"}};
-    map<int, int> optionToNumNodes = {{1, 14}, {2, 11}, {3, 5}};
     cout << "_________________________________________________" << endl;
     cout << "Please the graph you want to load:" << endl;
     cout << "1 - shipping.csv" << endl;
@@ -37,7 +36,7 @@ void Menu::showSmallGraphMenu() {
 
     int option = getIntFromUser();
 
-    database.loadSmall(optionToPath[option], optionToNumNodes[option]);
+    database.loadSmall(optionToPath[option]);
     showMainMenu();
 }
 
@@ -87,7 +86,7 @@ void Menu::showExtraMenu() {
 
     string path = "../data/Extra_Fully_Connected_Graphs/edges_" + to_string(optionToNumEdges[option]) + ".csv";
 
-    database.loadExtra(path, optionToNumEdges[option]);
+    database.loadExtra(path);
     showMainMenu();
 }
 

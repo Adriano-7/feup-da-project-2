@@ -3,7 +3,14 @@
 using namespace std;
 
 bool Graph::addNode(int id){
-    nodes.push_back(new Node(id));
+    int size = nodes.size();
+    if(id < size && nodes[id] != NULL)
+        return false;
+
+    for(int i = size; i <= id; i++){
+        nodes.push_back(new Node(i));
+    }
+
     return true;
 }
 
