@@ -173,3 +173,7 @@ void Database::printGraph(){
         }
     }
 }
+
+void Database::clear() {
+    graph.clear();
+}

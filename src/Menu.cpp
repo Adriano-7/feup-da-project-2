@@ -98,6 +98,7 @@ void Menu::showMainMenu(){
         cout << "1 - Use the Backtracking_TSP Algorithm" << endl;
         cout << "2 - Using triangualar approximation heuristic" << endl;
         cout << "3 - Using our own heuristic" << endl;
+        cout << "4 - Change graph" << endl;
         cout << "5 - Exit" << endl;
 
         int option = getIntFromUser();
@@ -113,6 +114,10 @@ void Menu::showMainMenu(){
             case 3:
                 showSpecialHeuristicMenu();
                 waitForInput();
+                break;
+            case 4:
+                database.clear();
+                showDataSelectionMenu();
                 break;
             case 5:
                 return;

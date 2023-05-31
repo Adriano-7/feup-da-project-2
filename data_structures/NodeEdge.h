@@ -23,6 +23,7 @@ public:
 
     static bool ascendingDistance(Node* a, Node* b);
     Edge* getEdgeTo(int v);
+    Edge* getSelectedEdgeTo(int v);
 
     void setVisited(bool visited);
     void setProcessing(bool processing);

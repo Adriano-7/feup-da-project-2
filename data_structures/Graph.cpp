@@ -114,7 +114,7 @@ vector<Node*> Graph::tspTriangular(double* distance){
         Node* source = H[i];
         Node* dest = H[i+1];
 
-        Edge* edge = source->getEdgeTo(dest->getId());
+        Edge* edge = source->getSelectedEdgeTo(dest->getId());
         if(edge != nullptr){
             *distance += edge->getDistance();
         }
@@ -134,6 +134,13 @@ Node* Graph::getNode(int id){
 
 vector<Node*> Graph::getNodes(){
     return nodes;
+}
+
+void Graph::clear() {
+    for(Node* node : nodes){
+        delete node;
+    }
+    nodes.clear();
 }
 
 Graph::~Graph() {

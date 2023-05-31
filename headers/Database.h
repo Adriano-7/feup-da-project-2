@@ -32,6 +32,8 @@ public:
 
     void printGraph();
     void drawProgressBar(int progress, int fileSize);
+
+    void clear();
 private:
     Graph graph;
 };
