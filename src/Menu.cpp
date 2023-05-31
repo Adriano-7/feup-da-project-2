@@ -124,12 +124,12 @@ void Menu::showMainMenu(){
 }
 
 void Menu::showBacktrackingMenu() {
-    auto start = high_resolution_clock::now(); // Get the starting time
+    auto start = high_resolution_clock::now();
 
     pair<double, vector<unsigned int>> res = database.backtracking();
 
-    auto end = high_resolution_clock::now(); // Get the ending time
-    auto duration = duration_cast<milliseconds>(end - start); // Calculate the duration in milliseconds
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<milliseconds>(end - start);
 
     cout << "_________________________________________________" << endl;
     cout << "The shortest path is: " << endl;
@@ -140,13 +140,16 @@ void Menu::showBacktrackingMenu() {
     cout << endl;
     cout << "The distance is: " << res.first << endl;
     cout << "Time taken: " << duration.count() << " milliseconds" << endl;
-    waitForInput();
-
 }
 
 void Menu::showTriangularMenu(){
     double distance;
+
+    auto start = high_resolution_clock::now();
     vector<Node*> path = database.triangular(&distance);
+    auto end = high_resolution_clock::now();
+
+    auto duration = duration_cast<milliseconds>(end - start);
 
     cout << "_________________________________________________" << endl;
     cout << "The shortest path is: " << endl;
@@ -155,12 +158,18 @@ void Menu::showTriangularMenu(){
     }
     cout << endl;
     cout << "The distance is: " << distance << endl;
+    cout << "Time taken: " << duration.count() << " milliseconds" << endl;
 }
 
 
 void Menu::showSpecialHeuristicMenu(){
     double distance;
+
+    auto start = high_resolution_clock::now();
     vector<int> path = database.specialHeuristic(&distance);
+    auto end = high_resolution_clock::now();
+
+    auto duration = duration_cast<milliseconds>(end - start);
 
     cout << "_________________________________________________" << endl;
     cout << "The shortest path is: " << endl;
@@ -169,8 +178,9 @@ void Menu::showSpecialHeuristicMenu(){
     }
     cout << endl;
     cout << "The distance is: " << distance << endl;
-
+    cout << "Time taken: " << duration.count() << " milliseconds" << endl;
 }
+
 
 void Menu::waitForInput() {
     usleep(800000);
