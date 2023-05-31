@@ -1,10 +1,7 @@
-#include <limits>
 #include "../headers/Database.h"
 
-#include "../data_structures/Graph.h"
-
-
 using namespace std;
+
 void Database::loadSmall(string path, int nNodes) {
     for (int i = 0; i < nNodes; i++) {
         graph.addNode(i);
@@ -119,8 +116,9 @@ bool Database::loadMedium(const string& nodesPath, const string& edgesPath) {
 
 void Database::loadExtra(string path, int numEdges){;}
 
-bool Database::nodeExists(int id){return true;}
-
+bool Database::nodeExists(int id){
+    return graph.getNode(id) != nullptr;
+}
 
 pair<double, vector<unsigned int>> Database::backtracking() {
     return graph.Backtracking_TSP();
@@ -129,8 +127,9 @@ pair<double, vector<unsigned int>> Database::backtracking() {
 vector<Node*> Database::triangular(double* distance){
     return graph.tspTriangular(distance);
 }
-vector<int> Database::specialHeuristic(double* distance){return vector<int>();}
-
+vector<int> Database::specialHeuristic(double* distance){
+    return vector<int>();
+}
 
 void Database::printGraph(){
     for(auto node : graph.getNodes()){
