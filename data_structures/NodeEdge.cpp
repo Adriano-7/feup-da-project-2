@@ -54,6 +54,15 @@ static bool ascendingDistance(Node* a, Node* b) {
     return a->getDistance() < b->getDistance();
 }
 
+Edge* Node::getSelectedEdgeTo(int v){
+    for(Edge* edge : adj){
+        if(edge->getDest()->getId() == v && edge->isSelected()){
+            return edge;
+        }
+    }
+    return nullptr;
+}
+
 Edge* Node::getEdgeTo(int v){
     for(Edge* edge : adj){
         if(edge->getDest()->getId() == v){
@@ -106,6 +115,7 @@ unsigned int Node::getDistanceToAdjacentNode(unsigned int i) {
             return this->adj.at(i)->getDistance();
         }
     }
+    return 0;
 }
 
 

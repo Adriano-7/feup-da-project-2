@@ -29,6 +29,8 @@ public:
     Node* getNode(int id);
     vector<Node*> getNodes();
 
+    void clear();
+
     ~Graph();
 
     void Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double &ans, vector<unsigned int> &path, vector<vector<unsigned int>> paths);
