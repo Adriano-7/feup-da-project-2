@@ -29,6 +29,9 @@ bool Graph::addEdge(Node* sourceNode, Node* destNode, double distance) {
 
 
 double Graph::haversineDistance(Node* source, Node* dest) {
+    if(source->getLatitude()==-1 || source->getLongitude()==-1 || dest->getLatitude()==-1 || dest->getLongitude()==-1)
+        return 0;
+
     double lat1 = source->getLatitude() * M_PI / 180.0;
     double lon1 = source->getLongitude() * M_PI / 180.0;
     double lat2 = dest->getLatitude() * M_PI / 180.0;
@@ -38,8 +41,9 @@ double Graph::haversineDistance(Node* source, Node* dest) {
     return 6371 * 2 * asin(sqrt(a));
 }
 
-void Graph::primMST(Node* start, double* cost) {
+void Graph::primMST() {
     MutablePriorityQueue<Node> q;
+    vector<Node*> result;
 
     for(Node* node: nodes){
         node->setDistance(numeric_limits<double>::infinity());
@@ -48,12 +52,14 @@ void Graph::primMST(Node* start, double* cost) {
         q.insert(node);
     }
 
+    Node* start = nodes[0];
     start->setDistance(0);
     q.decreaseKey(start);
 
     while(!q.empty()){
         Node* node = q.extractMin();
         node->setVisited(true);
+        result.push_back(node);
 
         for(Edge* edge : node->getAdj()){
             Node* dest = edge->getDest();
@@ -63,44 +69,28 @@ void Graph::primMST(Node* start, double* cost) {
                 q.decreaseKey(dest);
             }
         }
+
         if(node->getPath() != nullptr){
             node->getPath()->setSelected(true);
         }
     }
 
-    *cost = 0;
     for(Node* node : nodes){
-        if(node->getPath() != nullptr){
-            *cost += node->getPath()->getDistance();
-        }
+        node->setVisited(false);
     }
 }
 
 
-vector<Node*> Graph::dfsTriangular(Node* start) {
-    for(Node* node : nodes) {
-        node->setVisited(false);
-    }
+vector<Node*> Graph::dfsTriangular(Node* node) {
+    node->setVisited(true);
+    vector<Node*> path = {node};
 
-    vector<Node*> path;
-    stack<Node*> s;
-    s.push(start);
-
-    while(!s.empty()) {
-        Node* current = s.top();
-        s.pop();
-
-        if(current->isVisited()) {
-            continue;
-        }
-
-        current->setVisited(true);
-        path.push_back(current);
-
-        for(Edge* edge : current->getAdj()) {
-            if(edge->isSelected()) {
-                Node* next = edge->getDest();
-                s.push(next);
+    for (Edge* edge : node->getAdj()) {
+        if (edge->isSelected()) {
+            Node* dest = edge->getDest();
+            if (!dest->isVisited()) {
+                vector<Node*> subpath = dfsTriangular(dest);
+                path.insert(path.end(), subpath.begin(), subpath.end());
             }
         }
     }
@@ -108,26 +98,30 @@ vector<Node*> Graph::dfsTriangular(Node* start) {
     return path;
 }
 
-vector<Node*> Graph::tspTriangular(int source, int destination, double* distance){
-    Node* sourceNode = getNode(source);
-    if(sourceNode == nullptr) {
-        cout << "Source node not found" << endl;
-        return vector<Node*>();
-    }
-
-    Node* destinationNode = getNode(destination);
-    if(destinationNode == nullptr) {
-        cout << "Destination node not found" << endl;
-        return vector<Node*>();
-    }
-
-    // Step 1:  compute a minimum spanning tree T for G from root r
-    *distance = 0;
-    primMST(sourceNode, distance);
+vector<Node*> Graph::tspTriangular(double* distance){
+    // Step 1:  Compute a minimum spanning tree T for G from root r
+    primMST();
 
     //Step 2: let H be a list of vertices, ordered according to when they are first visited in a preorder tree walk of T
-    return dfsTriangular(sourceNode);
+    vector<Node*> H = dfsTriangular(nodes[0]);
+    H.push_back(nodes[0]);
 
+    //Step 3: return the hamiltonian cycle H. The cost of H is the sum of the edge costs in T (if there are no edges connecting one node to another, the cost is the haverside distance between them)
+    *distance = 0;
+    for(int i=0; i<H.size()-1; i++){
+        Node* source = H[i];
+        Node* dest = H[i+1];
+
+        Edge* edge = source->getEdgeTo(dest->getId());
+        if(edge != nullptr){
+            *distance += edge->getDistance();
+        }
+        else{
+            *distance += haversineDistance(source, dest);
+        }
+    }
+
+    return H;
 }
 
 Node* Graph::getNode(int id){

@@ -21,10 +21,10 @@ public:
     bool addEdge(Node* source, Node* dest, double distance);
 
     double haversineDistance(Node* source, Node* dest);
-    void primMST(Node* start, double* cost);
 
-    vector<Node*> tspTriangular(int source, int destination, double* distance);
-    vector<Node*> dfsTriangular(Node* start);
+    void primMST();
+    vector<Node*> dfsTriangular(Node* node);
+    vector<Node*> tspTriangular(double* distance);
 
     Node* getNode(int id);
     vector<Node*> getNodes();

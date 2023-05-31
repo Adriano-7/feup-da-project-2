@@ -123,33 +123,9 @@ void Menu::showMainMenu(){
     }
 }
 
-pair<int, int> Menu::getNodesFromUser() {
-    cout << "_________________________________________________" << endl;
-    cout << "Please select the nodes you want to use:" << endl;
-    cout << "Source node: ";
-    int source = getIntFromUser();
-    while(!database.nodeExists(source)){
-        cout << "Invalid node" << endl;
-        source = getIntFromUser();
-    }
-
-    cout << "Destination node: ";
-    int destination = getIntFromUser();
-    while(!database.nodeExists(destination)){
-        cout << "Invalid node" << endl;
-        destination = getIntFromUser();
-    }
-
-    return make_pair(source, destination);
-}
-
 void Menu::showBacktrackingMenu(){
-    pair<int, int> nodes = getNodesFromUser();
-    int source = nodes.first;
-    int destination = nodes.second;
-    int distance;
-
-    vector<int> path = database.backtracking(source, destination, &distance);
+    double distance;
+    vector<int> path = database.backtracking(&distance);
 
     cout << "_________________________________________________" << endl;
     /*
@@ -163,29 +139,21 @@ void Menu::showBacktrackingMenu(){
 }
 
 void Menu::showTriangularMenu(){
-    pair<int, int> nodes = getNodesFromUser();
-    int source = nodes.first;
-    int destination = nodes.second;
     double distance;
-
-    vector<Node*> path = database.triangular(source, destination, &distance);
+    vector<Node*> path = database.triangular(&distance);
 
     cout << "_________________________________________________" << endl;
     cout << "The shortest path is: " << endl;
     for (int i = 0; i < path.size(); i++) {
-        cout << path[i]->getId() << " ";
+        cout << path[i]->getId() << " - ";
     }
     cout << endl;
     cout << "The distance is: " << distance << endl;
 }
 
 void Menu::showSpecialHeuristicMenu(){
-    pair<int, int> nodes = getNodesFromUser();
-    int source = nodes.first;
-    int destination = nodes.second;
-    int distance;
-
-    vector<int> path = database.specialHeuristic(source, destination, &distance);
+    double distance;
+    vector<int> path = database.specialHeuristic(&distance);
 
     cout << "_________________________________________________" << endl;
     cout << "The shortest path is: " << endl;

@@ -28,7 +28,6 @@ class Menu {
         void showTriangularMenu();
         void showSpecialHeuristicMenu();
 
-        pair<int, int> getNodesFromUser();
         void waitForInput();
         int getIntFromUser();
 };

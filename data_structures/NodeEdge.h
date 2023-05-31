@@ -54,9 +54,9 @@ class Edge {
 public:
     Edge(Node *orig, Node *dest, double distance);
 
-    Node* getDest();
-    double getDistance();
-    Node* getOrig();
+    Node* getDest() const;
+    double getDistance() const;
+    Node* getOrig() const;
     Edge* getReverse();
 
     bool isSelected();
