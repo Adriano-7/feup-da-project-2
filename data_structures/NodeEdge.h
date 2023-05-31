@@ -36,6 +36,8 @@ public:
     int queueIndex = 0;
 
 
+    unsigned int getDistanceToAdjacentNode(unsigned int i);
+
 private:
     int id;
     double latitude;

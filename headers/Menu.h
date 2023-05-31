@@ -6,9 +6,11 @@
 #include <map>
 #include <unistd.h>
 #include <limits>
+#include <chrono>
 
 
 using namespace std;
+using namespace std::chrono;
 
 /**
  * @brief Class responsible for the user interface
@@ -27,7 +29,6 @@ class Menu {
         void showBacktrackingMenu();
         void showTriangularMenu();
         void showSpecialHeuristicMenu();
-
         void waitForInput();
         int getIntFromUser();
 };

@@ -1,3 +1,4 @@
+#include <limits>
 #include "../headers/Database.h"
 
 #include "../data_structures/Graph.h"
@@ -120,10 +121,9 @@ void Database::loadExtra(string path, int numEdges){;}
 
 bool Database::nodeExists(int id){return true;}
 
-vector<int> Database::backtracking(double* distance){
-    /*
-    graph.primMST();*/
-    return vector<int>();
+
+pair<double, vector<unsigned int>> Database::backtracking() {
+    return graph.Backtracking_TSP();
 }
 
 vector<Node*> Database::triangular(double* distance){

@@ -25,13 +25,12 @@ public:
 
     bool nodeExists(int id);
 
-    vector<int> backtracking(double* distance);
+    pair<double, vector<unsigned int>> backtracking();
     vector<Node*> triangular(double* distance);
     vector<int> specialHeuristic(double* distance);
 
     void printGraph();
     void drawProgressBar(int progress, int fileSize);
-
 private:
     Graph graph;
 };

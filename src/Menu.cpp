@@ -96,7 +96,7 @@ void Menu::showMainMenu(){
     while (true){
         cout << "_________________________________________________" << endl;
         cout << "Please select an option to solve the TSP:" << endl;
-        cout << "1 - Use the Backtracking Algorithm" << endl;
+        cout << "1 - Use the Backtracking_TSP Algorithm" << endl;
         cout << "2 - Using triangualar approximation heuristic" << endl;
         cout << "3 - Using our own heuristic" << endl;
         cout << "5 - Exit" << endl;
@@ -123,19 +123,25 @@ void Menu::showMainMenu(){
     }
 }
 
-void Menu::showBacktrackingMenu(){
-    double distance;
-    vector<int> path = database.backtracking(&distance);
+void Menu::showBacktrackingMenu() {
+    auto start = high_resolution_clock::now(); // Get the starting time
+
+    pair<double, vector<unsigned int>> res = database.backtracking();
+
+    auto end = high_resolution_clock::now(); // Get the ending time
+    auto duration = duration_cast<milliseconds>(end - start); // Calculate the duration in milliseconds
 
     cout << "_________________________________________________" << endl;
-    /*
     cout << "The shortest path is: " << endl;
-    for (int i = 0; i < path.size(); i++) {
-        cout << path[i] << " ";
+    for (int i = 0; i < res.second.size(); i++) {
+        cout << res.second[i] << " ";
     }
+
     cout << endl;
-    cout << "The distance is: " << distance << endl;
-    */
+    cout << "The distance is: " << res.first << endl;
+    cout << "Time taken: " << duration.count() << " milliseconds" << endl;
+    waitForInput();
+
 }
 
 void Menu::showTriangularMenu(){
@@ -150,6 +156,7 @@ void Menu::showTriangularMenu(){
     cout << endl;
     cout << "The distance is: " << distance << endl;
 }
+
 
 void Menu::showSpecialHeuristicMenu(){
     double distance;

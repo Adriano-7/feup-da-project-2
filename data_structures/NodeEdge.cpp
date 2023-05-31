@@ -100,6 +100,14 @@ bool Node::removeEdgeTo(Node *dest){
     return false;
 }
 
+unsigned int Node::getDistanceToAdjacentNode(unsigned int i) {
+    for (int i = 0; i < this->adj.size(); i++) {
+        if (this->adj.at(i)->getDest()->getId() == i) {
+            return this->adj.at(i)->getDistance();
+        }
+    }
+}
+
 
 /********************** Edge  ****************************/
 
@@ -108,7 +116,7 @@ Edge::Edge(Node *orig, Node *dest, double distance): orig(orig), dest(dest), dis
 
 Node* Edge::getDest() const{return this->dest;}
 
-double Edge::getDistance() const{return this->distance;}
+double Edge::getDistance() const {return this->distance;}
 
 Node* Edge::getOrig() const{
     return this->orig;

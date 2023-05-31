@@ -30,8 +30,13 @@ public:
     vector<Node*> getNodes();
 
     ~Graph();
+
+    void Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double &ans, vector<unsigned int> &path, vector<vector<unsigned int>> paths);
+    pair<double, vector<unsigned int>> Backtracking_TSP();
+
 private:
     vector<Node*> nodes;
+    void resetNodes();
 };
 
 #endif
