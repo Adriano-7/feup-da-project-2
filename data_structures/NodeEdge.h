@@ -2,6 +2,7 @@
 #define PROJECT_DA_NODEEDGE_H
 
 #include <vector>
+#include <math.h>
 
 using namespace std;
 
@@ -20,6 +21,9 @@ public:
     vector<Edge *> getIncoming();
     double getLatitude();
     double getLongitude();
+
+    double haversineDistance(Node* source, Node* dest);
+    double getDistanceTo(Node* node);
 
     static bool ascendingDistance(Node* a, Node* b);
     Edge* getEdgeTo(int v);

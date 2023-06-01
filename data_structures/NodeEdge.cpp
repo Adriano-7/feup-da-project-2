@@ -50,6 +50,36 @@ double Node::getLongitude(){
     return longitude;
 }
 
+double Node::haversineDistance(Node* source, Node* dest) {
+    if(source->getLatitude()==-1 || source->getLongitude()==-1 || dest->getLatitude()==-1 || dest->getLongitude()==-1)
+        return 0;
+
+    double lat1 = source->getLatitude() * M_PI / 180.0;
+    double lon1 = source->getLongitude() * M_PI / 180.0;
+    double lat2 = dest->getLatitude() * M_PI / 180.0;
+    double lon2 = dest->getLongitude() * M_PI / 180.0;
+
+    double delta_lat = lat2 - lat1;
+    double delta_lon = lon2 - lon1;
+
+    double aux = sin(delta_lat/2) * sin(delta_lat/2) + cos(lat1) * cos(lat2) * sin(delta_lon/2) * sin(delta_lon/2);
+    double c = 2.0 * atan2(sqrt(aux), sqrt(1.0-aux));
+    return 6371000 * c;
+}
+
+double Node::getDistanceTo(Node* node){
+    Edge* edge = getEdgeTo(node->getId());
+
+    if(edge != nullptr){
+        return edge->getDistance();
+    }
+    else if(this->latitude != -1 && this->longitude != -1 && node->getLatitude() != -1 && node->getLongitude() != -1){
+        return haversineDistance(this, node);
+    }
+
+    return 0;
+}
+
 static bool ascendingDistance(Node* a, Node* b) {
     return a->getDistance() < b->getDistance();
 }

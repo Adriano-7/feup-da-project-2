@@ -20,10 +20,7 @@ bool Database::loadSmall(string path) {
         while (getline(stream, field, ',')) {
             fields.push_back(field);
         }
-        if (fields.size() != 3) {
-            cout << "The following line is invalid: " << line << endl;
-            return false;
-        }
+
         string origin_id = fields[0];
         graph.addNode(stoi(origin_id));
 
@@ -135,6 +132,7 @@ bool Database::loadExtra(string path){
             cout << "The following line is invalid: " << line << endl;
             return false;
         }
+
         string origin_id = fields[0];
         graph.addNode(stoi(origin_id));
 

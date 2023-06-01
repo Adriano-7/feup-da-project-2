@@ -30,18 +30,7 @@ bool Graph::addEdge(Node* sourceNode, Node* destNode, double distance) {
 }
 
 
-double Graph::haversineDistance(Node* source, Node* dest) {
-    if(source->getLatitude()==-1 || source->getLongitude()==-1 || dest->getLatitude()==-1 || dest->getLongitude()==-1)
-        return 0;
 
-    double lat1 = source->getLatitude() * M_PI / 180.0;
-    double lon1 = source->getLongitude() * M_PI / 180.0;
-    double lat2 = dest->getLatitude() * M_PI / 180.0;
-    double lon2 = dest->getLongitude() * M_PI / 180.0;
-
-    double a = pow(sin((lat2 - lat1) / 2), 2) + pow(sin((lon2 - lon1) / 2), 2) * cos(lat1) * cos(lat2);
-    return 6371 * 2 * asin(sqrt(a));
-}
 
 void Graph::primMST() {
     MutablePriorityQueue<Node> q;
@@ -68,12 +57,9 @@ void Graph::primMST() {
             if(!dest->isVisited() && edge->getDistance() < dest->getDistance()){
                 dest->setDistance(edge->getDistance());
                 dest->setPath(edge);
+                edge->setSelected(true);
                 q.decreaseKey(dest);
             }
-        }
-
-        if(node->getPath() != nullptr){
-            node->getPath()->setSelected(true);
         }
     }
 
@@ -83,7 +69,7 @@ void Graph::primMST() {
 }
 
 
-vector<Node*> Graph::dfsTriangular(Node* node) {
+vector<Node*> Graph::dfsTriangular(Node* node){
     node->setVisited(true);
     vector<Node*> path = {node};
 
@@ -110,17 +96,10 @@ vector<Node*> Graph::tspTriangular(double* distance){
 
     //Step 3: return the hamiltonian cycle H. The cost of H is the sum of the edge costs in T (if there are no edges connecting one node to another, the cost is the haverside distance between them)
     *distance = 0;
-    for(int i=0; i<H.size()-1; i++){
+    for(int i = 0; i < H.size()-1; i++){
         Node* source = H[i];
         Node* dest = H[i+1];
-
-        Edge* edge = source->getSelectedEdgeTo(dest->getId());
-        if(edge != nullptr){
-            *distance += edge->getDistance();
-        }
-        else{
-            *distance += haversineDistance(source, dest);
-        }
+        *distance += source->getDistanceTo(dest);
     }
 
     return H;
