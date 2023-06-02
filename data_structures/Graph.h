@@ -4,8 +4,10 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#include "MutablePriorityQueue.h"
 #include <limits>
+
+#include <functional>
+#include <queue>
 
 #include <stack>
 #include <unordered_set>
@@ -19,20 +21,19 @@ public:
     bool addNode(int id, double latitude, double longitude);
     bool addEdge(Node* source, Node* dest, double distance);
 
+    Node* getNode(int id);
+    vector<Node*> getNodes();
+
     void primMST();
     vector<Node*> dfsTriangular(Node* node);
     vector<Node*> tspTriangular(double* distance);
 
-    Node* getNode(int id);
-    vector<Node*> getNodes();
+    void Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double &ans, vector<unsigned int> &path, vector<vector<unsigned int>> paths);
+    pair<double, vector<unsigned int>> Backtracking_TSP();
 
     void clear();
 
     ~Graph();
-
-    void Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double &ans, vector<unsigned int> &path, vector<vector<unsigned int>> paths);
-    pair<double, vector<unsigned int>> Backtracking_TSP();
-
 private:
     vector<Node*> nodes;
     void resetNodes();

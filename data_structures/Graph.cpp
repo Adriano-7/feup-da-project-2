@@ -29,45 +29,46 @@ bool Graph::addEdge(Node* sourceNode, Node* destNode, double distance) {
     return true;
 }
 
+Node* Graph::getNode(int id){
+    if(id>=0 && id<nodes.size()) return nodes[id];
+    return nullptr;
+}
 
-
+vector<Node*> Graph::getNodes(){
+    return nodes;
+}
 
 void Graph::primMST() {
-    MutablePriorityQueue<Node> q;
-    vector<Node*> result;
+    priority_queue<Edge*, vector<Edge*>, function<bool(Edge*, Edge*)>> pq
+                                        ([](Edge* a, Edge* b) {return a->getDistance() > b->getDistance();});
 
-    for(Node* node: nodes){
-        node->setDistance(numeric_limits<double>::infinity());
-        node->setPath(nullptr);
-        node->setVisited(false);
-        q.insert(node);
-    }
+    nodes[0]->setVisited(true);
 
-    Node* start = nodes[0];
-    start->setDistance(0);
-    q.decreaseKey(start);
+    for (Edge* edge : nodes[0]->getAdj()) {pq.push(edge);}
 
-    while(!q.empty()){
-        Node* node = q.extractMin();
-        node->setVisited(true);
-        result.push_back(node);
+    while (!pq.empty()) {
+        Edge* minWeightEdge = pq.top();
+        pq.pop();
 
-        for(Edge* edge : node->getAdj()){
-            Node* dest = edge->getDest();
-            if(!dest->isVisited() && edge->getDistance() < dest->getDistance()){
-                dest->setDistance(edge->getDistance());
-                dest->setPath(edge);
-                edge->setSelected(true);
-                q.decreaseKey(dest);
+        Node* source = minWeightEdge->getOrig();
+        Node* dest = minWeightEdge->getDest();
+
+        if(source->isVisited() && dest->isVisited())
+            continue;
+
+        minWeightEdge->setSelected(true);
+        minWeightEdge->getReverse()->setSelected(true);
+
+        dest->setVisited(true);
+        for (Edge* edge : dest->getAdj()) {
+            if(!edge->getDest()->isVisited()){
+                pq.push(edge);
             }
         }
     }
 
-    for(Node* node : nodes){
-        node->setVisited(false);
-    }
+    resetNodes();
 }
-
 
 vector<Node*> Graph::dfsTriangular(Node* node){
     node->setVisited(true);
@@ -87,46 +88,20 @@ vector<Node*> Graph::dfsTriangular(Node* node){
 }
 
 vector<Node*> Graph::tspTriangular(double* distance){
-    // Step 1:  Compute a minimum spanning tree T for G from root r
     primMST();
 
-    //Step 2: let H be a list of vertices, ordered according to when they are first visited in a preorder tree walk of T
     vector<Node*> H = dfsTriangular(nodes[0]);
     H.push_back(nodes[0]);
 
-    //Step 3: return the hamiltonian cycle H. The cost of H is the sum of the edge costs in T (if there are no edges connecting one node to another, the cost is the haverside distance between them)
     *distance = 0;
     for(int i = 0; i < H.size()-1; i++){
         Node* source = H[i];
         Node* dest = H[i+1];
         *distance += source->getDistanceTo(dest);
     }
-
     return H;
 }
 
-Node* Graph::getNode(int id){
-    if(id>=0 && id<nodes.size()) return nodes[id];
-
-    return nullptr;
-}
-
-vector<Node*> Graph::getNodes(){
-    return nodes;
-}
-
-void Graph::clear() {
-    for(Node* node : nodes){
-        delete node;
-    }
-    nodes.clear();
-}
-
-Graph::~Graph() {
-    for(auto node : nodes){
-        delete node;
-    }
-}
 
 void Graph::Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double &ans,
                              vector<unsigned int> &path, vector<vector<unsigned int>> paths) {
@@ -172,9 +147,21 @@ pair<double, vector<unsigned int>> Graph::Backtracking_TSP(){
     return make_pair(shortestDistance, path);
 }
 
+void Graph::clear() {
+    for(Node* node : nodes){
+        delete node;
+    }
+    nodes.clear();
+}
+
+Graph::~Graph() {
+    for(auto node : nodes){
+        delete node;
+    }
+}
+
 void Graph::resetNodes() {
     for (Node* node : nodes) {
         node->setVisited(false);
     }
-
 }
