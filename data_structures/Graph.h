@@ -11,6 +11,9 @@
 #include <unordered_set>
 
 #include "NodeEdge.h"
+
+#include "UFDS.h"
+
 using namespace std;
 
 class Graph {
@@ -19,8 +22,12 @@ public:
     bool addNode(int id, double latitude, double longitude);
     bool addEdge(Node* source, Node* dest, double distance);
 
-    void primMST();
     vector<Node*> dfsTriangular(Node* node);
+    vector<Node*> dfsTest();
+    vector<Node*> dfsKruskalPath(Node *node);
+
+    vector<Node *> kruskal();
+
     vector<Node*> tspTriangular(double* distance);
 
     Node* getNode(int id);

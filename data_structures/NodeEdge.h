@@ -38,6 +38,9 @@ public:
     int getId();
     vector<Edge *> getAdj();
 
+    void addMstEdge(Edge *edge);
+    vector<Edge *> getAdjMst();
+
     int queueIndex = 0;
 
 
@@ -49,6 +52,7 @@ private:
     double longitude;
     vector<Edge *> adj;
 
+    vector<Edge *> adjMst;
 
     bool visited = false;
     double distance = 0;

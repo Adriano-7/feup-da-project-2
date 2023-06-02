@@ -22,6 +22,15 @@ vector<Edge *> Node::getAdj(){
     return adj;
 }
 
+void Node::addMstEdge(Edge *edge){
+    adjMst.push_back(edge);
+}
+
+vector<Edge *> Node::getAdjMst(){
+    return adjMst;
+}
+
+
 bool Node::isVisited(){
     return visited;
 }

@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "Graph.h"
 
 using namespace std;
@@ -30,45 +31,6 @@ bool Graph::addEdge(Node* sourceNode, Node* destNode, double distance) {
 }
 
 
-
-
-void Graph::primMST() {
-    MutablePriorityQueue<Node> q;
-    vector<Node*> result;
-
-    for(Node* node: nodes){
-        node->setDistance(numeric_limits<double>::infinity());
-        node->setPath(nullptr);
-        node->setVisited(false);
-        q.insert(node);
-    }
-
-    Node* start = nodes[0];
-    start->setDistance(0);
-    q.decreaseKey(start);
-
-    while(!q.empty()){
-        Node* node = q.extractMin();
-        node->setVisited(true);
-        result.push_back(node);
-
-        for(Edge* edge : node->getAdj()){
-            Node* dest = edge->getDest();
-            if(!dest->isVisited() && edge->getDistance() < dest->getDistance()){
-                dest->setDistance(edge->getDistance());
-                dest->setPath(edge);
-                edge->setSelected(true);
-                q.decreaseKey(dest);
-            }
-        }
-    }
-
-    for(Node* node : nodes){
-        node->setVisited(false);
-    }
-}
-
-
 vector<Node*> Graph::dfsTriangular(Node* node){
     node->setVisited(true);
     vector<Node*> path = {node};
@@ -86,7 +48,99 @@ vector<Node*> Graph::dfsTriangular(Node* node){
     return path;
 }
 
+vector<Node*> Graph::dfsTest(){
+    for(Node* v: nodes) {v->setVisited(false);}
+
+    nodes[0]->setVisited(true);
+    vector<Node*> path = {nodes[0]};
+
+    for(Edge* edge: nodes[0]->getAdjMst()){
+        Node* dest = edge->getDest();
+        if(!dest->isVisited()){
+            vector<Node*> subpath = dfsTriangular(dest);
+            path.insert(path.end(), subpath.begin(), subpath.end());
+        }
+    }
+
+    return path;
+}
+
+vector<Node*> Graph::dfsKruskalPath(Node *node) {
+    node->setVisited(true);
+    vector<Node*> path = {node};
+
+    for (Edge* edge : node->getAdj()) {
+        Node* adj = edge->getDest();
+
+        if (edge->isSelected() && !adj->isVisited()) {
+            adj->setPath(edge);
+
+            vector<Node*> subpath = dfsKruskalPath(adj);
+            path.insert(path.end(), subpath.begin(), subpath.end());
+        }
+    }
+
+    return path;
+}
+
+vector<Node *> Graph::kruskal() {
+    if(nodes.empty()) return nodes;
+
+    UFDS ufds = UFDS(nodes.size());
+
+    vector<Edge *> edges;
+    for(Node* v: nodes){
+        for(Edge* e: v->getAdj()){
+            e->setSelected(false);
+            if(e->getOrig()->getId() < e->getDest()->getId())
+                edges.push_back(e);
+        }
+    }
+
+    sort(edges.begin(), edges.end(), [](Edge* e1, Edge* e2){return e1->getDistance() < e2->getDistance();}); //Ascending order
+
+    int selectedEdges = 0; //To obtain a ST we need to select n-1 edges
+    for(Edge* e: edges){
+        if(selectedEdges == nodes.size()-1) break;
+
+        Node* origin = e->getOrig();
+        Node* dest = e->getDest();
+        if(!ufds.isSameSet(origin->getId(), dest->getId())){
+            ufds.linkSets(origin->getId(), dest->getId());
+            e->setSelected(true);
+            origin->addMstEdge(e);
+            e->getReverse()->setSelected(true);
+            dest->addMstEdge(e->getReverse());
+            selectedEdges++;
+        }
+    }
+
+    for(Node* v: nodes) {v->setVisited(false);}
+    nodes[0]->setPath(nullptr);
+
+    return dfsKruskalPath(nodes[0]);
+}
+
+
+
 vector<Node*> Graph::tspTriangular(double* distance){
+
+    kruskal();
+    auto help = dfsTest();
+    help.push_back(help[0]);
+
+    *distance = 0;
+    for(int i = 0; i < help.size()-1; i++){
+        Node* source = help[i];
+        Node* dest = help[i+1];
+        auto hey = source->getDistanceTo(dest);
+        *distance += source->getDistanceTo(dest);
+    }
+
+
+    return help;
+
+    /*
     // Step 1:  Compute a minimum spanning tree T for G from root r
     primMST();
 
@@ -103,6 +157,7 @@ vector<Node*> Graph::tspTriangular(double* distance){
     }
 
     return H;
+     */
 }
 
 Node* Graph::getNode(int id){
