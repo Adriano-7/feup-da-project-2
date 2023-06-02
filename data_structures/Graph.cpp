@@ -262,9 +262,13 @@ pair<double, vector<unsigned int>> Graph::insertion_TSP() {
 
         tour.push_back(0);
         double distance = 0;
+
+
+
     //calculate the total distance of the tour
         for (int i = 0; i < tour.size() - 1; i++) {
-            distance += nodes[tour[i]]->getEdgeTo(tour[i + 1])->getDistance();
+            auto edge = nodes[tour[i]]->getEdgeTo(tour[i + 1]);
+            distance += edge ? edge->getDistance() : haversineDistance(nodes[tour[i]], nodes[tour[i + 1]]);
         }
     return make_pair(distance, tour);
 }
