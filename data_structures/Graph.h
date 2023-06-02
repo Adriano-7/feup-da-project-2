@@ -36,6 +36,11 @@ public:
     void Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double &ans, vector<unsigned int> &path, vector<vector<unsigned int>> paths);
     pair<double, vector<unsigned int>> Backtracking_TSP();
 
+    pair<double, vector<unsigned int>> insertion_TSP();
+    bool isRealWorld = false;
+
+
+
 private:
     vector<Node*> nodes;
     void resetNodes();

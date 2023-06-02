@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Graph.h"
 
 using namespace std;
@@ -197,5 +198,74 @@ void Graph::resetNodes() {
     for (Node* node : nodes) {
         node->setVisited(false);
     }
-
 }
+
+pair<double, vector<unsigned int>> Graph::insertion_TSP() {
+    int numNodes = nodes.size();
+    int bestNode = -1;
+
+    double bestCost = std::numeric_limits<double>::max();
+    int bestPos = -1;
+
+    vector<unsigned int> tour = {0};
+
+    for (auto edge : nodes[0]->getAdj()) {
+        if(isRealWorld){
+            double distance = haversineDistance(edge->getOrig(), edge->getDest());
+            if (distance < bestCost){
+                bestCost = distance;
+                bestNode = edge->getDest()->getId();
+            }
+        }
+        else if (edge->getDistance() < bestCost){
+            bestCost = edge->getDistance();
+            bestNode = edge->getDest()->getId();
+        }
+    }
+    nodes[bestNode]->setVisited(true);
+    tour.push_back(bestNode);
+
+    // Start with the second node
+    for (int i = 1; i < numNodes; i++) {
+       if(nodes[i]->isVisited()) continue;
+
+        bestCost = std::numeric_limits<double>::max();
+        bestPos = -1;
+
+        for (int j = 1; j < tour.size(); j++) {
+            Node *curNode = nodes[tour[j]];
+            Node *prevNode = nodes[tour[j - 1]];
+
+            Edge *edgeNext = curNode->getEdgeTo(nodes[i]->getId());
+            Edge *edgePrev = prevNode->getEdgeTo(nodes[i]->getId());
+
+            if(isRealWorld){
+                double curDist = haversineDistance(curNode, prevNode);
+                double cost = -curDist + haversineDistance(curNode, nodes[i]) + haversineDistance(prevNode, nodes[i]);
+                if (cost < bestCost) {
+                    bestCost = cost;
+                    bestPos = j;
+                }
+            }
+            else if (edgeNext != nullptr && edgePrev != nullptr) {
+                double curDist = curNode->getEdgeTo(prevNode->getId())->getDistance();
+                double cost = -curDist + edgeNext->getDistance() + edgePrev->getDistance();
+                    if (cost < bestCost) {
+                        bestCost = cost;
+                        bestPos = j;
+                    }
+                }
+        }
+
+            tour.insert(tour.begin() + bestPos + 1, nodes[i]->getId());
+    }
+
+        tour.push_back(0);
+        double distance = 0;
+    //calculate the total distance of the tour
+        for (int i = 0; i < tour.size() - 1; i++) {
+            distance += nodes[tour[i]]->getEdgeTo(tour[i + 1])->getDistance();
+        }
+    return make_pair(distance, tour);
+}
+

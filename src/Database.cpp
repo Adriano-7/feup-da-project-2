@@ -20,10 +20,7 @@ bool Database::loadSmall(string path) {
         while (getline(stream, field, ',')) {
             fields.push_back(field);
         }
-        if (fields.size() != 3) {
-            cout << "The following line is invalid: " << line << endl;
-            return false;
-        }
+
         string origin_id = fields[0];
         graph.addNode(stoi(origin_id));
 
@@ -40,6 +37,7 @@ bool Database::loadSmall(string path) {
 }
 
 bool Database::loadMedium(const string& nodesPath, const string& edgesPath) {
+    graph.isRealWorld = true;
     ifstream nodesInput(nodesPath);
     ifstream edgesInput(edgesPath);
 
@@ -161,8 +159,8 @@ pair<double, vector<unsigned int>> Database::backtracking() {
 vector<Node*> Database::triangular(double* distance){
     return graph.tspTriangular(distance);
 }
-vector<int> Database::specialHeuristic(double* distance){
-    return vector<int>();
+pair<int, vector<unsigned int>> Database::insertionHeuristic_TSP(){
+    return graph.insertion_TSP();
 }
 
 void Database::printGraph(){

@@ -167,21 +167,21 @@ void Menu::showTriangularMenu(){
 
 
 void Menu::showSpecialHeuristicMenu(){
-    double distance;
+    pair<double, vector<unsigned int>> res;
 
     auto start = high_resolution_clock::now();
-    vector<int> path = database.specialHeuristic(&distance);
+    res = database.insertionHeuristic_TSP();
     auto end = high_resolution_clock::now();
 
     auto duration = duration_cast<milliseconds>(end - start);
 
     cout << "_________________________________________________" << endl;
     cout << "The shortest path is: " << endl;
-    for (int i = 0; i < path.size(); i++) {
-        cout << path[i] << " -> ";
+    for (int i = 0; i < res.second.size(); i++) {
+        cout << res.second[i] << " -> ";
     }
     cout << endl;
-    cout << "The distance is: " << distance << endl;
+    cout << "The distance is: " << res.first<< endl;
     cout << "Time taken: " << duration.count() << " milliseconds" << endl;
 }
 
