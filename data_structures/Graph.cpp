@@ -30,33 +30,13 @@ bool Graph::addEdge(Node* sourceNode, Node* destNode, double distance) {
     return true;
 }
 
-
 vector<Node*> Graph::dfsTriangular(Node* node){
     node->setVisited(true);
     vector<Node*> path = {node};
 
-    for (Edge* edge : node->getAdj()) {
-        if (edge->isSelected()) {
-            Node* dest = edge->getDest();
-            if (!dest->isVisited()) {
-                vector<Node*> subpath = dfsTriangular(dest);
-                path.insert(path.end(), subpath.begin(), subpath.end());
-            }
-        }
-    }
-
-    return path;
-}
-
-vector<Node*> Graph::dfsTest(){
-    for(Node* v: nodes) {v->setVisited(false);}
-
-    nodes[0]->setVisited(true);
-    vector<Node*> path = {nodes[0]};
-
-    for(Edge* edge: nodes[0]->getAdjMst()){
+    for (Edge* edge : node->getAdjMst()) {
         Node* dest = edge->getDest();
-        if(!dest->isVisited()){
+        if (!dest->isVisited()) {
             vector<Node*> subpath = dfsTriangular(dest);
             path.insert(path.end(), subpath.begin(), subpath.end());
         }
@@ -65,26 +45,8 @@ vector<Node*> Graph::dfsTest(){
     return path;
 }
 
-vector<Node*> Graph::dfsKruskalPath(Node *node) {
-    node->setVisited(true);
-    vector<Node*> path = {node};
-
-    for (Edge* edge : node->getAdj()) {
-        Node* adj = edge->getDest();
-
-        if (edge->isSelected() && !adj->isVisited()) {
-            adj->setPath(edge);
-
-            vector<Node*> subpath = dfsKruskalPath(adj);
-            path.insert(path.end(), subpath.begin(), subpath.end());
-        }
-    }
-
-    return path;
-}
-
-vector<Node *> Graph::kruskal() {
-    if(nodes.empty()) return nodes;
+void Graph::kruskal() {
+    if(nodes.empty()) return;
 
     UFDS ufds = UFDS(nodes.size());
 
@@ -115,34 +77,14 @@ vector<Node *> Graph::kruskal() {
         }
     }
 
-    for(Node* v: nodes) {v->setVisited(false);}
     nodes[0]->setPath(nullptr);
-
-    return dfsKruskalPath(nodes[0]);
+    return;
 }
 
 
-
 vector<Node*> Graph::tspTriangular(double* distance){
-
-    kruskal();
-    auto help = dfsTest();
-    help.push_back(help[0]);
-
-    *distance = 0;
-    for(int i = 0; i < help.size()-1; i++){
-        Node* source = help[i];
-        Node* dest = help[i+1];
-        auto hey = source->getDistanceTo(dest);
-        *distance += source->getDistanceTo(dest);
-    }
-
-
-    return help;
-
-    /*
     // Step 1:  Compute a minimum spanning tree T for G from root r
-    primMST();
+    kruskal();
 
     //Step 2: let H be a list of vertices, ordered according to when they are first visited in a preorder tree walk of T
     vector<Node*> H = dfsTriangular(nodes[0]);
@@ -157,31 +99,8 @@ vector<Node*> Graph::tspTriangular(double* distance){
     }
 
     return H;
-     */
 }
 
-Node* Graph::getNode(int id){
-    if(id>=0 && id<nodes.size()) return nodes[id];
-
-    return nullptr;
-}
-
-vector<Node*> Graph::getNodes(){
-    return nodes;
-}
-
-void Graph::clear() {
-    for(Node* node : nodes){
-        delete node;
-    }
-    nodes.clear();
-}
-
-Graph::~Graph() {
-    for(auto node : nodes){
-        delete node;
-    }
-}
 
 void Graph::Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double &ans,
                              vector<unsigned int> &path, vector<vector<unsigned int>> paths) {
@@ -225,6 +144,29 @@ pair<double, vector<unsigned int>> Graph::Backtracking_TSP(){
     path.push_back(0);
 
     return make_pair(shortestDistance, path);
+}
+
+Node* Graph::getNode(int id){
+    if(id>=0 && id<nodes.size()) return nodes[id];
+
+    return nullptr;
+}
+
+vector<Node*> Graph::getNodes(){
+    return nodes;
+}
+
+void Graph::clear() {
+    for(Node* node : nodes){
+        delete node;
+    }
+    nodes.clear();
+}
+
+Graph::~Graph() {
+    for(auto node : nodes){
+        delete node;
+    }
 }
 
 void Graph::resetNodes() {

@@ -23,23 +23,17 @@ public:
     bool addEdge(Node* source, Node* dest, double distance);
 
     vector<Node*> dfsTriangular(Node* node);
-    vector<Node*> dfsTest();
-    vector<Node*> dfsKruskalPath(Node *node);
-
-    vector<Node *> kruskal();
-
+    void kruskal();
     vector<Node*> tspTriangular(double* distance);
+
+    void Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double &ans, vector<unsigned int> &path, vector<vector<unsigned int>> paths);
+    pair<double, vector<unsigned int>> Backtracking_TSP();
 
     Node* getNode(int id);
     vector<Node*> getNodes();
 
     void clear();
-
     ~Graph();
-
-    void Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double &ans, vector<unsigned int> &path, vector<vector<unsigned int>> paths);
-    pair<double, vector<unsigned int>> Backtracking_TSP();
-
 private:
     vector<Node*> nodes;
     void resetNodes();
