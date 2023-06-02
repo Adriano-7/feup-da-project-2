@@ -210,18 +210,13 @@ pair<double, vector<unsigned int>> Graph::insertion_TSP() {
     vector<unsigned int> tour = {0};
 
     for (auto edge : nodes[0]->getAdj()) {
-        if(isRealWorld){
-            double distance = haversineDistance(edge->getOrig(), edge->getDest());
+            double distance = edge->getDistance();
             if (distance < bestCost){
                 bestCost = distance;
                 bestNode = edge->getDest()->getId();
             }
         }
-        else if (edge->getDistance() < bestCost){
-            bestCost = edge->getDistance();
-            bestNode = edge->getDest()->getId();
-        }
-    }
+
     nodes[bestNode]->setVisited(true);
     tour.push_back(bestNode);
 
@@ -239,7 +234,7 @@ pair<double, vector<unsigned int>> Graph::insertion_TSP() {
             Edge *edgeNext = curNode->getEdgeTo(nodes[i]->getId());
             Edge *edgePrev = prevNode->getEdgeTo(nodes[i]->getId());
 
-            if(isRealWorld){
+            if(edgeNext == nullptr || edgePrev == nullptr){
                 double curDist = haversineDistance(curNode, prevNode);
                 double cost = -curDist + haversineDistance(curNode, nodes[i]) + haversineDistance(prevNode, nodes[i]);
                 if (cost < bestCost) {
