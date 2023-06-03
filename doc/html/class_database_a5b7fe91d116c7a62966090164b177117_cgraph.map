@@ -1,8 +1,9 @@
 <map id="Database::loadSmall" name="Database::loadSmall">
-<area shape="rect" id="node1" title="Loads a small graph from a file." alt="" coords="5,81,147,108"/>
-<area shape="rect" id="node2" href="$class_graph.html#a777e3f88233ff88555a026310d9d7c01" title="Adds an edge between two nodes in the graph." alt="" coords="195,31,310,57"/>
-<area shape="rect" id="node5" href="$class_graph.html#a55172b05aaaa7992f88e4165168fbaf3" title="Adds a node to the graph." alt="" coords="195,81,310,108"/>
-<area shape="rect" id="node6" href="$class_graph.html#a916f782cffb16c18e4a7c5ecbb60da0d" title="Retrieves a node with the specified ID." alt="" coords="196,132,309,159"/>
-<area shape="rect" id="node3" href="$class_node.html#ad6ecc59dcb3a14a2094a35343fc58968" title="Adds an edge to the node." alt="" coords="365,5,475,32"/>
-<area shape="rect" id="node4" href="$class_edge.html#a64881280015bd83702fe3b2c6234b7e5" title="Sets the reverse edge of the edge." alt="" coords="358,56,481,83"/>
+<area shape="rect" id="node1" title="Loads a small graph from a file." alt="" coords="5,107,147,133"/>
+<area shape="rect" id="node2" href="$class_graph.html#a777e3f88233ff88555a026310d9d7c01" title="Adds an edge between two nodes in the graph." alt="" coords="210,31,325,57"/>
+<area shape="rect" id="node5" href="$class_graph.html#a55172b05aaaa7992f88e4165168fbaf3" title="Adds a node to the graph." alt="" coords="210,81,325,108"/>
+<area shape="rect" id="node6" href="$class_graph.html#a916f782cffb16c18e4a7c5ecbb60da0d" title="Retrieves a node with the specified ID." alt="" coords="211,132,324,159"/>
+<area shape="rect" id="node7" href="$class_graph.html#a54338488b08d4b6905ae881dd5619f64" title="sets the type of the graph." alt="" coords="195,183,340,209"/>
+<area shape="rect" id="node3" href="$class_node.html#ad6ecc59dcb3a14a2094a35343fc58968" title="Adds an edge to the node." alt="" coords="395,5,505,32"/>
+<area shape="rect" id="node4" href="$class_edge.html#a64881280015bd83702fe3b2c6234b7e5" title="Sets the reverse edge of the edge." alt="" coords="388,56,511,83"/>
 </map>

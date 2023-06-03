@@ -130,9 +130,9 @@ void Graph::primMST() {
 void Graph::Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double &ans,
                              vector<unsigned int> &path, vector<vector<unsigned int>> paths) {
     if (count == nodes.size()){
-        for (auto e : nodes[curIndex]->getAdj()){
-            if (e->getOrig()->getId() == 0 || e->getDest()->getId() == 0){
-                double new_cost = cost + e->getDistance();
+        for (Edge* edge : nodes[curIndex]->getAdj()){
+            if (edge->getOrig()->getId() == 0 || edge->getDest()->getId() == 0){
+                double new_cost = cost + edge->getDistance();
                 if (new_cost < ans){
                     ans = new_cost;
                     path = paths[curIndex];
@@ -142,14 +142,14 @@ void Graph::Backtracking_aux(unsigned int curIndex, unsigned int count, double c
         return;
     }
 
-    for (auto e : nodes[curIndex]->getAdj()){
-        int nextPos = e->getOrig()->getId() == curIndex ? e->getDest()->getId() : e->getOrig()->getId();
+    for (Edge* edge : nodes[curIndex]->getAdj()){
+        int nextPos = edge->getOrig()->getId() == curIndex ? edge->getDest()->getId() : edge->getOrig()->getId();
         if (!nodes[nextPos]->isVisited()){
             nodes[nextPos]->setVisited(true);
             paths[nextPos] = paths[curIndex];
             paths[nextPos].push_back(nextPos);
 
-            Backtracking_aux(nextPos, count + 1, cost + e->getDistance(), ans, path, paths);
+            Backtracking_aux(nextPos, count + 1, cost + edge->getDistance(), ans, path, paths);
             nodes[nextPos]->setVisited(false);
         }
     }
@@ -296,19 +296,19 @@ vector<unsigned int> Graph::insertion_TSP(double* distance) {
     }
 
     path.push_back(0);
+    *distance = 0;
 
-    double totalDist = 0;
     for (unsigned int i = 0; i < path.size() - 1; i++) {
-        totalDist += nodes[path[i]]->getDistanceTo(nodes[path[i + 1]]);
+        *distance += nodes[path[i]]->getDistanceTo(nodes[path[i + 1]]);
     }
-
-    *distance = totalDist;
 
     return path;
 }
 
 /**
  * @brief sets the type of the graph.
+ * @param type The type of the graph.
+ * @details time complexity: O(1)
  */
 void Graph::setGraphType(GraphType type){
     this->type = type;
@@ -316,6 +316,8 @@ void Graph::setGraphType(GraphType type){
 
 /**
  * @brief Returns the type of the graph.
+ * @return The type of the graph.
+ * @details time complexity: O(1)
  */
 GraphType Graph::getGraphType(){
     return type;
@@ -323,6 +325,7 @@ GraphType Graph::getGraphType(){
 
 /**
  * @brief Clears the graph by deleting all nodes and edges.
+ * @details time complexity: O(V), where V is the number of vertices.
  */
 void Graph::clear() {
     for (Node* node : nodes) {

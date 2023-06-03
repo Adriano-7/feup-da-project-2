@@ -2,6 +2,11 @@
 \label{class_edge}\index{Edge@{Edge}}
 
 
+Represents an edge in a graph.  
+
+
+
+
 {\ttfamily \#include $<$Node\+Edge.\+h$>$}
 
 \doxysubsection*{Public Member Functions}
@@ -27,6 +32,9 @@ bool \mbox{\hyperlink{class_edge_aa2dfc34022c8998299b9b35a4a0fb3a3}{operator$<$}
 \begin{DoxyCompactList}\small\item\em Overloaded less than operator for comparing edges based on distance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Represents an edge in a graph. 
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_edge_a030196bc87adfbd12ba5d1cb5643bde0}\label{class_edge_a030196bc87adfbd12ba5d1cb5643bde0}} 
 \index{Edge@{Edge}!Edge@{Edge}}
@@ -44,10 +52,10 @@ Constructs an edge with the given origin, destination, and distance.
 \hline
 {\em dest} & The destination node of the edge. \\
 \hline
-{\em distance} & The distance of the edge. \\
+{\em distance} & The distance of the edge.\\
 \hline
 \end{DoxyParams}
-
+Time Complexity\+: O(1) 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_edge_af2cd0f7cba34228f76c4b20a84a2de9d}\label{class_edge_af2cd0f7cba34228f76c4b20a84a2de9d}} 
@@ -61,9 +69,9 @@ Constructs an edge with the given origin, destination, and distance.
 Gets the destination node of the edge. 
 
 \begin{DoxyReturn}{Returns}
-The destination node. 
+The destination node.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_edge_afd6d96365c7158f369125bf2958ca511}\label{class_edge_afd6d96365c7158f369125bf2958ca511}} 
+Time Complexity\+: O(1) \mbox{\Hypertarget{class_edge_afd6d96365c7158f369125bf2958ca511}\label{class_edge_afd6d96365c7158f369125bf2958ca511}} 
 \index{Edge@{Edge}!getDistance@{getDistance}}
 \index{getDistance@{getDistance}!Edge@{Edge}}
 \doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
@@ -74,9 +82,9 @@ The destination node.
 Gets the distance of the edge. 
 
 \begin{DoxyReturn}{Returns}
-The distance of the edge. 
+The distance of the edge.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_edge_af999c2a84d2da0e46eabe8674bc68b91}\label{class_edge_af999c2a84d2da0e46eabe8674bc68b91}} 
+Time Complexity\+: O(1) \mbox{\Hypertarget{class_edge_af999c2a84d2da0e46eabe8674bc68b91}\label{class_edge_af999c2a84d2da0e46eabe8674bc68b91}} 
 \index{Edge@{Edge}!getOrig@{getOrig}}
 \index{getOrig@{getOrig}!Edge@{Edge}}
 \doxysubsubsection{\texorpdfstring{getOrig()}{getOrig()}}
@@ -87,9 +95,9 @@ The distance of the edge.
 Gets the origin node of the edge. 
 
 \begin{DoxyReturn}{Returns}
-The origin node. 
+The origin node.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_edge_a3794f82c97be1bbc15c5638a965d3d4c}\label{class_edge_a3794f82c97be1bbc15c5638a965d3d4c}} 
+Time Complexity\+: O(1) \mbox{\Hypertarget{class_edge_a3794f82c97be1bbc15c5638a965d3d4c}\label{class_edge_a3794f82c97be1bbc15c5638a965d3d4c}} 
 \index{Edge@{Edge}!getReverse@{getReverse}}
 \index{getReverse@{getReverse}!Edge@{Edge}}
 \doxysubsubsection{\texorpdfstring{getReverse()}{getReverse()}}
@@ -100,9 +108,9 @@ The origin node.
 Gets the reverse edge of the edge. 
 
 \begin{DoxyReturn}{Returns}
-The reverse edge. 
+The reverse edge.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_edge_a9f7141f54b258db8da7127fc577c9e01}\label{class_edge_a9f7141f54b258db8da7127fc577c9e01}} 
+Time Complexity\+: O(1) \mbox{\Hypertarget{class_edge_a9f7141f54b258db8da7127fc577c9e01}\label{class_edge_a9f7141f54b258db8da7127fc577c9e01}} 
 \index{Edge@{Edge}!isSelected@{isSelected}}
 \index{isSelected@{isSelected}!Edge@{Edge}}
 \doxysubsubsection{\texorpdfstring{isSelected()}{isSelected()}}
@@ -113,9 +121,9 @@ The reverse edge.
 Checks if the edge is selected. 
 
 \begin{DoxyReturn}{Returns}
-True if the edge is selected, False otherwise. 
+True if the edge is selected, False otherwise.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_edge_aa2dfc34022c8998299b9b35a4a0fb3a3}\label{class_edge_aa2dfc34022c8998299b9b35a4a0fb3a3}} 
+Time Complexity\+: O(1) \mbox{\Hypertarget{class_edge_aa2dfc34022c8998299b9b35a4a0fb3a3}\label{class_edge_aa2dfc34022c8998299b9b35a4a0fb3a3}} 
 \index{Edge@{Edge}!operator$<$@{operator$<$}}
 \index{operator$<$@{operator$<$}!Edge@{Edge}}
 \doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
@@ -131,9 +139,9 @@ Overloaded less than operator for comparing edges based on distance.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if this edge\textquotesingle{}s distance is less than the other edge\textquotesingle{}s distance, False otherwise. 
+True if this edge\textquotesingle{}s distance is less than the other edge\textquotesingle{}s distance, False otherwise.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_edge_a64881280015bd83702fe3b2c6234b7e5}\label{class_edge_a64881280015bd83702fe3b2c6234b7e5}} 
+Time Complexity\+: O(1) \mbox{\Hypertarget{class_edge_a64881280015bd83702fe3b2c6234b7e5}\label{class_edge_a64881280015bd83702fe3b2c6234b7e5}} 
 \index{Edge@{Edge}!setReverse@{setReverse}}
 \index{setReverse@{setReverse}!Edge@{Edge}}
 \doxysubsubsection{\texorpdfstring{setReverse()}{setReverse()}}
@@ -145,10 +153,10 @@ Sets the reverse edge of the edge.
 
 
 \begin{DoxyParams}{Parameters}
-{\em reverse} & The reverse edge to set. \\
+{\em reverse} & The reverse edge to set.\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_edge_a8ab1cf2fe7fd16152d1dba3822853894}\label{class_edge_a8ab1cf2fe7fd16152d1dba3822853894}} 
+Time Complexity\+: O(1) \mbox{\Hypertarget{class_edge_a8ab1cf2fe7fd16152d1dba3822853894}\label{class_edge_a8ab1cf2fe7fd16152d1dba3822853894}} 
 \index{Edge@{Edge}!setSelected@{setSelected}}
 \index{setSelected@{setSelected}!Edge@{Edge}}
 \doxysubsubsection{\texorpdfstring{setSelected()}{setSelected()}}
@@ -160,10 +168,10 @@ Sets the selected flag of the edge.
 
 
 \begin{DoxyParams}{Parameters}
-{\em selected} & The value to set the selected flag to. \\
+{\em selected} & The value to set the selected flag to.\\
 \hline
 \end{DoxyParams}
-
+Time Complexity\+: O(1) 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

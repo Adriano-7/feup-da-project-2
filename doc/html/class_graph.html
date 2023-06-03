@@ -114,7 +114,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ae85c21f6234bd9f9789dfa3aa6ee96c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the Traveling Salesman Problem (TSP) using the triangular inequality heuristic. It first constructs the Minimum Spanning Tree (MST) using Prim's algorithm, then performs a depth-first search (DFS) to find a triangular path, and calculates the total distance of the path.  <br /></td></tr>
 <tr class="separator:ae85c21f6234bd9f9789dfa3aa6ee96c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3dce80a327961ffe79a8ec78336b3b0"><td class="memItemLeft" align="right" valign="top">vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#aa3dce80a327961ffe79a8ec78336b3b0">insertion_TSP</a> (double *distance)</td></tr>
+<tr class="memdesc:aa3dce80a327961ffe79a8ec78336b3b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the Traveling Salesman Problem (TSP) using the insertion heuristic. It starts with an initial cycle containing only the starting node (0), and iteratively inserts the remaining nodes into the cycle at the position where it results in the minimum increase in total distance.  <br /></td></tr>
 <tr class="separator:aa3dce80a327961ffe79a8ec78336b3b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54338488b08d4b6905ae881dd5619f64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a54338488b08d4b6905ae881dd5619f64">setGraphType</a> (<a class="el" href="_graph_8h.html#a0c7c85309652245e03563b127f451f72">GraphType</a> type)</td></tr>
+<tr class="memdesc:a54338488b08d4b6905ae881dd5619f64"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the type of the graph.  <br /></td></tr>
+<tr class="separator:a54338488b08d4b6905ae881dd5619f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfe284ef9f4b95b6c110042ad31768bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_graph_8h.html#a0c7c85309652245e03563b127f451f72">GraphType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#adfe284ef9f4b95b6c110042ad31768bf">getGraphType</a> ()</td></tr>
+<tr class="memdesc:adfe284ef9f4b95b6c110042ad31768bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the type of the graph.  <br /></td></tr>
+<tr class="separator:adfe284ef9f4b95b6c110042ad31768bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6192a41101102ca8aa6acca607c84f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#ac6192a41101102ca8aa6acca607c84f3">clear</a> ()</td></tr>
 <tr class="memdesc:ac6192a41101102ca8aa6acca607c84f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the graph by deleting all nodes and edges.  <br /></td></tr>
 <tr class="separator:ac6192a41101102ca8aa6acca607c84f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,7 +193,8 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the edge is added successfully, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the edge is added successfully, false otherwise.</dd></dl>
+<p>Time-Complexity: O(1) </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -223,7 +231,8 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the node is added successfully, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the node is added successfully, false otherwise.</dd></dl>
+<p>Time-Complexity: O(1) </p>
 
 </div>
 </div>
@@ -268,7 +277,8 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the node is added successfully, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the node is added successfully, false otherwise.</dd></dl>
+<p>Time-Complexity: O(1) </p>
 
 </div>
 </div>
@@ -330,10 +340,11 @@ Here is the call graph for this function:</div>
     <tr><td class="paramname">cost</td><td>The current cost of the path. </td></tr>
     <tr><td class="paramname">ans</td><td>A reference to the variable storing the shortest distance. </td></tr>
     <tr><td class="paramname">path</td><td>A reference to the vector storing the path with the shortest distance. </td></tr>
-    <tr><td class="paramname">paths</td><td>A vector storing the paths for each node during the backtracking process. </td></tr>
+    <tr><td class="paramname">paths</td><td>A vector storing the paths for each node during the backtracking process.</td></tr>
   </table>
   </dd>
 </dl>
+<p>Time-Complexity: O((V-1)!), where V is the number of vertices. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -362,7 +373,14 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Solves the Traveling Salesman Problem (TSP) using the backtracking algorithm. It finds the shortest Hamiltonian cycle in the graph by performing backtracking. </p>
-<dl class="section return"><dt>Returns</dt><dd>A pair consisting of the shortest distance and the path representing the cycle. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">distance</td><td>A pointer to a variable to store the total distance of the cycle. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector containing the indices of the nodes in the cycle.</dd></dl>
+<p>Time-Complexity: O((V-1)!), where V is the number of vertices. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -391,6 +409,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Clears the graph by deleting all nodes and edges. </p>
+<p>time complexity: O(V), where V is the number of vertices. </p>
 
 </div>
 </div>
@@ -417,7 +436,8 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A vector containing the nodes in the triangular path. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector containing the nodes in the triangular path.</dd></dl>
+<p>Time-Complexity: O(V + E), where V is the number of vertices and E is the number of edges. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -429,6 +449,27 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="class_node.html#a6fe3ebcd0eaf9fece72dfbc0ffc257bb" title="Sets the visited flag of the node." alt="" coords="191,107,308,133"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="adfe284ef9f4b95b6c110042ad31768bf" name="adfe284ef9f4b95b6c110042ad31768bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfe284ef9f4b95b6c110042ad31768bf">&#9670;&#160;</a></span>getGraphType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_graph_8h.html#a0c7c85309652245e03563b127f451f72">GraphType</a> Graph::getGraphType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the type of the graph. </p>
+<dl class="section return"><dt>Returns</dt><dd>The type of the graph.</dd></dl>
+<p>time complexity: O(1) </p>
 
 </div>
 </div>
@@ -455,7 +496,8 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the node if found, nullptr otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the node if found, nullptr otherwise.</dd></dl>
+<p>Time-Complexity: O(1) </p>
 
 </div>
 </div>
@@ -475,7 +517,8 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Retrieves all the nodes in the graph. </p>
-<dl class="section return"><dt>Returns</dt><dd>A vector containing all the nodes in the graph. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector containing all the nodes in the graph.</dd></dl>
+<p>Time-Complexity: O(1) </p>
 
 </div>
 </div>
@@ -495,6 +538,16 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p>Solves the Traveling Salesman Problem (TSP) using the insertion heuristic. It starts with an initial cycle containing only the starting node (0), and iteratively inserts the remaining nodes into the cycle at the position where it results in the minimum increase in total distance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">distance</td><td>A pointer to a variable to store the total distance of the cycle. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector containing the indices of the nodes in the cycle.</dd></dl>
+<p>Time-Complexity: O(V^2), where V is the number of vertices. </p>
+
 </div>
 </div>
 <a id="a0ff94d1aa447205062774216d6971148" name="a0ff94d1aa447205062774216d6971148"></a>
@@ -513,6 +566,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Implements Prim's algorithm for finding the Minimum Spanning Tree (MST) of the graph. Sets the 'visited' and 'selected' flags of the edges accordingly. </p>
+<p>Time-Complexity: O(E * log V), where E is the number of edges and V is the number of vertices. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -529,6 +583,33 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="class_node.html#a6fe3ebcd0eaf9fece72dfbc0ffc257bb" title="Sets the visited flag of the node." alt="" coords="175,360,293,387"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="a54338488b08d4b6905ae881dd5619f64" name="a54338488b08d4b6905ae881dd5619f64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54338488b08d4b6905ae881dd5619f64">&#9670;&#160;</a></span>setGraphType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::setGraphType </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_graph_8h.html#a0c7c85309652245e03563b127f451f72">GraphType</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sets the type of the graph. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>The type of the graph.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>time complexity: O(1) </p>
 
 </div>
 </div>
@@ -555,7 +636,8 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A vector containing the nodes in the triangular path. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector containing the nodes in the triangular path.</dd></dl>
+<p>Time-Complexity: O(V^2), where V is the number of vertices. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

@@ -33,7 +33,11 @@ vector$<$ \mbox{\hyperlink{class_node}{Node}} $\ast$ $>$ \mbox{\hyperlink{class_
 vector$<$ \mbox{\hyperlink{class_node}{Node}} $\ast$ $>$ \mbox{\hyperlink{class_graph_ae85c21f6234bd9f9789dfa3aa6ee96c4}{tsp\+Triangular}} (double $\ast$distance)
 \begin{DoxyCompactList}\small\item\em Solves the Traveling Salesman Problem (TSP) using the triangular inequality heuristic. It first constructs the Minimum Spanning Tree (MST) using Prim\textquotesingle{}s algorithm, then performs a depth-\/first search (DFS) to find a triangular path, and calculates the total distance of the path. \end{DoxyCompactList}\item 
 vector$<$ unsigned int $>$ \mbox{\hyperlink{class_graph_aa3dce80a327961ffe79a8ec78336b3b0}{insertion\+\_\+\+TSP}} (double $\ast$distance)
-\item 
+\begin{DoxyCompactList}\small\item\em Solves the Traveling Salesman Problem (TSP) using the insertion heuristic. It starts with an initial cycle containing only the starting node (0), and iteratively inserts the remaining nodes into the cycle at the position where it results in the minimum increase in total distance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a54338488b08d4b6905ae881dd5619f64}{set\+Graph\+Type}} (\mbox{\hyperlink{_graph_8h_a0c7c85309652245e03563b127f451f72}{Graph\+Type}} type)
+\begin{DoxyCompactList}\small\item\em sets the type of the graph. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_graph_8h_a0c7c85309652245e03563b127f451f72}{Graph\+Type}} \mbox{\hyperlink{class_graph_adfe284ef9f4b95b6c110042ad31768bf}{get\+Graph\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Returns the type of the graph. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_graph_ac6192a41101102ca8aa6acca607c84f3}{clear}} ()
 \begin{DoxyCompactList}\small\item\em Clears the graph by deleting all nodes and edges. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_graph_a902c5b3eacb66d60752525ab23297a95}{$\sim$\+Graph}} ()
@@ -77,9 +81,9 @@ Adds an edge between two nodes in the graph.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the edge is added successfully, false otherwise. 
+True if the edge is added successfully, false otherwise.
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Time-\/\+Complexity\+: O(1) Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -102,9 +106,9 @@ Adds a node to the graph.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the node is added successfully, false otherwise. 
+True if the node is added successfully, false otherwise.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_graph_a8cbadc7c4d49ef5d9ec56a5068c6b7c4}\label{class_graph_a8cbadc7c4d49ef5d9ec56a5068c6b7c4}} 
+Time-\/\+Complexity\+: O(1) \mbox{\Hypertarget{class_graph_a8cbadc7c4d49ef5d9ec56a5068c6b7c4}\label{class_graph_a8cbadc7c4d49ef5d9ec56a5068c6b7c4}} 
 \index{Graph@{Graph}!addNode@{addNode}}
 \index{addNode@{addNode}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{addNode()}{addNode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
@@ -124,9 +128,9 @@ Adds a node with latitude and longitude to the graph.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the node is added successfully, false otherwise. 
+True if the node is added successfully, false otherwise.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_graph_a359a7e6f2fb2e0cdfff1aa37d09975c1}\label{class_graph_a359a7e6f2fb2e0cdfff1aa37d09975c1}} 
+Time-\/\+Complexity\+: O(1) \mbox{\Hypertarget{class_graph_a359a7e6f2fb2e0cdfff1aa37d09975c1}\label{class_graph_a359a7e6f2fb2e0cdfff1aa37d09975c1}} 
 \index{Graph@{Graph}!Backtracking\_aux@{Backtracking\_aux}}
 \index{Backtracking\_aux@{Backtracking\_aux}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{Backtracking\_aux()}{Backtracking\_aux()}}
@@ -148,10 +152,10 @@ Auxiliary function for the Backtracking\+\_\+\+TSP algorithm. It performs backtr
 \hline
 {\em path} & A reference to the vector storing the path with the shortest distance. \\
 \hline
-{\em paths} & A vector storing the paths for each node during the backtracking process. \\
+{\em paths} & A vector storing the paths for each node during the backtracking process.\\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Time-\/\+Complexity\+: O((V-\/1)!), where V is the number of vertices. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -168,10 +172,15 @@ Here is the call graph for this function\+:\nopagebreak
 
 Solves the Traveling Salesman Problem (TSP) using the backtracking algorithm. It finds the shortest Hamiltonian cycle in the graph by performing backtracking. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em distance} & A pointer to a variable to store the total distance of the cycle. \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A pair consisting of the shortest distance and the path representing the cycle. 
+A vector containing the indices of the nodes in the cycle.
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Time-\/\+Complexity\+: O((V-\/1)!), where V is the number of vertices. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -188,7 +197,7 @@ Here is the call graph for this function\+:\nopagebreak
 
 Clears the graph by deleting all nodes and edges. 
 
-\mbox{\Hypertarget{class_graph_a31f7bb77357ffd1b8e441929bd6cf39c}\label{class_graph_a31f7bb77357ffd1b8e441929bd6cf39c}} 
+time complexity\+: O(\+V), where V is the number of vertices. \mbox{\Hypertarget{class_graph_a31f7bb77357ffd1b8e441929bd6cf39c}\label{class_graph_a31f7bb77357ffd1b8e441929bd6cf39c}} 
 \index{Graph@{Graph}!dfsTriangular@{dfsTriangular}}
 \index{dfsTriangular@{dfsTriangular}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{dfsTriangular()}{dfsTriangular()}}
@@ -204,16 +213,29 @@ Performs a depth-\/first search (DFS) traversal to find a triangular path in the
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A vector containing the nodes in the triangular path. 
+A vector containing the nodes in the triangular path.
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Time-\/\+Complexity\+: O(V + E), where V is the number of vertices and E is the number of edges. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=307pt]{class_graph_a31f7bb77357ffd1b8e441929bd6cf39c_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_graph_a916f782cffb16c18e4a7c5ecbb60da0d}\label{class_graph_a916f782cffb16c18e4a7c5ecbb60da0d}} 
+\mbox{\Hypertarget{class_graph_adfe284ef9f4b95b6c110042ad31768bf}\label{class_graph_adfe284ef9f4b95b6c110042ad31768bf}} 
+\index{Graph@{Graph}!getGraphType@{getGraphType}}
+\index{getGraphType@{getGraphType}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getGraphType()}{getGraphType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_graph_8h_a0c7c85309652245e03563b127f451f72}{Graph\+Type}} Graph\+::get\+Graph\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the type of the graph. 
+
+\begin{DoxyReturn}{Returns}
+The type of the graph.
+\end{DoxyReturn}
+time complexity\+: O(1) \mbox{\Hypertarget{class_graph_a916f782cffb16c18e4a7c5ecbb60da0d}\label{class_graph_a916f782cffb16c18e4a7c5ecbb60da0d}} 
 \index{Graph@{Graph}!getNode@{getNode}}
 \index{getNode@{getNode}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{getNode()}{getNode()}}
@@ -229,9 +251,9 @@ Retrieves a node with the specified ID.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A pointer to the node if found, nullptr otherwise. 
+A pointer to the node if found, nullptr otherwise.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_graph_a58768a2c2666bcd73421464a0933b355}\label{class_graph_a58768a2c2666bcd73421464a0933b355}} 
+Time-\/\+Complexity\+: O(1) \mbox{\Hypertarget{class_graph_a58768a2c2666bcd73421464a0933b355}\label{class_graph_a58768a2c2666bcd73421464a0933b355}} 
 \index{Graph@{Graph}!getNodes@{getNodes}}
 \index{getNodes@{getNodes}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{getNodes()}{getNodes()}}
@@ -242,15 +264,27 @@ A pointer to the node if found, nullptr otherwise.
 Retrieves all the nodes in the graph. 
 
 \begin{DoxyReturn}{Returns}
-A vector containing all the nodes in the graph. 
+A vector containing all the nodes in the graph.
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_graph_aa3dce80a327961ffe79a8ec78336b3b0}\label{class_graph_aa3dce80a327961ffe79a8ec78336b3b0}} 
+Time-\/\+Complexity\+: O(1) \mbox{\Hypertarget{class_graph_aa3dce80a327961ffe79a8ec78336b3b0}\label{class_graph_aa3dce80a327961ffe79a8ec78336b3b0}} 
 \index{Graph@{Graph}!insertion\_TSP@{insertion\_TSP}}
 \index{insertion\_TSP@{insertion\_TSP}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{insertion\_TSP()}{insertion\_TSP()}}
 {\footnotesize\ttfamily vector$<$ unsigned int $>$ Graph\+::insertion\+\_\+\+TSP (\begin{DoxyParamCaption}\item[{double $\ast$}]{distance }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{class_graph_a0ff94d1aa447205062774216d6971148}\label{class_graph_a0ff94d1aa447205062774216d6971148}} 
+
+
+Solves the Traveling Salesman Problem (TSP) using the insertion heuristic. It starts with an initial cycle containing only the starting node (0), and iteratively inserts the remaining nodes into the cycle at the position where it results in the minimum increase in total distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance} & A pointer to a variable to store the total distance of the cycle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing the indices of the nodes in the cycle.
+\end{DoxyReturn}
+Time-\/\+Complexity\+: O(\+V$^\wedge$2), where V is the number of vertices. \mbox{\Hypertarget{class_graph_a0ff94d1aa447205062774216d6971148}\label{class_graph_a0ff94d1aa447205062774216d6971148}} 
 \index{Graph@{Graph}!primMST@{primMST}}
 \index{primMST@{primMST}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{primMST()}{primMST()}}
@@ -260,14 +294,29 @@ A vector containing all the nodes in the graph.
 
 Implements Prim\textquotesingle{}s algorithm for finding the Minimum Spanning Tree (MST) of the graph. Sets the \textquotesingle{}visited\textquotesingle{} and \textquotesingle{}selected\textquotesingle{} flags of the edges accordingly. 
 
-Here is the call graph for this function\+:\nopagebreak
+Time-\/\+Complexity\+: O(\+E $\ast$ log V), where E is the number of edges and V is the number of vertices. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=300pt]{class_graph_a0ff94d1aa447205062774216d6971148_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{class_graph_ae85c21f6234bd9f9789dfa3aa6ee96c4}\label{class_graph_ae85c21f6234bd9f9789dfa3aa6ee96c4}} 
+\mbox{\Hypertarget{class_graph_a54338488b08d4b6905ae881dd5619f64}\label{class_graph_a54338488b08d4b6905ae881dd5619f64}} 
+\index{Graph@{Graph}!setGraphType@{setGraphType}}
+\index{setGraphType@{setGraphType}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{setGraphType()}{setGraphType()}}
+{\footnotesize\ttfamily void Graph\+::set\+Graph\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_graph_8h_a0c7c85309652245e03563b127f451f72}{Graph\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+sets the type of the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of the graph.\\
+\hline
+\end{DoxyParams}
+time complexity\+: O(1) \mbox{\Hypertarget{class_graph_ae85c21f6234bd9f9789dfa3aa6ee96c4}\label{class_graph_ae85c21f6234bd9f9789dfa3aa6ee96c4}} 
 \index{Graph@{Graph}!tspTriangular@{tspTriangular}}
 \index{tspTriangular@{tspTriangular}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{tspTriangular()}{tspTriangular()}}
@@ -283,9 +332,9 @@ Solves the Traveling Salesman Problem (TSP) using the triangular inequality heur
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A vector containing the nodes in the triangular path. 
+A vector containing the nodes in the triangular path.
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Time-\/\+Complexity\+: O(\+V$^\wedge$2), where V is the number of vertices. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

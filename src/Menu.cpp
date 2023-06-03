@@ -1,7 +1,7 @@
 #include "Menu.h"
 
 /**
- * Displays the data selection menu.
+ * @brief Displays the data selection menu.
  */
 void Menu::showDataSelectionMenu() {
     cout << "_________________________________________________" << endl;
@@ -30,7 +30,7 @@ void Menu::showDataSelectionMenu() {
 }
 
 /**
- * Displays the menu for selecting a small size graph.
+ * @brief Displays the menu for selecting a small size graph.
  */
 void Menu::showSmallGraphMenu() {
     map<int, string> optionToPath = {{1, "../data/Toy-Graphs/shipping.csv"}, {2, "../data/Toy-Graphs/stadiums.csv"}, {3, "../data/Toy-Graphs/tourism.csv"}};
@@ -47,7 +47,7 @@ void Menu::showSmallGraphMenu() {
 }
 
 /**
- * Displays the menu for selecting a medium/large graph.
+ * @brief Displays the menu for selecting a medium/large graph.
  */
 void Menu::showMediumGraphMenu() {
     cout << "_________________________________________________" << endl;
@@ -70,7 +70,7 @@ void Menu::showMediumGraphMenu() {
 }
 
 /**
- * Displays the menu for selecting an extra connected graph.
+ * @brief Displays the menu for selecting an extra connected graph.
  */
 void Menu::showExtraMenu() {
     map<int, int> optionToNumEdges = {{1,25}, {2,50}, {3,75}, {4,100}, {5,200}, {6,300}, {7,400}, {8,500}, {9,600}, {10,700}, {11,800}, {12,900}};
@@ -103,7 +103,7 @@ void Menu::showExtraMenu() {
 }
 
 /**
- * Displays the main menu and handles user input.
+ * @brief Displays the main menu and handles user input.
  */
 void Menu::showMainMenu(){
     while (true){
@@ -142,7 +142,7 @@ void Menu::showMainMenu(){
 }
 
 /**
- * Displays the menu for the Backtracking TSP algorithm and computes the shortest path.
+ * @brief Displays the menu for the Backtracking TSP algorithm and computes the shortest path.
  */
 void Menu::showBacktrackingMenu() {
     double distance = 0;
@@ -167,7 +167,7 @@ void Menu::showBacktrackingMenu() {
 }
 
 /**
- * Displays the menu for the triangular approximation heuristic and computes the shortest path.
+ * @brief Displays the menu for the triangular approximation heuristic and computes the shortest path.
  */
 void Menu::showTriangularMenu(){
     double distance = 0;
@@ -192,7 +192,7 @@ void Menu::showTriangularMenu(){
 }
 
 /**
- * Displays the menu for a special heuristic and computes the shortest path.
+ * @brief Displays the menu for a special heuristic and computes the shortest path.
  */
 void Menu::showSpecialHeuristicMenu(){
     double distance = 0;
@@ -217,7 +217,7 @@ void Menu::showSpecialHeuristicMenu(){
 }
 
 /**
- * Waits for user input.
+ * @brief Waits for user input.
  */
 void Menu::waitForInput() {
     usleep(800000);
@@ -228,7 +228,7 @@ void Menu::waitForInput() {
 }
 
 /**
- * Retrieves an integer input from the user.
+ * @brief Retrieves an integer input from the user.
  *
  * @return The integer input.
  */

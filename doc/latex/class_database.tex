@@ -24,6 +24,8 @@ vector$<$ \mbox{\hyperlink{class_node}{Node}} $\ast$ $>$ \mbox{\hyperlink{class_
 \begin{DoxyCompactList}\small\item\em Finds the optimal TSP solution using the triangular inequality heuristic. \end{DoxyCompactList}\item 
 vector$<$ unsigned int $>$ \mbox{\hyperlink{class_database_a913622e9b97fc02d7db7d72489d852b0}{insertion\+Heuristic\+\_\+\+TSP}} (double $\ast$distance)
 \begin{DoxyCompactList}\small\item\em Applies the insertion heuristic to find an approximate TSP solution. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_database_a79e3afae7ca1628a6a1d7208585bc07e}{is\+Toy\+Graph}} ()
+\item 
 void \mbox{\hyperlink{class_database_a4563ce20ebaad2b26e8f72c5cbd85aa9}{print\+Graph}} ()
 \begin{DoxyCompactList}\small\item\em Prints the graph to the console. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_database_aac66f2c7201b7ce1b53936ff806b0072}{clear}} ()
@@ -50,9 +52,9 @@ Performs backtracking to find the optimal TSP solution.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A vector of node IDs representing the optimal path. 
+A vector of node IDs representing the optimal path.
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Time-\/\+Complexity\+: O(N!), where N is the number of nodes in the graph. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -69,7 +71,7 @@ Here is the call graph for this function\+:\nopagebreak
 
 Clears the graph. 
 
-Here is the call graph for this function\+:\nopagebreak
+Time-\/\+Complexity\+: O(\+N), where N is the number of nodes in the graph. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -92,13 +94,26 @@ Applies the insertion heuristic to find an approximate TSP solution.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A vector of node IDs representing the optimal path. 
+A vector of node IDs representing the optimal path.
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Time-\/\+Complexity\+: O(\+N$^\wedge$2), where N is the number of nodes in the graph. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_database_a913622e9b97fc02d7db7d72489d852b0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_a79e3afae7ca1628a6a1d7208585bc07e}\label{class_database_a79e3afae7ca1628a6a1d7208585bc07e}} 
+\index{Database@{Database}!isToyGraph@{isToyGraph}}
+\index{isToyGraph@{isToyGraph}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{isToyGraph()}{isToyGraph()}}
+{\footnotesize\ttfamily bool Database\+::is\+Toy\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{class_database_a79e3afae7ca1628a6a1d7208585bc07e_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{class_database_a9d4de1e0ac75a6c151a74c40f5517e59}\label{class_database_a9d4de1e0ac75a6c151a74c40f5517e59}} 
@@ -117,9 +132,9 @@ Loads an extra graph from a file.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the graph was successfully loaded, false otherwise. 
+True if the graph was successfully loaded, false otherwise.
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Time-\/\+Complexity\+: O(\+E), where E is the number of edges in the graph. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -144,9 +159,9 @@ Loads a medium-\/sized graph from files.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the graph was successfully loaded, false otherwise. 
+True if the graph was successfully loaded, false otherwise.
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Time-\/\+Complexity\+: O(N + E), where N is the number of nodes and E is the number of edges in the graph. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -169,9 +184,9 @@ Loads a small graph from a file.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the graph was successfully loaded, false otherwise. 
+True if the graph was successfully loaded, false otherwise.
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Time-\/\+Complexity\+: O(\+E), where E is the number of edges in the graph. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -188,7 +203,7 @@ Here is the call graph for this function\+:\nopagebreak
 
 Prints the graph to the console. 
 
-Here is the call graph for this function\+:\nopagebreak
+Time-\/\+Complexity\+: O(N + E), where N is the number of nodes and E is the number of edges in the graph. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -211,9 +226,9 @@ Finds the optimal TSP solution using the triangular inequality heuristic.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A vector of \mbox{\hyperlink{class_node}{Node}} pointers representing the optimal path. 
+A vector of \mbox{\hyperlink{class_node}{Node}} pointers representing the optimal path.
 \end{DoxyReturn}
-Here is the call graph for this function\+:\nopagebreak
+Time-\/\+Complexity\+: O(\+N$^\wedge$2 log N), where N is the number of nodes in the graph. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

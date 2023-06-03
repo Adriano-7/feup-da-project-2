@@ -1,8 +1,9 @@
 <map id="Database::loadExtra" name="Database::loadExtra">
-<area shape="rect" id="node1" title="Loads an extra graph from a file." alt="" coords="5,81,145,108"/>
-<area shape="rect" id="node2" href="$class_graph.html#a777e3f88233ff88555a026310d9d7c01" title="Adds an edge between two nodes in the graph." alt="" coords="193,31,308,57"/>
-<area shape="rect" id="node5" href="$class_graph.html#a55172b05aaaa7992f88e4165168fbaf3" title="Adds a node to the graph." alt="" coords="193,81,308,108"/>
-<area shape="rect" id="node6" href="$class_graph.html#a916f782cffb16c18e4a7c5ecbb60da0d" title="Retrieves a node with the specified ID." alt="" coords="194,132,307,159"/>
-<area shape="rect" id="node3" href="$class_node.html#ad6ecc59dcb3a14a2094a35343fc58968" title="Adds an edge to the node." alt="" coords="363,5,473,32"/>
-<area shape="rect" id="node4" href="$class_edge.html#a64881280015bd83702fe3b2c6234b7e5" title="Sets the reverse edge of the edge." alt="" coords="356,56,479,83"/>
+<area shape="rect" id="node1" title="Loads an extra graph from a file." alt="" coords="5,107,145,133"/>
+<area shape="rect" id="node2" href="$class_graph.html#a777e3f88233ff88555a026310d9d7c01" title="Adds an edge between two nodes in the graph." alt="" coords="208,31,323,57"/>
+<area shape="rect" id="node5" href="$class_graph.html#a55172b05aaaa7992f88e4165168fbaf3" title="Adds a node to the graph." alt="" coords="208,81,323,108"/>
+<area shape="rect" id="node6" href="$class_graph.html#a916f782cffb16c18e4a7c5ecbb60da0d" title="Retrieves a node with the specified ID." alt="" coords="209,132,322,159"/>
+<area shape="rect" id="node7" href="$class_graph.html#a54338488b08d4b6905ae881dd5619f64" title="sets the type of the graph." alt="" coords="193,183,338,209"/>
+<area shape="rect" id="node3" href="$class_node.html#ad6ecc59dcb3a14a2094a35343fc58968" title="Adds an edge to the node." alt="" coords="393,5,503,32"/>
+<area shape="rect" id="node4" href="$class_edge.html#a64881280015bd83702fe3b2c6234b7e5" title="Sets the reverse edge of the edge." alt="" coords="386,56,509,83"/>
 </map>

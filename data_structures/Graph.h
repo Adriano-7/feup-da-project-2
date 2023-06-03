@@ -16,6 +16,10 @@
 #include "NodeEdge.h"
 using namespace std;
 
+/**
+ * @enum GraphType
+ * @brief Represents the type of graph. (TOY_GRAPH, REAL_WORLD, EXTRA_FULLY_CONNECTED, NONE)
+*/
 enum class GraphType {
     TOY_GRAPH, REAL_WORLD, EXTRA_FULLY_CONNECTED, NONE
 };

@@ -45,6 +45,10 @@ private:
     vector<Edge *> incoming;
 };
 
+/**
+ * @class Edge
+ * @brief Represents an edge in a graph.
+ */
 class Edge {
 public:
     Edge(Node *orig, Node *dest, double distance);

@@ -5,6 +5,7 @@
 /**
  * @brief Constructs a node with the given ID.
  * @param id The ID of the node.
+ * @details Time Complexity: O(1)
  */
 Node::Node(int id){
     this->id = id;
@@ -17,6 +18,7 @@ Node::Node(int id){
  * @param id The ID of the node.
  * @param latitude The latitude coordinate of the node.
  * @param longitude The longitude coordinate of the node.
+ * @details Time Complexity: O(1)
  */
 Node::Node(int id, double latitude, double longitude){
     this->id = id;
@@ -28,6 +30,7 @@ Node::Node(int id, double latitude, double longitude){
  * @brief Overloaded less than operator for comparing nodes based on distance.
  * @param node The node to compare with.
  * @return True if this node's distance is less than the other node's distance, False otherwise.
+ * @details Time Complexity: O(1)
  */
 bool Node::operator<(Node & node) const{
     return this->distance < node.distance;
@@ -36,6 +39,7 @@ bool Node::operator<(Node & node) const{
 /**
  * @brief Checks if the node has been visited.
  * @return True if the node has been visited, False otherwise.
+ * @details Time Complexity: O(1)
  */
 bool Node::isVisited(){
     return visited;
@@ -45,6 +49,7 @@ bool Node::isVisited(){
 /**
  * @brief Gets the latitude coordinate of the node.
  * @return The latitude coordinate of the node.
+ * @details Time Complexity: O(1)
  */
 double Node::getLatitude(){
     return latitude;
@@ -53,6 +58,7 @@ double Node::getLatitude(){
 /**
  * @brief Gets the longitude coordinate of the node.
  * @return The longitude coordinate of the node.
+ * @details Time Complexity: O(1)
  */
 double Node::getLongitude(){
     return longitude;
@@ -98,6 +104,7 @@ Edge* Node::getEdgeTo(int v){
 /**
  * @brief Gets the ID of the node.
  * @return The ID of the node.
+ * @details Time Complexity: O(1)
  */
 int Node::getId(){
     return id;
@@ -106,6 +113,7 @@ int Node::getId(){
 /**
  * @brief Gets the adjacent edges of the node.
  * @return A vector of adjacent edges.
+ * @details Time Complexity: O(1)
  */
 vector<Edge *> Node::getAdj(){
     return adj;
@@ -114,6 +122,7 @@ vector<Edge *> Node::getAdj(){
 /**
  * @brief Sets the visited flag of the node.
  * @param visited The value to set the visited flag to.
+ * @details Time Complexity: O(1)
  */
 void Node::setVisited(bool visited){
     this->visited = visited;
@@ -166,6 +175,8 @@ double Node::haversineDistance(Node* source, Node* dest) {
  * @param orig The origin node of the edge.
  * @param dest The destination node of the edge.
  * @param distance The distance of the edge.
+ * 
+ * @details Time Complexity: O(1)
  */
 Edge::Edge(Node* orig, Node* dest, double distance): orig(orig), dest(dest), distance(distance) {}
 
@@ -173,18 +184,21 @@ Edge::Edge(Node* orig, Node* dest, double distance): orig(orig), dest(dest), dis
 /**
  * @brief Gets the destination node of the edge.
  * @return The destination node.
+ * @details Time Complexity: O(1)
  */
 Node* Edge::getDest() const{return this->dest;}
 
 /**
  * @brief Gets the distance of the edge.
  * @return The distance of the edge.
+ * @details Time Complexity: O(1)
  */
 double Edge::getDistance() const {return this->distance;}
 
 /**
  * @brief Gets the origin node of the edge.
  * @return The origin node.
+ * @details Time Complexity: O(1)
  */
 Node* Edge::getOrig() const{
     return this->orig;
@@ -193,6 +207,7 @@ Node* Edge::getOrig() const{
 /**
  * @brief Gets the reverse edge of the edge.
  * @return The reverse edge.
+ * @details Time Complexity: O(1)
  */
 Edge* Edge::getReverse(){
     return this->reverse;
@@ -201,6 +216,7 @@ Edge* Edge::getReverse(){
 /**
  * @brief Sets the reverse edge of the edge.
  * @param reverse The reverse edge to set.
+ * @details Time Complexity: O(1)
  */
 void Edge::setReverse(Edge* reverse) {
     this->reverse = reverse;
@@ -209,6 +225,7 @@ void Edge::setReverse(Edge* reverse) {
 /**
  * @brief Sets the selected flag of the edge.
  * @param selected The value to set the selected flag to.
+ * @details Time Complexity: O(1)
  */
 void Edge::setSelected(bool selected) {
     this->selected = selected;
@@ -217,6 +234,7 @@ void Edge::setSelected(bool selected) {
 /**
  * @brief Checks if the edge is selected.
  * @return True if the edge is selected, False otherwise.
+ * @details Time Complexity: O(1)
  */
 bool Edge::isSelected() {
     return this->selected;
@@ -226,6 +244,7 @@ bool Edge::isSelected() {
  * @brief Overloaded less than operator for comparing edges based on distance.
  * @param edge The edge to compare with.
  * @return True if this edge's distance is less than the other edge's distance, False otherwise.
+ * @details Time Complexity: O(1)
  */
 bool Edge::operator<(Edge& edge){
     return this->distance < edge.distance;
