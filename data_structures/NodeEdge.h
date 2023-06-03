@@ -16,32 +16,18 @@ public:
     bool operator<(Node & node) const;
 
     bool isVisited();
-    double getDistance();
-    Edge *getPath();
-    vector<Edge *> getIncoming();
+
     double getLatitude();
     double getLongitude();
-
-    double haversineDistance(Node* source, Node* dest);
     double getDistanceTo(Node* node);
-
-    static bool ascendingDistance(Node* a, Node* b);
     Edge* getEdgeTo(int v);
-    Edge* getSelectedEdgeTo(int v);
-
-    void setVisited(bool visited);
-    void setProcessing(bool processing);
-    void setDistance(double distance);
-    void setPath(Edge *path);
-    Edge *addEdge(Node *dest, double distance);
-    bool removeEdgeTo(Node *dest);
     int getId();
     vector<Edge *> getAdj();
 
-    int queueIndex = 0;
+    void setVisited(bool visited);
+    Edge *addEdge(Node *dest, double distance);
 
-
-    unsigned int getDistanceToAdjacentNode(unsigned int i);
+    double haversineDistance(Node* source, Node* dest);
 
 private:
     int id;
@@ -49,10 +35,8 @@ private:
     double longitude;
     vector<Edge *> adj;
 
-
     bool visited = false;
     double distance = 0;
-    Edge *path = nullptr;
 
     vector<Edge *> incoming;
 };
@@ -66,11 +50,10 @@ public:
     Node* getOrig() const;
     Edge* getReverse();
 
-    bool isSelected();
-
-    void setDistance(double distance);
     void setReverse(Edge *reverse);
     void setSelected(bool selected);
+
+    bool isSelected();
 
     bool operator<(Edge& edge);
 

@@ -18,29 +18,10 @@ bool Node::operator<(Node & node) const{
     return this->distance < node.distance;
 }
 
-vector<Edge *> Node::getAdj(){
-    return adj;
-}
-
 bool Node::isVisited(){
     return visited;
 }
 
-double Node::getDistance(){
-    return distance;
-}
-
-int Node::getId(){
-    return id;
-}
-
-Edge *Node::getPath(){
-    return path;
-}
-
-vector<Edge *> Node::getIncoming(){
-    return incoming;
-}
 
 double Node::getLatitude(){
     return latitude;
@@ -48,6 +29,48 @@ double Node::getLatitude(){
 
 double Node::getLongitude(){
     return longitude;
+}
+
+
+double Node::getDistanceTo(Node* node){
+    Edge* edge = getEdgeTo(node->getId());
+
+    if(edge != nullptr){
+        return edge->getDistance();
+    }
+    else if(this->latitude != -1 && this->longitude != -1 && node->getLatitude() != -1 && node->getLongitude() != -1){
+        return haversineDistance(this, node);
+    }
+
+    return 0;
+}
+
+Edge* Node::getEdgeTo(int v){
+    for(Edge* edge : adj){
+        if(edge->getDest()->getId() == v){
+            return edge;
+        }
+    }
+    return nullptr;
+}
+
+int Node::getId(){
+    return id;
+}
+
+vector<Edge *> Node::getAdj(){
+    return adj;
+}
+
+void Node::setVisited(bool visited){
+    this->visited = visited;
+}
+
+Edge *Node::addEdge(Node *dest, double distance){
+    Edge *edge = new Edge(this, dest, distance);
+    adj.push_back(edge);
+    dest->incoming.push_back(edge);
+    return edge;
 }
 
 double Node::haversineDistance(Node* source, Node* dest) {
@@ -67,88 +90,6 @@ double Node::haversineDistance(Node* source, Node* dest) {
     return 6371000 * c;
 }
 
-double Node::getDistanceTo(Node* node){
-    Edge* edge = getEdgeTo(node->getId());
-
-    if(edge != nullptr){
-        return edge->getDistance();
-    }
-    else if(this->latitude != -1 && this->longitude != -1 && node->getLatitude() != -1 && node->getLongitude() != -1){
-        return haversineDistance(this, node);
-    }
-
-    return 0;
-}
-
-static bool ascendingDistance(Node* a, Node* b) {
-    return a->getDistance() < b->getDistance();
-}
-
-Edge* Node::getSelectedEdgeTo(int v){
-    for(Edge* edge : adj){
-        if(edge->getDest()->getId() == v && edge->isSelected()){
-            return edge;
-        }
-    }
-    return nullptr;
-}
-
-Edge* Node::getEdgeTo(int v){
-    for(Edge* edge : adj){
-        if(edge->getDest()->getId() == v){
-            return edge;
-        }
-    }
-    return nullptr;
-}
-
-void Node::setVisited(bool visited){
-    this->visited = visited;
-}
-
-void Node::setDistance(double distance){
-    this->distance = distance;
-}
-
-void Edge::setReverse(Edge* reverse) {
-    this->reverse = reverse;
-}
-
-void Edge::setSelected(bool selected) {
-    this->selected = selected;
-}
-
-void Node::setPath(Edge *path){
-    this->path = path;
-}
-
-Edge *Node::addEdge(Node *dest, double distance){
-    Edge *edge = new Edge(this, dest, distance);
-    adj.push_back(edge);
-    dest->incoming.push_back(edge);
-    return edge;
-}
-
-bool Node::removeEdgeTo(Node *dest){
-    for (auto it = adj.begin(); it != adj.end(); it++){
-        if ((*it)->getDest() == dest){
-            adj.erase(it);
-            return true;
-        }
-    }
-    return false;
-}
-
-unsigned int Node::getDistanceToAdjacentNode(unsigned int i) {
-    for (int i = 0; i < this->adj.size(); i++) {
-        if (this->adj.at(i)->getDest()->getId() == i) {
-            return this->adj.at(i)->getDistance();
-        }
-    }
-    return 0;
-}
-
-
 /********************** Edge  ****************************/
 
 
@@ -166,12 +107,16 @@ Edge* Edge::getReverse(){
     return this->reverse;
 }
 
-bool Edge::isSelected() {
-    return this->selected;
+void Edge::setReverse(Edge* reverse) {
+    this->reverse = reverse;
 }
 
-void Edge::setDistance(double distance){
-    this->distance = distance;
+void Edge::setSelected(bool selected) {
+    this->selected = selected;
+}
+
+bool Edge::isSelected() {
+    return this->selected;
 }
 
 bool Edge::operator<(Edge& edge){
