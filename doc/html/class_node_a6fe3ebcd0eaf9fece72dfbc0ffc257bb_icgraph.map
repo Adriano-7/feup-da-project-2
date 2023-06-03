@@ -1,0 +1,7 @@
+<map id="Node::setVisited" name="Node::setVisited">
+<area shape="rect" id="node1" title="Sets the visited flag of the node." alt="" coords="562,55,680,81"/>
+<area shape="rect" id="node2" href="$class_graph.html#a31f7bb77357ffd1b8e441929bd6cf39c" title="Performs a depth&#45;first search (DFS) traversal to find a triangular path in the graph." alt="" coords="377,29,514,56"/>
+<area shape="rect" id="node5" href="$class_graph.html#a0ff94d1aa447205062774216d6971148" title="Implements Prim&#39;s algorithm for finding the Minimum Spanning Tree (MST) of the graph...." alt="" coords="388,80,504,107"/>
+<area shape="rect" id="node3" href="$class_graph.html#ae85c21f6234bd9f9789dfa3aa6ee96c4" title="Solves the Traveling Salesman Problem (TSP) using the triangular inequality heuristic...." alt="" coords="191,55,329,81"/>
+<area shape="rect" id="node4" href="$class_database.html#a0fb182de9a0dd43470d80b01a7718e95" title="Finds the optimal TSP solution using the triangular inequality heuristic." alt="" coords="5,55,143,81"/>
+</map>

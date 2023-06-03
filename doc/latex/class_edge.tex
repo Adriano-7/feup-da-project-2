@@ -1,0 +1,171 @@
+\hypertarget{class_edge}{}\doxysection{Edge Class Reference}
+\label{class_edge}\index{Edge@{Edge}}
+
+
+{\ttfamily \#include $<$Node\+Edge.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_edge_a030196bc87adfbd12ba5d1cb5643bde0}{Edge}} (\mbox{\hyperlink{class_node}{Node}} $\ast$orig, \mbox{\hyperlink{class_node}{Node}} $\ast$dest, double distance)
+\begin{DoxyCompactList}\small\item\em Constructs an edge with the given origin, destination, and distance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_node}{Node}} $\ast$ \mbox{\hyperlink{class_edge_af2cd0f7cba34228f76c4b20a84a2de9d}{get\+Dest}} () const
+\begin{DoxyCompactList}\small\item\em Gets the destination node of the edge. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_edge_afd6d96365c7158f369125bf2958ca511}{get\+Distance}} () const
+\begin{DoxyCompactList}\small\item\em Gets the distance of the edge. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_node}{Node}} $\ast$ \mbox{\hyperlink{class_edge_af999c2a84d2da0e46eabe8674bc68b91}{get\+Orig}} () const
+\begin{DoxyCompactList}\small\item\em Gets the origin node of the edge. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{Edge}} $\ast$ \mbox{\hyperlink{class_edge_a3794f82c97be1bbc15c5638a965d3d4c}{get\+Reverse}} ()
+\begin{DoxyCompactList}\small\item\em Gets the reverse edge of the edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_edge_a64881280015bd83702fe3b2c6234b7e5}{set\+Reverse}} (\mbox{\hyperlink{class_edge}{Edge}} $\ast$reverse)
+\begin{DoxyCompactList}\small\item\em Sets the reverse edge of the edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_edge_a8ab1cf2fe7fd16152d1dba3822853894}{set\+Selected}} (bool selected)
+\begin{DoxyCompactList}\small\item\em Sets the selected flag of the edge. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_edge_a9f7141f54b258db8da7127fc577c9e01}{is\+Selected}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the edge is selected. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_edge_aa2dfc34022c8998299b9b35a4a0fb3a3}{operator$<$}} (\mbox{\hyperlink{class_edge}{Edge}} \&edge)
+\begin{DoxyCompactList}\small\item\em Overloaded less than operator for comparing edges based on distance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_edge_a030196bc87adfbd12ba5d1cb5643bde0}\label{class_edge_a030196bc87adfbd12ba5d1cb5643bde0}} 
+\index{Edge@{Edge}!Edge@{Edge}}
+\index{Edge@{Edge}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{Edge()}{Edge()}}
+{\footnotesize\ttfamily Edge\+::\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node}{Node}} $\ast$}]{orig,  }\item[{\mbox{\hyperlink{class_node}{Node}} $\ast$}]{dest,  }\item[{double}]{distance }\end{DoxyParamCaption})}
+
+
+
+Constructs an edge with the given origin, destination, and distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em orig} & The origin node of the edge. \\
+\hline
+{\em dest} & The destination node of the edge. \\
+\hline
+{\em distance} & The distance of the edge. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_edge_af2cd0f7cba34228f76c4b20a84a2de9d}\label{class_edge_af2cd0f7cba34228f76c4b20a84a2de9d}} 
+\index{Edge@{Edge}!getDest@{getDest}}
+\index{getDest@{getDest}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getDest()}{getDest()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_node}{Node}} $\ast$ Edge\+::get\+Dest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the destination node of the edge. 
+
+\begin{DoxyReturn}{Returns}
+The destination node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_afd6d96365c7158f369125bf2958ca511}\label{class_edge_afd6d96365c7158f369125bf2958ca511}} 
+\index{Edge@{Edge}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
+{\footnotesize\ttfamily double Edge\+::get\+Distance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the distance of the edge. 
+
+\begin{DoxyReturn}{Returns}
+The distance of the edge. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_af999c2a84d2da0e46eabe8674bc68b91}\label{class_edge_af999c2a84d2da0e46eabe8674bc68b91}} 
+\index{Edge@{Edge}!getOrig@{getOrig}}
+\index{getOrig@{getOrig}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getOrig()}{getOrig()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_node}{Node}} $\ast$ Edge\+::get\+Orig (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the origin node of the edge. 
+
+\begin{DoxyReturn}{Returns}
+The origin node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_a3794f82c97be1bbc15c5638a965d3d4c}\label{class_edge_a3794f82c97be1bbc15c5638a965d3d4c}} 
+\index{Edge@{Edge}!getReverse@{getReverse}}
+\index{getReverse@{getReverse}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getReverse()}{getReverse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{Edge}} $\ast$ Edge\+::get\+Reverse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the reverse edge of the edge. 
+
+\begin{DoxyReturn}{Returns}
+The reverse edge. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_a9f7141f54b258db8da7127fc577c9e01}\label{class_edge_a9f7141f54b258db8da7127fc577c9e01}} 
+\index{Edge@{Edge}!isSelected@{isSelected}}
+\index{isSelected@{isSelected}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{isSelected()}{isSelected()}}
+{\footnotesize\ttfamily bool Edge\+::is\+Selected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the edge is selected. 
+
+\begin{DoxyReturn}{Returns}
+True if the edge is selected, False otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_aa2dfc34022c8998299b9b35a4a0fb3a3}\label{class_edge_aa2dfc34022c8998299b9b35a4a0fb3a3}} 
+\index{Edge@{Edge}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Edge\+::operator$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{Edge}} \&}]{edge }\end{DoxyParamCaption})}
+
+
+
+Overloaded less than operator for comparing edges based on distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em edge} & The edge to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if this edge\textquotesingle{}s distance is less than the other edge\textquotesingle{}s distance, False otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_edge_a64881280015bd83702fe3b2c6234b7e5}\label{class_edge_a64881280015bd83702fe3b2c6234b7e5}} 
+\index{Edge@{Edge}!setReverse@{setReverse}}
+\index{setReverse@{setReverse}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{setReverse()}{setReverse()}}
+{\footnotesize\ttfamily void Edge\+::set\+Reverse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{Edge}} $\ast$}]{reverse }\end{DoxyParamCaption})}
+
+
+
+Sets the reverse edge of the edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reverse} & The reverse edge to set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_edge_a8ab1cf2fe7fd16152d1dba3822853894}\label{class_edge_a8ab1cf2fe7fd16152d1dba3822853894}} 
+\index{Edge@{Edge}!setSelected@{setSelected}}
+\index{setSelected@{setSelected}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{setSelected()}{setSelected()}}
+{\footnotesize\ttfamily void Edge\+::set\+Selected (\begin{DoxyParamCaption}\item[{bool}]{selected }\end{DoxyParamCaption})}
+
+
+
+Sets the selected flag of the edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em selected} & The value to set the selected flag to. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+data\+\_\+structures/\mbox{\hyperlink{_node_edge_8h}{Node\+Edge.\+h}}\item 
+data\+\_\+structures/\mbox{\hyperlink{_node_edge_8cpp}{Node\+Edge.\+cpp}}\end{DoxyCompactItemize}

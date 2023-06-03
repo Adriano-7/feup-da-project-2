@@ -1,0 +1,51 @@
+\hypertarget{_graph_8h_source}{}\doxysection{Graph.\+h}
+\label{_graph_8h_source}\index{data\_structures/Graph.h@{data\_structures/Graph.h}}
+\mbox{\hyperlink{_graph_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PROJECT\_DA\_GRAPH\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PROJECT\_DA\_GRAPH\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_node_edge_8h}{NodeEdge.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_graph}{Graph}}\ \{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_graph_a55172b05aaaa7992f88e4165168fbaf3}{addNode}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_graph_a55172b05aaaa7992f88e4165168fbaf3}{addNode}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{double}\ latitude,\ \textcolor{keywordtype}{double}\ longitude);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_graph_a777e3f88233ff88555a026310d9d7c01}{addEdge}}(\mbox{\hyperlink{class_node}{Node}}*\ source,\ \mbox{\hyperlink{class_node}{Node}}*\ dest,\ \textcolor{keywordtype}{double}\ distance);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}*\ \mbox{\hyperlink{class_graph_a916f782cffb16c18e4a7c5ecbb60da0d}{getNode}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00030\ \ \ \ \ vector<Node*>\ \mbox{\hyperlink{class_graph_a58768a2c2666bcd73421464a0933b355}{getNodes}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graph_a0ff94d1aa447205062774216d6971148}{primMST}}();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graph_a359a7e6f2fb2e0cdfff1aa37d09975c1}{Backtracking\_aux}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ curIndex,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ count,\ \textcolor{keywordtype}{double}\ cost,\ \textcolor{keywordtype}{double}\ \&ans,\ vector<unsigned\ int>\ \&path,\ vector<vector<unsigned\ int>>\ paths);}
+\DoxyCodeLine{00035\ \ \ \ \ vector<unsigned\ int>\ \mbox{\hyperlink{class_graph_af0b41aaa3d451c7c918cdb8387ca3105}{Backtracking\_TSP}}(\textcolor{keywordtype}{double}*\ distance);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ vector<Node*>\ \mbox{\hyperlink{class_graph_a31f7bb77357ffd1b8e441929bd6cf39c}{dfsTriangular}}(\mbox{\hyperlink{class_node}{Node}}*\ node);}
+\DoxyCodeLine{00038\ \ \ \ \ vector<Node*>\ \mbox{\hyperlink{class_graph_ae85c21f6234bd9f9789dfa3aa6ee96c4}{tspTriangular}}(\textcolor{keywordtype}{double}*\ distance);}
+\DoxyCodeLine{00039\ \ \ \ \ vector<unsigned\ int>\ \mbox{\hyperlink{class_graph_aa3dce80a327961ffe79a8ec78336b3b0}{insertion\_TSP}}(\textcolor{keywordtype}{double}*\ distance);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_graph_ac6192a41101102ca8aa6acca607c84f3}{clear}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{class_graph_a902c5b3eacb66d60752525ab23297a95}{\string~Graph}}();}
+\DoxyCodeLine{00044\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00045\ \ \ \ \ vector<Node*>\ nodes;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ resetNodes();}
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

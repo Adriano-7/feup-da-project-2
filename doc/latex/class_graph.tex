@@ -1,0 +1,300 @@
+\hypertarget{class_graph}{}\doxysection{Graph Class Reference}
+\label{class_graph}\index{Graph@{Graph}}
+
+
+Represents a graph data structure.  
+
+
+
+
+{\ttfamily \#include $<$Graph.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_graph_a55172b05aaaa7992f88e4165168fbaf3}{add\+Node}} (int id)
+\begin{DoxyCompactList}\small\item\em Adds a node to the graph. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_graph_a8cbadc7c4d49ef5d9ec56a5068c6b7c4}{add\+Node}} (int id, double latitude, double longitude)
+\begin{DoxyCompactList}\small\item\em Adds a node with latitude and longitude to the graph. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_graph_a777e3f88233ff88555a026310d9d7c01}{add\+Edge}} (\mbox{\hyperlink{class_node}{Node}} $\ast$source, \mbox{\hyperlink{class_node}{Node}} $\ast$dest, double distance)
+\begin{DoxyCompactList}\small\item\em Adds an edge between two nodes in the graph. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_node}{Node}} $\ast$ \mbox{\hyperlink{class_graph_a916f782cffb16c18e4a7c5ecbb60da0d}{get\+Node}} (int id)
+\begin{DoxyCompactList}\small\item\em Retrieves a node with the specified ID. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_node}{Node}} $\ast$ $>$ \mbox{\hyperlink{class_graph_a58768a2c2666bcd73421464a0933b355}{get\+Nodes}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves all the nodes in the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a0ff94d1aa447205062774216d6971148}{prim\+MST}} ()
+\begin{DoxyCompactList}\small\item\em Implements Prim\textquotesingle{}s algorithm for finding the Minimum Spanning Tree (MST) of the graph. Sets the \textquotesingle{}visited\textquotesingle{} and \textquotesingle{}selected\textquotesingle{} flags of the edges accordingly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graph_a359a7e6f2fb2e0cdfff1aa37d09975c1}{Backtracking\+\_\+aux}} (unsigned int cur\+Index, unsigned int count, double cost, double \&ans, vector$<$ unsigned int $>$ \&path, vector$<$ vector$<$ unsigned int $>$ $>$ paths)
+\begin{DoxyCompactList}\small\item\em Auxiliary function for the Backtracking\+\_\+\+TSP algorithm. It performs backtracking to find the shortest Hamiltonian cycle in the graph. \end{DoxyCompactList}\item 
+vector$<$ unsigned int $>$ \mbox{\hyperlink{class_graph_af0b41aaa3d451c7c918cdb8387ca3105}{Backtracking\+\_\+\+TSP}} (double $\ast$distance)
+\begin{DoxyCompactList}\small\item\em Solves the Traveling Salesman Problem (TSP) using the backtracking algorithm. It finds the shortest Hamiltonian cycle in the graph by performing backtracking. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_node}{Node}} $\ast$ $>$ \mbox{\hyperlink{class_graph_a31f7bb77357ffd1b8e441929bd6cf39c}{dfs\+Triangular}} (\mbox{\hyperlink{class_node}{Node}} $\ast$node)
+\begin{DoxyCompactList}\small\item\em Performs a depth-\/first search (DFS) traversal to find a triangular path in the graph. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_node}{Node}} $\ast$ $>$ \mbox{\hyperlink{class_graph_ae85c21f6234bd9f9789dfa3aa6ee96c4}{tsp\+Triangular}} (double $\ast$distance)
+\begin{DoxyCompactList}\small\item\em Solves the Traveling Salesman Problem (TSP) using the triangular inequality heuristic. It first constructs the Minimum Spanning Tree (MST) using Prim\textquotesingle{}s algorithm, then performs a depth-\/first search (DFS) to find a triangular path, and calculates the total distance of the path. \end{DoxyCompactList}\item 
+vector$<$ unsigned int $>$ \mbox{\hyperlink{class_graph_aa3dce80a327961ffe79a8ec78336b3b0}{insertion\+\_\+\+TSP}} (double $\ast$distance)
+\item 
+void \mbox{\hyperlink{class_graph_ac6192a41101102ca8aa6acca607c84f3}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Clears the graph by deleting all nodes and edges. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_graph_a902c5b3eacb66d60752525ab23297a95}{$\sim$\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \mbox{\hyperlink{class_graph}{Graph}} class. Deletes all the nodes in the graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a graph data structure. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_graph_a902c5b3eacb66d60752525ab23297a95}\label{class_graph_a902c5b3eacb66d60752525ab23297a95}} 
+\index{Graph@{Graph}!````~Graph@{$\sim$Graph}}
+\index{````~Graph@{$\sim$Graph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{$\sim$Graph()}{~Graph()}}
+{\footnotesize\ttfamily Graph\+::$\sim$\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for the \mbox{\hyperlink{class_graph}{Graph}} class. Deletes all the nodes in the graph. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_graph_a777e3f88233ff88555a026310d9d7c01}\label{class_graph_a777e3f88233ff88555a026310d9d7c01}} 
+\index{Graph@{Graph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily bool Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node}{Node}} $\ast$}]{source\+Node,  }\item[{\mbox{\hyperlink{class_node}{Node}} $\ast$}]{dest\+Node,  }\item[{double}]{distance }\end{DoxyParamCaption})}
+
+
+
+Adds an edge between two nodes in the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+Node} & The source node of the edge. \\
+\hline
+{\em dest\+Node} & The destination node of the edge. \\
+\hline
+{\em distance} & The distance between the nodes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the edge is added successfully, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{class_graph_a777e3f88233ff88555a026310d9d7c01_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_graph_a55172b05aaaa7992f88e4165168fbaf3}\label{class_graph_a55172b05aaaa7992f88e4165168fbaf3}} 
+\index{Graph@{Graph}!addNode@{addNode}}
+\index{addNode@{addNode}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addNode()}{addNode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Graph\+::add\+Node (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Adds a node to the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the node is added successfully, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a8cbadc7c4d49ef5d9ec56a5068c6b7c4}\label{class_graph_a8cbadc7c4d49ef5d9ec56a5068c6b7c4}} 
+\index{Graph@{Graph}!addNode@{addNode}}
+\index{addNode@{addNode}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addNode()}{addNode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Graph\+::add\+Node (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{double}]{latitude,  }\item[{double}]{longitude }\end{DoxyParamCaption})}
+
+
+
+Adds a node with latitude and longitude to the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the node. \\
+\hline
+{\em latitude} & The latitude of the node. \\
+\hline
+{\em longitude} & The longitude of the node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the node is added successfully, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a359a7e6f2fb2e0cdfff1aa37d09975c1}\label{class_graph_a359a7e6f2fb2e0cdfff1aa37d09975c1}} 
+\index{Graph@{Graph}!Backtracking\_aux@{Backtracking\_aux}}
+\index{Backtracking\_aux@{Backtracking\_aux}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Backtracking\_aux()}{Backtracking\_aux()}}
+{\footnotesize\ttfamily void Graph\+::\+Backtracking\+\_\+aux (\begin{DoxyParamCaption}\item[{unsigned int}]{cur\+Index,  }\item[{unsigned int}]{count,  }\item[{double}]{cost,  }\item[{double \&}]{ans,  }\item[{vector$<$ unsigned int $>$ \&}]{path,  }\item[{vector$<$ vector$<$ unsigned int $>$ $>$}]{paths }\end{DoxyParamCaption})}
+
+
+
+Auxiliary function for the Backtracking\+\_\+\+TSP algorithm. It performs backtracking to find the shortest Hamiltonian cycle in the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cur\+Index} & The current index of the node being processed. \\
+\hline
+{\em count} & The number of nodes visited so far. \\
+\hline
+{\em cost} & The current cost of the path. \\
+\hline
+{\em ans} & A reference to the variable storing the shortest distance. \\
+\hline
+{\em path} & A reference to the vector storing the path with the shortest distance. \\
+\hline
+{\em paths} & A vector storing the paths for each node during the backtracking process. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{class_graph_a359a7e6f2fb2e0cdfff1aa37d09975c1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_graph_af0b41aaa3d451c7c918cdb8387ca3105}\label{class_graph_af0b41aaa3d451c7c918cdb8387ca3105}} 
+\index{Graph@{Graph}!Backtracking\_TSP@{Backtracking\_TSP}}
+\index{Backtracking\_TSP@{Backtracking\_TSP}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Backtracking\_TSP()}{Backtracking\_TSP()}}
+{\footnotesize\ttfamily vector$<$ unsigned int $>$ Graph\+::\+Backtracking\+\_\+\+TSP (\begin{DoxyParamCaption}\item[{double $\ast$}]{distance }\end{DoxyParamCaption})}
+
+
+
+Solves the Traveling Salesman Problem (TSP) using the backtracking algorithm. It finds the shortest Hamiltonian cycle in the graph by performing backtracking. 
+
+\begin{DoxyReturn}{Returns}
+A pair consisting of the shortest distance and the path representing the cycle. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_graph_af0b41aaa3d451c7c918cdb8387ca3105_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_graph_ac6192a41101102ca8aa6acca607c84f3}\label{class_graph_ac6192a41101102ca8aa6acca607c84f3}} 
+\index{Graph@{Graph}!clear@{clear}}
+\index{clear@{clear}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Graph\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears the graph by deleting all nodes and edges. 
+
+\mbox{\Hypertarget{class_graph_a31f7bb77357ffd1b8e441929bd6cf39c}\label{class_graph_a31f7bb77357ffd1b8e441929bd6cf39c}} 
+\index{Graph@{Graph}!dfsTriangular@{dfsTriangular}}
+\index{dfsTriangular@{dfsTriangular}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{dfsTriangular()}{dfsTriangular()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_node}{Node}} $\ast$ $>$ Graph\+::dfs\+Triangular (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node}{Node}} $\ast$}]{node }\end{DoxyParamCaption})}
+
+
+
+Performs a depth-\/first search (DFS) traversal to find a triangular path in the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & The starting node for the DFS traversal. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing the nodes in the triangular path. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{class_graph_a31f7bb77357ffd1b8e441929bd6cf39c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_graph_a916f782cffb16c18e4a7c5ecbb60da0d}\label{class_graph_a916f782cffb16c18e4a7c5ecbb60da0d}} 
+\index{Graph@{Graph}!getNode@{getNode}}
+\index{getNode@{getNode}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getNode()}{getNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_node}{Node}} $\ast$ Graph\+::get\+Node (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Retrieves a node with the specified ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the node to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the node if found, nullptr otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_a58768a2c2666bcd73421464a0933b355}\label{class_graph_a58768a2c2666bcd73421464a0933b355}} 
+\index{Graph@{Graph}!getNodes@{getNodes}}
+\index{getNodes@{getNodes}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getNodes()}{getNodes()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_node}{Node}} $\ast$ $>$ Graph\+::get\+Nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves all the nodes in the graph. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing all the nodes in the graph. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_graph_aa3dce80a327961ffe79a8ec78336b3b0}\label{class_graph_aa3dce80a327961ffe79a8ec78336b3b0}} 
+\index{Graph@{Graph}!insertion\_TSP@{insertion\_TSP}}
+\index{insertion\_TSP@{insertion\_TSP}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{insertion\_TSP()}{insertion\_TSP()}}
+{\footnotesize\ttfamily vector$<$ unsigned int $>$ Graph\+::insertion\+\_\+\+TSP (\begin{DoxyParamCaption}\item[{double $\ast$}]{distance }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_graph_a0ff94d1aa447205062774216d6971148}\label{class_graph_a0ff94d1aa447205062774216d6971148}} 
+\index{Graph@{Graph}!primMST@{primMST}}
+\index{primMST@{primMST}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{primMST()}{primMST()}}
+{\footnotesize\ttfamily void Graph\+::prim\+MST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implements Prim\textquotesingle{}s algorithm for finding the Minimum Spanning Tree (MST) of the graph. Sets the \textquotesingle{}visited\textquotesingle{} and \textquotesingle{}selected\textquotesingle{} flags of the edges accordingly. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{class_graph_a0ff94d1aa447205062774216d6971148_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_graph_ae85c21f6234bd9f9789dfa3aa6ee96c4}\label{class_graph_ae85c21f6234bd9f9789dfa3aa6ee96c4}} 
+\index{Graph@{Graph}!tspTriangular@{tspTriangular}}
+\index{tspTriangular@{tspTriangular}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{tspTriangular()}{tspTriangular()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_node}{Node}} $\ast$ $>$ Graph\+::tsp\+Triangular (\begin{DoxyParamCaption}\item[{double $\ast$}]{distance }\end{DoxyParamCaption})}
+
+
+
+Solves the Traveling Salesman Problem (TSP) using the triangular inequality heuristic. It first constructs the Minimum Spanning Tree (MST) using Prim\textquotesingle{}s algorithm, then performs a depth-\/first search (DFS) to find a triangular path, and calculates the total distance of the path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance} & A pointer to a variable to store the total distance of the triangular path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing the nodes in the triangular path. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_graph_ae85c21f6234bd9f9789dfa3aa6ee96c4_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+data\+\_\+structures/\mbox{\hyperlink{_graph_8h}{Graph.\+h}}\item 
+data\+\_\+structures/\mbox{\hyperlink{_graph_8cpp}{Graph.\+cpp}}\end{DoxyCompactItemize}

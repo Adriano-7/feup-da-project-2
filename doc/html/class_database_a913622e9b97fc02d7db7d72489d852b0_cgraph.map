@@ -1,0 +1,4 @@
+<map id="Database::insertionHeuristic_TSP" name="Database::insertionHeuristic_TSP">
+<area shape="rect" id="node1" title="Applies the insertion heuristic to find an approximate TSP solution." alt="" coords="5,5,222,32"/>
+<area shape="rect" id="node2" href="$class_graph.html#aa3dce80a327961ffe79a8ec78336b3b0" title=" " alt="" coords="270,5,415,32"/>
+</map>

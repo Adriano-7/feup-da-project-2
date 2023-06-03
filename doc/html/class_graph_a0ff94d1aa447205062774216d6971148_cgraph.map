@@ -1,0 +1,11 @@
+<map id="Graph::primMST" name="Graph::primMST">
+<area shape="rect" id="node1" title="Implements Prim&#39;s algorithm for finding the Minimum Spanning Tree (MST) of the graph...." alt="" coords="5,183,122,209"/>
+<area shape="rect" id="node2" href="$class_node.html#a02afa9074591a30d2cdb42124686bbf6" title="Gets the adjacent edges of the node." alt="" coords="186,5,282,32"/>
+<area shape="rect" id="node3" href="$class_edge.html#af2cd0f7cba34228f76c4b20a84a2de9d" title="Gets the destination node of the edge." alt="" coords="182,56,286,83"/>
+<area shape="rect" id="node4" href="$class_edge.html#afd6d96365c7158f369125bf2958ca511" title="Gets the distance of the edge." alt="" coords="170,107,298,133"/>
+<area shape="rect" id="node5" href="$class_edge.html#af999c2a84d2da0e46eabe8674bc68b91" title="Gets the origin node of the edge." alt="" coords="183,157,285,184"/>
+<area shape="rect" id="node6" href="$class_edge.html#a3794f82c97be1bbc15c5638a965d3d4c" title="Gets the reverse edge of the edge." alt="" coords="172,208,296,235"/>
+<area shape="rect" id="node7" href="$class_node.html#a91d335587ff4158d88771feccf361b74" title="Checks if the node has been visited." alt="" coords="179,259,289,285"/>
+<area shape="rect" id="node8" href="$class_edge.html#a8ab1cf2fe7fd16152d1dba3822853894" title="Sets the selected flag of the edge." alt="" coords="170,309,298,336"/>
+<area shape="rect" id="node9" href="$class_node.html#a6fe3ebcd0eaf9fece72dfbc0ffc257bb" title="Sets the visited flag of the node." alt="" coords="175,360,293,387"/>
+</map>

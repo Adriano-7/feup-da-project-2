@@ -1,0 +1,5 @@
+<map id="Node::haversineDistance" name="Node::haversineDistance">
+<area shape="rect" id="node1" title="Calculates the haversine distance between two nodes." alt="" coords="5,31,170,57"/>
+<area shape="rect" id="node2" href="$class_node.html#a32474adce1c7180dcfcf03115a509c18" title="Gets the latitude coordinate of the node." alt="" coords="223,5,346,32"/>
+<area shape="rect" id="node3" href="$class_node.html#a703071d5ab5987835599b9759b149ff5" title="Gets the longitude coordinate of the node." alt="" coords="218,56,351,83"/>
+</map>

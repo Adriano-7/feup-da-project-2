@@ -1,0 +1,277 @@
+\hypertarget{class_node}{}\doxysection{Node Class Reference}
+\label{class_node}\index{Node@{Node}}
+
+
+Represents a node in a graph.  
+
+
+
+
+{\ttfamily \#include $<$Node\+Edge.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_node_a7f1af54cb91467d9717155c8a2ac0fde}{Node}} (int id)
+\begin{DoxyCompactList}\small\item\em Constructs a node with the given ID. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_node_a98db01d6afb7b7552e89c42d1080e9a3}{Node}} (int id, double latitude, double longitude)
+\begin{DoxyCompactList}\small\item\em Constructs a node with the given ID, latitude, and longitude. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_node_a53d6bc446575b5a6e472e347964d9b34}{operator$<$}} (\mbox{\hyperlink{class_node}{Node}} \&node) const
+\begin{DoxyCompactList}\small\item\em Overloaded less than operator for comparing nodes based on distance. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_node_a91d335587ff4158d88771feccf361b74}{is\+Visited}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the node has been visited. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_node_a32474adce1c7180dcfcf03115a509c18}{get\+Latitude}} ()
+\begin{DoxyCompactList}\small\item\em Gets the latitude coordinate of the node. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_node_a703071d5ab5987835599b9759b149ff5}{get\+Longitude}} ()
+\begin{DoxyCompactList}\small\item\em Gets the longitude coordinate of the node. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_node_a655c2f82a237faafa50b750c50f7b665}{get\+Distance\+To}} (\mbox{\hyperlink{class_node}{Node}} $\ast$node)
+\begin{DoxyCompactList}\small\item\em Gets the distance to a specified node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{Edge}} $\ast$ \mbox{\hyperlink{class_node_a2ab6f1c76df31fe156ccb5b3c411bf50}{get\+Edge\+To}} (int v)
+\begin{DoxyCompactList}\small\item\em Gets the edge to a specified node. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_node_a3c7b8ccf4dab44216b997c5f63f11d9f}{get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Gets the ID of the node. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{class_node_a02afa9074591a30d2cdb42124686bbf6}{get\+Adj}} ()
+\begin{DoxyCompactList}\small\item\em Gets the adjacent edges of the node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_a6fe3ebcd0eaf9fece72dfbc0ffc257bb}{set\+Visited}} (bool visited)
+\begin{DoxyCompactList}\small\item\em Sets the visited flag of the node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{Edge}} $\ast$ \mbox{\hyperlink{class_node_ad6ecc59dcb3a14a2094a35343fc58968}{add\+Edge}} (\mbox{\hyperlink{class_node}{Node}} $\ast$dest, double distance)
+\begin{DoxyCompactList}\small\item\em Adds an edge to the node. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_node_abeb90c23d8cea1efca2f4d267facd112}{haversine\+Distance}} (\mbox{\hyperlink{class_node}{Node}} $\ast$source, \mbox{\hyperlink{class_node}{Node}} $\ast$dest)
+\begin{DoxyCompactList}\small\item\em Calculates the haversine distance between two nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a node in a graph. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_node_a7f1af54cb91467d9717155c8a2ac0fde}\label{class_node_a7f1af54cb91467d9717155c8a2ac0fde}} 
+\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Node\+::\+Node (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Constructs a node with the given ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the node. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_node_a98db01d6afb7b7552e89c42d1080e9a3}\label{class_node_a98db01d6afb7b7552e89c42d1080e9a3}} 
+\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Node\+::\+Node (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{double}]{latitude,  }\item[{double}]{longitude }\end{DoxyParamCaption})}
+
+
+
+Constructs a node with the given ID, latitude, and longitude. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the node. \\
+\hline
+{\em latitude} & The latitude coordinate of the node. \\
+\hline
+{\em longitude} & The longitude coordinate of the node. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_node_ad6ecc59dcb3a14a2094a35343fc58968}\label{class_node_ad6ecc59dcb3a14a2094a35343fc58968}} 
+\index{Node@{Node}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{Edge}} $\ast$ Node\+::add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node}{Node}} $\ast$}]{dest,  }\item[{double}]{distance }\end{DoxyParamCaption})}
+
+
+
+Adds an edge to the node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & The destination node of the edge. \\
+\hline
+{\em distance} & The distance of the edge. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The added edge. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_node_a02afa9074591a30d2cdb42124686bbf6}\label{class_node_a02afa9074591a30d2cdb42124686bbf6}} 
+\index{Node@{Node}!getAdj@{getAdj}}
+\index{getAdj@{getAdj}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{getAdj()}{getAdj()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $\ast$ $>$ Node\+::get\+Adj (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the adjacent edges of the node. 
+
+\begin{DoxyReturn}{Returns}
+A vector of adjacent edges. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_node_a655c2f82a237faafa50b750c50f7b665}\label{class_node_a655c2f82a237faafa50b750c50f7b665}} 
+\index{Node@{Node}!getDistanceTo@{getDistanceTo}}
+\index{getDistanceTo@{getDistanceTo}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{getDistanceTo()}{getDistanceTo()}}
+{\footnotesize\ttfamily double Node\+::get\+Distance\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node}{Node}} $\ast$}]{node }\end{DoxyParamCaption})}
+
+
+
+Gets the distance to a specified node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & The node to calculate the distance to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance to the specified node. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_node_a655c2f82a237faafa50b750c50f7b665_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_node_a2ab6f1c76df31fe156ccb5b3c411bf50}\label{class_node_a2ab6f1c76df31fe156ccb5b3c411bf50}} 
+\index{Node@{Node}!getEdgeTo@{getEdgeTo}}
+\index{getEdgeTo@{getEdgeTo}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{getEdgeTo()}{getEdgeTo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{Edge}} $\ast$ Node\+::get\+Edge\+To (\begin{DoxyParamCaption}\item[{int}]{v }\end{DoxyParamCaption})}
+
+
+
+Gets the edge to a specified node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & The ID of the destination node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The edge to the specified node, or nullptr if no edge is found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_node_a3c7b8ccf4dab44216b997c5f63f11d9f}\label{class_node_a3c7b8ccf4dab44216b997c5f63f11d9f}} 
+\index{Node@{Node}!getId@{getId}}
+\index{getId@{getId}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily int Node\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the ID of the node. 
+
+\begin{DoxyReturn}{Returns}
+The ID of the node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_node_a32474adce1c7180dcfcf03115a509c18}\label{class_node_a32474adce1c7180dcfcf03115a509c18}} 
+\index{Node@{Node}!getLatitude@{getLatitude}}
+\index{getLatitude@{getLatitude}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{getLatitude()}{getLatitude()}}
+{\footnotesize\ttfamily double Node\+::get\+Latitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the latitude coordinate of the node. 
+
+\begin{DoxyReturn}{Returns}
+The latitude coordinate of the node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_node_a703071d5ab5987835599b9759b149ff5}\label{class_node_a703071d5ab5987835599b9759b149ff5}} 
+\index{Node@{Node}!getLongitude@{getLongitude}}
+\index{getLongitude@{getLongitude}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{getLongitude()}{getLongitude()}}
+{\footnotesize\ttfamily double Node\+::get\+Longitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the longitude coordinate of the node. 
+
+\begin{DoxyReturn}{Returns}
+The longitude coordinate of the node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_node_abeb90c23d8cea1efca2f4d267facd112}\label{class_node_abeb90c23d8cea1efca2f4d267facd112}} 
+\index{Node@{Node}!haversineDistance@{haversineDistance}}
+\index{haversineDistance@{haversineDistance}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{haversineDistance()}{haversineDistance()}}
+{\footnotesize\ttfamily double Node\+::haversine\+Distance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node}{Node}} $\ast$}]{source,  }\item[{\mbox{\hyperlink{class_node}{Node}} $\ast$}]{dest }\end{DoxyParamCaption})}
+
+
+
+Calculates the haversine distance between two nodes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & The source node. \\
+\hline
+{\em dest} & The destination node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The haversine distance between the two nodes. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{class_node_abeb90c23d8cea1efca2f4d267facd112_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_node_a91d335587ff4158d88771feccf361b74}\label{class_node_a91d335587ff4158d88771feccf361b74}} 
+\index{Node@{Node}!isVisited@{isVisited}}
+\index{isVisited@{isVisited}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{isVisited()}{isVisited()}}
+{\footnotesize\ttfamily bool Node\+::is\+Visited (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the node has been visited. 
+
+\begin{DoxyReturn}{Returns}
+True if the node has been visited, False otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_node_a53d6bc446575b5a6e472e347964d9b34}\label{class_node_a53d6bc446575b5a6e472e347964d9b34}} 
+\index{Node@{Node}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Node\+::operator$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_node}{Node}} \&}]{node }\end{DoxyParamCaption}) const}
+
+
+
+Overloaded less than operator for comparing nodes based on distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & The node to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if this node\textquotesingle{}s distance is less than the other node\textquotesingle{}s distance, False otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_node_a6fe3ebcd0eaf9fece72dfbc0ffc257bb}\label{class_node_a6fe3ebcd0eaf9fece72dfbc0ffc257bb}} 
+\index{Node@{Node}!setVisited@{setVisited}}
+\index{setVisited@{setVisited}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{setVisited()}{setVisited()}}
+{\footnotesize\ttfamily void Node\+::set\+Visited (\begin{DoxyParamCaption}\item[{bool}]{visited }\end{DoxyParamCaption})}
+
+
+
+Sets the visited flag of the node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visited} & The value to set the visited flag to. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+data\+\_\+structures/\mbox{\hyperlink{_node_edge_8h}{Node\+Edge.\+h}}\item 
+data\+\_\+structures/\mbox{\hyperlink{_node_edge_8cpp}{Node\+Edge.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,228 @@
+\hypertarget{class_database}{}\doxysection{Database Class Reference}
+\label{class_database}\index{Database@{Database}}
+
+
+Class responsible for managing the graph database.  
+
+
+
+
+{\ttfamily \#include $<$Database.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_database_a5b7fe91d116c7a62966090164b177117}{load\+Small}} (string path)
+\begin{DoxyCompactList}\small\item\em Loads a small graph from a file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_database_afde958caddf1a895120dbefb2f91e3ed}{load\+Medium}} (const string \&nodes\+Path, const string \&edges\+Path)
+\begin{DoxyCompactList}\small\item\em Loads a medium-\/sized graph from files. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_database_a9d4de1e0ac75a6c151a74c40f5517e59}{load\+Extra}} (string path)
+\begin{DoxyCompactList}\small\item\em Loads an extra graph from a file. \end{DoxyCompactList}\item 
+vector$<$ unsigned int $>$ \mbox{\hyperlink{class_database_af5745f8ea49c7b710b4244f8d78d0c8f}{backtracking}} (double $\ast$distance)
+\begin{DoxyCompactList}\small\item\em Performs backtracking to find the optimal TSP solution. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_node}{Node}} $\ast$ $>$ \mbox{\hyperlink{class_database_a0fb182de9a0dd43470d80b01a7718e95}{triangular}} (double $\ast$distance)
+\begin{DoxyCompactList}\small\item\em Finds the optimal TSP solution using the triangular inequality heuristic. \end{DoxyCompactList}\item 
+vector$<$ unsigned int $>$ \mbox{\hyperlink{class_database_a913622e9b97fc02d7db7d72489d852b0}{insertion\+Heuristic\+\_\+\+TSP}} (double $\ast$distance)
+\begin{DoxyCompactList}\small\item\em Applies the insertion heuristic to find an approximate TSP solution. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_a4563ce20ebaad2b26e8f72c5cbd85aa9}{print\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em Prints the graph to the console. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_aac66f2c7201b7ce1b53936ff806b0072}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Clears the graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class responsible for managing the graph database. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_database_af5745f8ea49c7b710b4244f8d78d0c8f}\label{class_database_af5745f8ea49c7b710b4244f8d78d0c8f}} 
+\index{Database@{Database}!backtracking@{backtracking}}
+\index{backtracking@{backtracking}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{backtracking()}{backtracking()}}
+{\footnotesize\ttfamily vector$<$ unsigned int $>$ Database\+::backtracking (\begin{DoxyParamCaption}\item[{double $\ast$}]{distance }\end{DoxyParamCaption})}
+
+
+
+Performs backtracking to find the optimal TSP solution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance} & A pointer to a double variable to store the total distance of the optimal path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of node IDs representing the optimal path. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_af5745f8ea49c7b710b4244f8d78d0c8f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_aac66f2c7201b7ce1b53936ff806b0072}\label{class_database_aac66f2c7201b7ce1b53936ff806b0072}} 
+\index{Database@{Database}!clear@{clear}}
+\index{clear@{clear}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Database\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears the graph. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{class_database_aac66f2c7201b7ce1b53936ff806b0072_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_a913622e9b97fc02d7db7d72489d852b0}\label{class_database_a913622e9b97fc02d7db7d72489d852b0}} 
+\index{Database@{Database}!insertionHeuristic\_TSP@{insertionHeuristic\_TSP}}
+\index{insertionHeuristic\_TSP@{insertionHeuristic\_TSP}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{insertionHeuristic\_TSP()}{insertionHeuristic\_TSP()}}
+{\footnotesize\ttfamily vector$<$ unsigned int $>$ Database\+::insertion\+Heuristic\+\_\+\+TSP (\begin{DoxyParamCaption}\item[{double $\ast$}]{distance }\end{DoxyParamCaption})}
+
+
+
+Applies the insertion heuristic to find an approximate TSP solution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance} & A pointer to a double variable to store the total distance of the approximate path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of node IDs representing the optimal path. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_a913622e9b97fc02d7db7d72489d852b0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_a9d4de1e0ac75a6c151a74c40f5517e59}\label{class_database_a9d4de1e0ac75a6c151a74c40f5517e59}} 
+\index{Database@{Database}!loadExtra@{loadExtra}}
+\index{loadExtra@{loadExtra}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{loadExtra()}{loadExtra()}}
+{\footnotesize\ttfamily bool Database\+::load\+Extra (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+
+
+Loads an extra graph from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the graph was successfully loaded, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_a9d4de1e0ac75a6c151a74c40f5517e59_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_afde958caddf1a895120dbefb2f91e3ed}\label{class_database_afde958caddf1a895120dbefb2f91e3ed}} 
+\index{Database@{Database}!loadMedium@{loadMedium}}
+\index{loadMedium@{loadMedium}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{loadMedium()}{loadMedium()}}
+{\footnotesize\ttfamily bool Database\+::load\+Medium (\begin{DoxyParamCaption}\item[{const string \&}]{nodes\+Path,  }\item[{const string \&}]{edges\+Path }\end{DoxyParamCaption})}
+
+
+
+Loads a medium-\/sized graph from files. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nodes\+Path} & The path to the nodes file. \\
+\hline
+{\em edges\+Path} & The path to the edges file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the graph was successfully loaded, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_afde958caddf1a895120dbefb2f91e3ed_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_a5b7fe91d116c7a62966090164b177117}\label{class_database_a5b7fe91d116c7a62966090164b177117}} 
+\index{Database@{Database}!loadSmall@{loadSmall}}
+\index{loadSmall@{loadSmall}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{loadSmall()}{loadSmall()}}
+{\footnotesize\ttfamily bool Database\+::load\+Small (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+
+
+Loads a small graph from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the graph was successfully loaded, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_a5b7fe91d116c7a62966090164b177117_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_a4563ce20ebaad2b26e8f72c5cbd85aa9}\label{class_database_a4563ce20ebaad2b26e8f72c5cbd85aa9}} 
+\index{Database@{Database}!printGraph@{printGraph}}
+\index{printGraph@{printGraph}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{printGraph()}{printGraph()}}
+{\footnotesize\ttfamily void Database\+::print\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Prints the graph to the console. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{class_database_a4563ce20ebaad2b26e8f72c5cbd85aa9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_database_a0fb182de9a0dd43470d80b01a7718e95}\label{class_database_a0fb182de9a0dd43470d80b01a7718e95}} 
+\index{Database@{Database}!triangular@{triangular}}
+\index{triangular@{triangular}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{triangular()}{triangular()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_node}{Node}} $\ast$ $>$ Database\+::triangular (\begin{DoxyParamCaption}\item[{double $\ast$}]{distance }\end{DoxyParamCaption})}
+
+
+
+Finds the optimal TSP solution using the triangular inequality heuristic. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance} & A pointer to a double variable to store the total distance of the optimal path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of \mbox{\hyperlink{class_node}{Node}} pointers representing the optimal path. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_database_a0fb182de9a0dd43470d80b01a7718e95_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+headers/\mbox{\hyperlink{_database_8h}{Database.\+h}}\item 
+src/\mbox{\hyperlink{_database_8cpp}{Database.\+cpp}}\end{DoxyCompactItemize}

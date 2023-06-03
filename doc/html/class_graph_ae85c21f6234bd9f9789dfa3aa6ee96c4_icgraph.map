@@ -1,0 +1,4 @@
+<map id="Graph::tspTriangular" name="Graph::tspTriangular">
+<area shape="rect" id="node1" title="Solves the Traveling Salesman Problem (TSP) using the triangular inequality heuristic...." alt="" coords="191,5,329,32"/>
+<area shape="rect" id="node2" href="$class_database.html#a0fb182de9a0dd43470d80b01a7718e95" title="Finds the optimal TSP solution using the triangular inequality heuristic." alt="" coords="5,5,143,32"/>
+</map>

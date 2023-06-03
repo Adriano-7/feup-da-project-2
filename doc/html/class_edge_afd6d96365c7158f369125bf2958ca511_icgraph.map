@@ -1,0 +1,7 @@
+<map id="Edge::getDistance" name="Edge::getDistance">
+<area shape="rect" id="node1" title="Gets the distance of the edge." alt="" coords="567,31,696,57"/>
+<area shape="rect" id="node2" href="$class_node.html#a655c2f82a237faafa50b750c50f7b665" title="Gets the distance to a specified node." alt="" coords="377,5,519,32"/>
+<area shape="rect" id="node5" href="$class_graph.html#a0ff94d1aa447205062774216d6971148" title="Implements Prim&#39;s algorithm for finding the Minimum Spanning Tree (MST) of the graph...." alt="" coords="390,56,506,83"/>
+<area shape="rect" id="node3" href="$class_graph.html#ae85c21f6234bd9f9789dfa3aa6ee96c4" title="Solves the Traveling Salesman Problem (TSP) using the triangular inequality heuristic...." alt="" coords="191,31,329,57"/>
+<area shape="rect" id="node4" href="$class_database.html#a0fb182de9a0dd43470d80b01a7718e95" title="Finds the optimal TSP solution using the triangular inequality heuristic." alt="" coords="5,31,143,57"/>
+</map>

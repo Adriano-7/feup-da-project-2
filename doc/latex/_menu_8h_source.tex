@@ -1,0 +1,38 @@
+\hypertarget{_menu_8h_source}{}\doxysection{Menu.\+h}
+\label{_menu_8h_source}\index{headers/Menu.h@{headers/Menu.h}}
+\mbox{\hyperlink{_menu_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ INC\_2ND\_PROJECT\_MENU\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ INC\_2ND\_PROJECT\_MENU\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_database_8h}{Database.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00012\ \textcolor{keyword}{using\ namespace\ }std::chrono;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_menu}{Menu}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_menu_ad9ce6d538552c465bbc0b419698d54a6}{Menu}}(\mbox{\hyperlink{class_database}{Database}}\&\ database)\ :\ database(database)\ \{\};}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a5e632cf1c852e11445e43b5d64d339a0}{showDataSelectionMenu}}();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_database}{Database}}\ database;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ showSmallGraphMenu();}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ showMediumGraphMenu();}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ showExtraMenu();}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ showMainMenu();}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ showBacktrackingMenu();}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ showTriangularMenu();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ showSpecialHeuristicMenu();}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ waitForInput();}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ getIntFromUser();}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

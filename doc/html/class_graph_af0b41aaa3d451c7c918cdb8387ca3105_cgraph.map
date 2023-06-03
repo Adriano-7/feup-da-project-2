@@ -1,0 +1,4 @@
+<map id="Graph::Backtracking_TSP" name="Graph::Backtracking_TSP">
+<area shape="rect" id="node1" title="Solves the Traveling Salesman Problem (TSP) using the backtracking algorithm. It finds the shortest H..." alt="" coords="5,29,178,56"/>
+<area shape="rect" id="node2" href="$class_graph.html#a359a7e6f2fb2e0cdfff1aa37d09975c1" title="Auxiliary function for the Backtracking_TSP algorithm. It performs backtracking to find the shortest ..." alt="" coords="226,29,394,56"/>
+</map>

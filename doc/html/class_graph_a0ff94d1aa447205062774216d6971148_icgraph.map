@@ -1,0 +1,5 @@
+<map id="Graph::primMST" name="Graph::primMST">
+<area shape="rect" id="node1" title="Implements Prim&#39;s algorithm for finding the Minimum Spanning Tree (MST) of the graph...." alt="" coords="377,5,493,32"/>
+<area shape="rect" id="node2" href="$class_graph.html#ae85c21f6234bd9f9789dfa3aa6ee96c4" title="Solves the Traveling Salesman Problem (TSP) using the triangular inequality heuristic...." alt="" coords="191,5,329,32"/>
+<area shape="rect" id="node3" href="$class_database.html#a0fb182de9a0dd43470d80b01a7718e95" title="Finds the optimal TSP solution using the triangular inequality heuristic." alt="" coords="5,5,143,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Graph::addEdge" name="Graph::addEdge">
+<area shape="rect" id="node1" title="Adds an edge between two nodes in the graph." alt="" coords="5,31,121,57"/>
+<area shape="rect" id="node2" href="$class_node.html#ad6ecc59dcb3a14a2094a35343fc58968" title="Adds an edge to the node." alt="" coords="175,5,286,32"/>
+<area shape="rect" id="node3" href="$class_edge.html#a64881280015bd83702fe3b2c6234b7e5" title="Sets the reverse edge of the edge." alt="" coords="169,56,292,83"/>
+</map>

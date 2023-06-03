@@ -1,0 +1,6 @@
+<map id="Node::haversineDistance" name="Node::haversineDistance">
+<area shape="rect" id="node1" title="Calculates the haversine distance between two nodes." alt="" coords="567,5,732,32"/>
+<area shape="rect" id="node2" href="$class_node.html#a655c2f82a237faafa50b750c50f7b665" title="Gets the distance to a specified node." alt="" coords="377,5,519,32"/>
+<area shape="rect" id="node3" href="$class_graph.html#ae85c21f6234bd9f9789dfa3aa6ee96c4" title="Solves the Traveling Salesman Problem (TSP) using the triangular inequality heuristic...." alt="" coords="191,5,329,32"/>
+<area shape="rect" id="node4" href="$class_database.html#a0fb182de9a0dd43470d80b01a7718e95" title="Finds the optimal TSP solution using the triangular inequality heuristic." alt="" coords="5,5,143,32"/>
+</map>

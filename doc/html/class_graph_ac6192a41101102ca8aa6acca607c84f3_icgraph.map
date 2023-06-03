@@ -1,0 +1,4 @@
+<map id="Graph::clear" name="Graph::clear">
+<area shape="rect" id="node1" title="Clears the graph by deleting all nodes and edges." alt="" coords="166,5,258,32"/>
+<area shape="rect" id="node2" href="$class_database.html#aac66f2c7201b7ce1b53936ff806b0072" title="Clears the graph." alt="" coords="5,5,118,32"/>
+</map>

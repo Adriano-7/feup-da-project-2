@@ -1,0 +1,5 @@
+<map id="Database::backtracking" name="Database::backtracking">
+<area shape="rect" id="node1" title="Performs backtracking to find the optimal TSP solution." alt="" coords="5,29,164,56"/>
+<area shape="rect" id="node2" href="$class_graph.html#af0b41aaa3d451c7c918cdb8387ca3105" title="Solves the Traveling Salesman Problem (TSP) using the backtracking algorithm. It finds the shortest H..." alt="" coords="212,29,384,56"/>
+<area shape="rect" id="node3" href="$class_graph.html#a359a7e6f2fb2e0cdfff1aa37d09975c1" title="Auxiliary function for the Backtracking_TSP algorithm. It performs backtracking to find the shortest ..." alt="" coords="432,29,600,56"/>
+</map>

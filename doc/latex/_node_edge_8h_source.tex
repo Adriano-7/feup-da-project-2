@@ -1,0 +1,78 @@
+\hypertarget{_node_edge_8h_source}{}\doxysection{Node\+Edge.\+h}
+\label{_node_edge_8h_source}\index{data\_structures/NodeEdge.h@{data\_structures/NodeEdge.h}}
+\mbox{\hyperlink{_node_edge_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PROJECT\_DA\_NODEEDGE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PROJECT\_DA\_NODEEDGE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_edge}{Edge}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_node}{Node}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{double}\ latitude,\ \textcolor{keywordtype}{double}\ longitude);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_node_a53d6bc446575b5a6e472e347964d9b34}{operator<}}(\mbox{\hyperlink{class_node}{Node}}\ \&\ node)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_node_a91d335587ff4158d88771feccf361b74}{isVisited}}();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_node_a32474adce1c7180dcfcf03115a509c18}{getLatitude}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_node_a703071d5ab5987835599b9759b149ff5}{getLongitude}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_node_a655c2f82a237faafa50b750c50f7b665}{getDistanceTo}}(\mbox{\hyperlink{class_node}{Node}}*\ node);}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_edge}{Edge}}*\ \mbox{\hyperlink{class_node_a2ab6f1c76df31fe156ccb5b3c411bf50}{getEdgeTo}}(\textcolor{keywordtype}{int}\ v);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_node_a3c7b8ccf4dab44216b997c5f63f11d9f}{getId}}();}
+\DoxyCodeLine{00029\ \ \ \ \ vector<Edge\ *>\ \mbox{\hyperlink{class_node_a02afa9074591a30d2cdb42124686bbf6}{getAdj}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_node_a6fe3ebcd0eaf9fece72dfbc0ffc257bb}{setVisited}}(\textcolor{keywordtype}{bool}\ visited);}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_edge}{Edge}}\ *\mbox{\hyperlink{class_node_ad6ecc59dcb3a14a2094a35343fc58968}{addEdge}}(\mbox{\hyperlink{class_node}{Node}}\ *dest,\ \textcolor{keywordtype}{double}\ distance);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_node_abeb90c23d8cea1efca2f4d267facd112}{haversineDistance}}(\mbox{\hyperlink{class_node}{Node}}*\ source,\ \mbox{\hyperlink{class_node}{Node}}*\ dest);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ id;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{double}\ latitude;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{double}\ longitude;}
+\DoxyCodeLine{00040\ \ \ \ \ vector<Edge\ *>\ adj;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ visited\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{double}\ distance\ =\ 0;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ vector<Edge\ *>\ incoming;}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_edge}{Edge}}\ \{}
+\DoxyCodeLine{00049\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_edge}{Edge}}(\mbox{\hyperlink{class_node}{Node}}\ *orig,\ \mbox{\hyperlink{class_node}{Node}}\ *dest,\ \textcolor{keywordtype}{double}\ distance);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}*\ \mbox{\hyperlink{class_edge_af2cd0f7cba34228f76c4b20a84a2de9d}{getDest}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_edge_afd6d96365c7158f369125bf2958ca511}{getDistance}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}*\ \mbox{\hyperlink{class_edge_af999c2a84d2da0e46eabe8674bc68b91}{getOrig}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{class_edge}{Edge}}*\ \mbox{\hyperlink{class_edge_a3794f82c97be1bbc15c5638a965d3d4c}{getReverse}}();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_edge_a64881280015bd83702fe3b2c6234b7e5}{setReverse}}(\mbox{\hyperlink{class_edge}{Edge}}\ *reverse);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_edge_a8ab1cf2fe7fd16152d1dba3822853894}{setSelected}}(\textcolor{keywordtype}{bool}\ selected);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_edge_a9f7141f54b258db8da7127fc577c9e01}{isSelected}}();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_edge_aa2dfc34022c8998299b9b35a4a0fb3a3}{operator<}}(\mbox{\hyperlink{class_edge}{Edge}}\&\ edge);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}\ *\ dest;}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{double}\ distance;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ selected\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{class_edge}{Edge}}\ *reverse\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}\ *orig;}
+\DoxyCodeLine{00072\ \};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

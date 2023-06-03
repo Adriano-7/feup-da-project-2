@@ -1,0 +1,6 @@
+<map id="Graph::dfsTriangular" name="Graph::dfsTriangular">
+<area shape="rect" id="node1" title="Performs a depth&#45;first search (DFS) traversal to find a triangular path in the graph." alt="" coords="5,56,143,83"/>
+<area shape="rect" id="node2" href="$class_node.html#a02afa9074591a30d2cdb42124686bbf6" title="Gets the adjacent edges of the node." alt="" coords="201,5,298,32"/>
+<area shape="rect" id="node3" href="$class_node.html#a91d335587ff4158d88771feccf361b74" title="Checks if the node has been visited." alt="" coords="195,56,304,83"/>
+<area shape="rect" id="node4" href="$class_node.html#a6fe3ebcd0eaf9fece72dfbc0ffc257bb" title="Sets the visited flag of the node." alt="" coords="191,107,308,133"/>
+</map>
