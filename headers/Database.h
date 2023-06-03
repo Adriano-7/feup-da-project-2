@@ -31,6 +31,8 @@ public:
     vector<Node*> triangular(double* distance);
     vector<unsigned int> insertionHeuristic_TSP(double* distance);
 
+    bool isToyGraph();
+
     void printGraph();
     void clear();
 private:

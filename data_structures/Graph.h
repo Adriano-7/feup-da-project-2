@@ -16,6 +16,10 @@
 #include "NodeEdge.h"
 using namespace std;
 
+enum class GraphType {
+    TOY_GRAPH, REAL_WORLD, EXTRA_FULLY_CONNECTED, NONE
+};
+
 /**
  * @class Graph
  * @brief Represents a graph data structure.
@@ -38,10 +42,15 @@ public:
     vector<Node*> tspTriangular(double* distance);
     vector<unsigned int> insertion_TSP(double* distance);
 
+    void setGraphType(GraphType type);
+    GraphType getGraphType();
+
     void clear();
 
     ~Graph();
 private:
+    GraphType type = GraphType::NONE;
+
     vector<Node*> nodes;
     void resetNodes();
 };

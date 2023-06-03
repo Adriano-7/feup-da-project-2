@@ -154,12 +154,14 @@ void Menu::showBacktrackingMenu() {
     auto duration = duration_cast<milliseconds>(end - start);
 
     cout << "_________________________________________________" << endl;
-    cout << "The shortest path is: " << endl;
-    for (int i = 0; i < path.size(); i++) {
-        cout << path[i] << " ";
+    if(database.isToyGraph()){
+        cout << "The shortest path is: " << endl;
+        for (int i = 0; i < path.size(); i++) {
+            cout << path[i] <<  " -> ";
+        }
+        cout << endl;
     }
 
-    cout << endl;
     cout << "The distance is: " << distance << endl;
     cout << "Time taken: " << duration.count() << " milliseconds" << endl;
 }
@@ -177,11 +179,14 @@ void Menu::showTriangularMenu(){
     auto duration = duration_cast<milliseconds>(end - start);
 
     cout << "_________________________________________________" << endl;
-    cout << "The shortest path is: " << endl;
-    for (int i = 0; i < path.size(); i++) {
-        cout << path[i]->getId() << " - ";
+    if(database.isToyGraph()){
+        cout << "The shortest path is: " << endl;
+        for (int i = 0; i < path.size(); i++) {
+            cout << path[i] <<  " -> ";
+        }
+        cout << endl;
     }
-    cout << endl;
+
     cout << "The distance is: " << distance << endl;
     cout << "Time taken: " << duration.count() << " milliseconds" << endl;
 }
@@ -199,11 +204,14 @@ void Menu::showSpecialHeuristicMenu(){
     auto duration = duration_cast<milliseconds>(end - start);
 
     cout << "_________________________________________________" << endl;
-    cout << "The shortest path is: " << endl;
-    for (int i = 0; i < path.size(); i++) {
-        cout << path[i] << " -> ";
+    if(database.isToyGraph()){
+        cout << "The shortest path is: " << endl;
+        for (int i = 0; i < path.size(); i++) {
+            cout << path[i] <<  " -> ";
+        }
+        cout << endl;
     }
-    cout << endl;
+
     cout << "The distance is: " << distance << endl;
     cout << "Time taken: " << duration.count() << " milliseconds" << endl;
 }

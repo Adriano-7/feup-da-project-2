@@ -18,6 +18,7 @@ bool Database::loadSmall(string path) {
     }
 
     string line;
+    graph.setGraphType(GraphType::TOY_GRAPH);
 
     while (getline(file, line)) {
         vector<string> fields;
@@ -62,6 +63,7 @@ bool Database::loadMedium(const string& nodesPath, const string& edgesPath) {
 
     string line;
     nodesInput.ignore(1000, '\n');
+    graph.setGraphType(GraphType::REAL_WORLD);
 
     while (getline(nodesInput, line)) {
         istringstream iss(line);
@@ -90,6 +92,7 @@ bool Database::loadMedium(const string& nodesPath, const string& edgesPath) {
     cout << endl;
 
     cout << "Loading edges...";
+
 
     edgesInput.ignore(1000, '\n');
     while (getline(edgesInput, line)) {
@@ -140,6 +143,8 @@ bool Database::loadExtra(string path){
     }
 
     string line;
+    graph.setGraphType(GraphType::EXTRA_FULLY_CONNECTED);
+
     while(getline(file, line)){
         vector<string> fields;
         istringstream stream(line);
@@ -193,6 +198,10 @@ vector<Node*> Database::triangular(double* distance){
  */
 vector<unsigned int> Database::insertionHeuristic_TSP(double* distance){
     return graph.insertion_TSP(distance);
+}
+
+bool Database::isToyGraph() {
+    return graph.getGraphType() == GraphType::TOY_GRAPH;
 }
 
 /**

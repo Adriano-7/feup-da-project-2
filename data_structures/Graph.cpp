@@ -284,6 +284,15 @@ vector<unsigned int> Graph::insertion_TSP(double* distance) {
     return path;
 }
 
+
+void Graph::setGraphType(GraphType type){
+    this->type = type;
+}
+
+GraphType Graph::getGraphType(){
+    return type;
+}
+
 /**
  * @brief Clears the graph by deleting all nodes and edges.
  */
