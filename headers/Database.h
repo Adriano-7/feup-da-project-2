@@ -32,8 +32,10 @@ public:
 
     void printGraph();
     void drawProgressBar(int progress, int fileSize);
+    pair<int, vector<unsigned int>> insertionHeuristic_TSP();
 
-    void clear();
+
+        void clear();
 private:
     Graph graph;
 };

@@ -37,6 +37,7 @@ bool Database::loadSmall(string path) {
 }
 
 bool Database::loadMedium(const string& nodesPath, const string& edgesPath) {
+    graph.isRealWorld = true;
     ifstream nodesInput(nodesPath);
     ifstream edgesInput(edgesPath);
 
@@ -159,8 +160,8 @@ pair<double, vector<unsigned int>> Database::backtracking() {
 vector<Node*> Database::triangular(double* distance){
     return graph.tspTriangular(distance);
 }
-vector<int> Database::specialHeuristic(double* distance){
-    return vector<int>();
+pair<int, vector<unsigned int>> Database::insertionHeuristic_TSP(){
+    return graph.insertion_TSP();
 }
 
 void Database::printGraph(){

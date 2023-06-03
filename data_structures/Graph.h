@@ -34,6 +34,10 @@ public:
     void clear();
 
     ~Graph();
+
+    pair<double, vector<unsigned int>> insertion_TSP();
+    bool isRealWorld = false;
+
 private:
     vector<Node*> nodes;
     void resetNodes();
