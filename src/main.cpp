@@ -2,7 +2,9 @@
 #include "headers/Menu.h"
 
 /**
- * @brief Initializes Program
+ * @brief Initializes the program.
+ *
+ * @return An integer indicating the exit status of the program.
  */
 int main(){
     Database database;

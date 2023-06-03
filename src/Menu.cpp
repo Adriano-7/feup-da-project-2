@@ -1,5 +1,8 @@
 #include "Menu.h"
 
+/**
+ * Displays the data selection menu.
+ */
 void Menu::showDataSelectionMenu() {
     cout << "_________________________________________________" << endl;
     cout << "Welcome to our program!" << endl;
@@ -26,6 +29,9 @@ void Menu::showDataSelectionMenu() {
     }
 }
 
+/**
+ * Displays the menu for selecting a small size graph.
+ */
 void Menu::showSmallGraphMenu() {
     map<int, string> optionToPath = {{1, "../data/Toy-Graphs/shipping.csv"}, {2, "../data/Toy-Graphs/stadiums.csv"}, {3, "../data/Toy-Graphs/tourism.csv"}};
     cout << "_________________________________________________" << endl;
@@ -40,6 +46,9 @@ void Menu::showSmallGraphMenu() {
     showMainMenu();
 }
 
+/**
+ * Displays the menu for selecting a medium/large graph.
+ */
 void Menu::showMediumGraphMenu() {
     cout << "_________________________________________________" << endl;
     cout << "Please the graph you want to load:" << endl;
@@ -60,6 +69,9 @@ void Menu::showMediumGraphMenu() {
     showMainMenu();
 }
 
+/**
+ * Displays the menu for selecting an extra connected graph.
+ */
 void Menu::showExtraMenu() {
     map<int, int> optionToNumEdges = {{1,25}, {2,50}, {3,75}, {4,100}, {5,200}, {6,300}, {7,400}, {8,500}, {9,600}, {10,700}, {11,800}, {12,900}};
 
@@ -90,7 +102,9 @@ void Menu::showExtraMenu() {
     showMainMenu();
 }
 
-
+/**
+ * Displays the main menu and handles user input.
+ */
 void Menu::showMainMenu(){
     while (true){
         cout << "_________________________________________________" << endl;
@@ -127,6 +141,9 @@ void Menu::showMainMenu(){
     }
 }
 
+/**
+ * Displays the menu for the Backtracking TSP algorithm and computes the shortest path.
+ */
 void Menu::showBacktrackingMenu() {
     auto start = high_resolution_clock::now();
 
@@ -146,6 +163,9 @@ void Menu::showBacktrackingMenu() {
     cout << "Time taken: " << duration.count() << " milliseconds" << endl;
 }
 
+/**
+ * Displays the menu for the triangular approximation heuristic and computes the shortest path.
+ */
 void Menu::showTriangularMenu(){
     double distance;
 
@@ -165,7 +185,9 @@ void Menu::showTriangularMenu(){
     cout << "Time taken: " << duration.count() << " milliseconds" << endl;
 }
 
-
+/**
+ * Displays the menu for a special heuristic and computes the shortest path.
+ */
 void Menu::showSpecialHeuristicMenu(){
     double distance;
 
@@ -185,7 +207,9 @@ void Menu::showSpecialHeuristicMenu(){
     cout << "Time taken: " << duration.count() << " milliseconds" << endl;
 }
 
-
+/**
+ * Waits for user input.
+ */
 void Menu::waitForInput() {
     usleep(800000);
     string q;
@@ -194,6 +218,11 @@ void Menu::waitForInput() {
     cout << endl;
 }
 
+/**
+ * Retrieves an integer input from the user.
+ *
+ * @return The integer input.
+ */
 int Menu::getIntFromUser() {
     int input;
     cin >> input;

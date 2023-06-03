@@ -2,23 +2,45 @@
 
 using namespace std;
 
-bool Graph::addNode(int id){
+/**
+ * @brief Adds a node to the graph.
+ *
+ * @param id The ID of the node.
+ * @return True if the node is added successfully, false otherwise.
+ */
+bool Graph::addNode(int id) {
     int size = nodes.size();
-    if(id < size && nodes[id] != NULL)
+    if (id < size && nodes[id] != NULL)
         return false;
 
-    for(int i = size; i <= id; i++){
+    for (int i = size; i <= id; i++) {
         nodes.push_back(new Node(i));
     }
 
     return true;
 }
 
+/**
+ * @brief Adds a node with latitude and longitude to the graph.
+ *
+ * @param id The ID of the node.
+ * @param latitude The latitude of the node.
+ * @param longitude The longitude of the node.
+ * @return True if the node is added successfully, false otherwise.
+ */
 bool Graph::addNode(int id, double latitude, double longitude) {
     nodes.push_back(new Node(id, latitude, longitude));
     return true;
 }
 
+/**
+ * @brief Adds an edge between two nodes in the graph.
+ *
+ * @param sourceNode The source node of the edge.
+ * @param destNode The destination node of the edge.
+ * @param distance The distance between the nodes.
+ * @return True if the edge is added successfully, false otherwise.
+ */
 bool Graph::addEdge(Node* sourceNode, Node* destNode, double distance) {
     Edge* e1 = sourceNode->addEdge(destNode, distance);
     Edge* e2 = destNode->addEdge(sourceNode, distance);
@@ -29,22 +51,40 @@ bool Graph::addEdge(Node* sourceNode, Node* destNode, double distance) {
     return true;
 }
 
-Node* Graph::getNode(int id){
-    if(id>=0 && id<nodes.size()) return nodes[id];
+/**
+ * @brief Retrieves a node with the specified ID.
+ *
+ * @param id The ID of the node to retrieve.
+ * @return A pointer to the node if found, nullptr otherwise.
+ */
+Node* Graph::getNode(int id) {
+    if (id >= 0 && id < nodes.size())
+        return nodes[id];
     return nullptr;
 }
 
-vector<Node*> Graph::getNodes(){
+/**
+ * @brief Retrieves all the nodes in the graph.
+ *
+ * @return A vector containing all the nodes in the graph.
+ */
+vector<Node*> Graph::getNodes() {
     return nodes;
 }
 
+/**
+ * @brief Implements Prim's algorithm for finding the Minimum Spanning Tree (MST) of the graph.
+ *        Sets the 'visited' and 'selected' flags of the edges accordingly.
+ */
 void Graph::primMST() {
-    priority_queue<Edge*, vector<Edge*>, function<bool(Edge*, Edge*)>> pq
-                                        ([](Edge* a, Edge* b) {return a->getDistance() > b->getDistance();});
+    priority_queue<Edge*, vector<Edge*>, function<bool(Edge*, Edge*)>> pq(
+            [](Edge* a, Edge* b) { return a->getDistance() > b->getDistance(); });
 
     nodes[0]->setVisited(true);
 
-    for (Edge* edge : nodes[0]->getAdj()) {pq.push(edge);}
+    for (Edge* edge : nodes[0]->getAdj()) {
+        pq.push(edge);
+    }
 
     while (!pq.empty()) {
         Edge* minWeightEdge = pq.top();
@@ -53,7 +93,7 @@ void Graph::primMST() {
         Node* source = minWeightEdge->getOrig();
         Node* dest = minWeightEdge->getDest();
 
-        if(source->isVisited() && dest->isVisited())
+        if (source->isVisited() && dest->isVisited())
             continue;
 
         minWeightEdge->setSelected(true);
@@ -61,7 +101,7 @@ void Graph::primMST() {
 
         dest->setVisited(true);
         for (Edge* edge : dest->getAdj()) {
-            if(!edge->getDest()->isVisited()){
+            if (!edge->getDest()->isVisited()) {
                 pq.push(edge);
             }
         }
@@ -70,7 +110,13 @@ void Graph::primMST() {
     resetNodes();
 }
 
-vector<Node*> Graph::dfsTriangular(Node* node){
+/**
+ * @brief Performs a depth-first search (DFS) traversal to find a triangular path in the graph.
+ *
+ * @param node The starting node for the DFS traversal.
+ * @return A vector containing the nodes in the triangular path.
+ */
+vector<Node*> Graph::dfsTriangular(Node* node) {
     node->setVisited(true);
     vector<Node*> path = {node};
 
@@ -87,29 +133,48 @@ vector<Node*> Graph::dfsTriangular(Node* node){
     return path;
 }
 
-vector<Node*> Graph::tspTriangular(double* distance){
+/**
+ * @brief Solves the Traveling Salesman Problem (TSP) using the triangular inequality heuristic.
+ *        It first constructs the Minimum Spanning Tree (MST) using Prim's algorithm,
+ *        then performs a depth-first search (DFS) to find a triangular path,
+ *        and calculates the total distance of the path.
+ *
+ * @param distance A pointer to a variable to store the total distance of the triangular path.
+ * @return A vector containing the nodes in the triangular path.
+ */
+vector<Node*> Graph::tspTriangular(double* distance) {
     primMST();
 
     vector<Node*> H = dfsTriangular(nodes[0]);
     H.push_back(nodes[0]);
 
     *distance = 0;
-    for(int i = 0; i < H.size()-1; i++){
+    for (int i = 0; i < H.size() - 1; i++) {
         Node* source = H[i];
-        Node* dest = H[i+1];
+        Node* dest = H[i + 1];
         *distance += source->getDistanceTo(dest);
     }
     return H;
 }
 
-
-void Graph::Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double &ans,
-                             vector<unsigned int> &path, vector<vector<unsigned int>> paths) {
-    if (count == nodes.size()){
-        for (auto e : nodes[curIndex]->getAdj()){
-            if (e->getOrig()->getId() == 0 || e->getDest()->getId() == 0){
+/**
+ * @brief Auxiliary function for the Backtracking_TSP algorithm.
+ *        It performs backtracking to find the shortest Hamiltonian cycle in the graph.
+ *
+ * @param curIndex The current index of the node being processed.
+ * @param count The number of nodes visited so far.
+ * @param cost The current cost of the path.
+ * @param ans A reference to the variable storing the shortest distance.
+ * @param path A reference to the vector storing the path with the shortest distance.
+ * @param paths A vector storing the paths for each node during the backtracking process.
+ */
+void Graph::Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double& ans,
+                             vector<unsigned int>& path, vector<vector<unsigned int>> paths) {
+    if (count == nodes.size()) {
+        for (auto e : nodes[curIndex]->getAdj()) {
+            if (e->getOrig()->getId() == 0 || e->getDest()->getId() == 0) {
                 double new_cost = cost + e->getDistance();
-                if (new_cost < ans){
+                if (new_cost < ans) {
                     ans = new_cost;
                     path = paths[curIndex];
                 }
@@ -118,9 +183,9 @@ void Graph::Backtracking_aux(unsigned int curIndex, unsigned int count, double c
         return;
     }
 
-    for (auto e : nodes[curIndex]->getAdj()){
+    for (auto e : nodes[curIndex]->getAdj()) {
         int nextPos = e->getOrig()->getId() == curIndex ? e->getDest()->getId() : e->getOrig()->getId();
-        if (!nodes[nextPos]->isVisited()){
+        if (!nodes[nextPos]->isVisited()) {
             nodes[nextPos]->setVisited(true);
             paths[nextPos] = paths[curIndex];
             paths[nextPos].push_back(nextPos);
@@ -131,7 +196,13 @@ void Graph::Backtracking_aux(unsigned int curIndex, unsigned int count, double c
     }
 }
 
-pair<double, vector<unsigned int>> Graph::Backtracking_TSP(){
+/**
+ * @brief Solves the Traveling Salesman Problem (TSP) using the backtracking algorithm.
+ *        It finds the shortest Hamiltonian cycle in the graph by performing backtracking.
+ *
+ * @return A pair consisting of the shortest distance and the path representing the cycle.
+ */
+pair<double, vector<unsigned int>> Graph::Backtracking_TSP() {
     resetNodes();
     nodes[0]->setVisited(true);
 
@@ -147,19 +218,29 @@ pair<double, vector<unsigned int>> Graph::Backtracking_TSP(){
     return make_pair(shortestDistance, path);
 }
 
+/**
+ * @brief Clears the graph by deleting all nodes and edges.
+ */
 void Graph::clear() {
-    for(Node* node : nodes){
+    for (Node* node : nodes) {
         delete node;
     }
     nodes.clear();
 }
 
+/**
+ * @brief Destructor for the Graph class.
+ *        Deletes all the nodes in the graph.
+ */
 Graph::~Graph() {
-    for(auto node : nodes){
+    for (auto node : nodes) {
         delete node;
     }
 }
 
+/**
+ * @brief Resets the 'visited' flag of all nodes in the graph to false.
+ */
 void Graph::resetNodes() {
     for (Node* node : nodes) {
         node->setVisited(false);
