@@ -8,6 +8,7 @@ using namespace std;
  *
  * @param id The ID of the node.
  * @return True if the node is added successfully, false otherwise.
+ * @details Time-Complexity: O(1)
  */
 bool Graph::addNode(int id) {
     int size = nodes.size();
@@ -28,6 +29,7 @@ bool Graph::addNode(int id) {
  * @param latitude The latitude of the node.
  * @param longitude The longitude of the node.
  * @return True if the node is added successfully, false otherwise.
+ * @details Time-Complexity: O(1)
  */
 bool Graph::addNode(int id, double latitude, double longitude) {
     nodes.push_back(new Node(id, latitude, longitude));
@@ -41,6 +43,7 @@ bool Graph::addNode(int id, double latitude, double longitude) {
  * @param destNode The destination node of the edge.
  * @param distance The distance between the nodes.
  * @return True if the edge is added successfully, false otherwise.
+ * @details Time-Complexity: O(1)
  */
 bool Graph::addEdge(Node* sourceNode, Node* destNode, double distance) {
     Edge* e1 = sourceNode->addEdge(destNode, distance);
@@ -57,6 +60,7 @@ bool Graph::addEdge(Node* sourceNode, Node* destNode, double distance) {
  *
  * @param id The ID of the node to retrieve.
  * @return A pointer to the node if found, nullptr otherwise.
+ * @details Time-Complexity: O(1)
  */
 Node* Graph::getNode(int id) {
     if (id >= 0 && id < nodes.size())
@@ -68,6 +72,7 @@ Node* Graph::getNode(int id) {
  * @brief Retrieves all the nodes in the graph.
  *
  * @return A vector containing all the nodes in the graph.
+ * @details Time-Complexity: O(1)
  */
 vector<Node*> Graph::getNodes() {
     return nodes;
@@ -76,6 +81,7 @@ vector<Node*> Graph::getNodes() {
 /**
  * @brief Implements Prim's algorithm for finding the Minimum Spanning Tree (MST) of the graph.
  *        Sets the 'visited' and 'selected' flags of the edges accordingly.
+ * @details Time-Complexity: O(E * log V), where E is the number of edges and V is the number of vertices.
  */
 void Graph::primMST() {
     priority_queue<Edge*, vector<Edge*>, function<bool(Edge*, Edge*)>> pq
@@ -119,6 +125,7 @@ void Graph::primMST() {
  * @param ans A reference to the variable storing the shortest distance.
  * @param path A reference to the vector storing the path with the shortest distance.
  * @param paths A vector storing the paths for each node during the backtracking process.
+ * @details Time-Complexity: O((V-1)!), where V is the number of vertices.
  */
 void Graph::Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double &ans,
                              vector<unsigned int> &path, vector<vector<unsigned int>> paths) {
@@ -152,7 +159,9 @@ void Graph::Backtracking_aux(unsigned int curIndex, unsigned int count, double c
  * @brief Solves the Traveling Salesman Problem (TSP) using the backtracking algorithm.
  *        It finds the shortest Hamiltonian cycle in the graph by performing backtracking.
  *
- * @return A pair consisting of the shortest distance and the path representing the cycle.
+ * @param distance A pointer to a variable to store the total distance of the cycle.
+ * @return A vector containing the indices of the nodes in the cycle.
+ * @details Time-Complexity: O((V-1)!), where V is the number of vertices.
  */
 vector<unsigned int> Graph::Backtracking_TSP(double* distance) {
     resetNodes();
@@ -176,6 +185,7 @@ vector<unsigned int> Graph::Backtracking_TSP(double* distance) {
  *
  * @param node The starting node for the DFS traversal.
  * @return A vector containing the nodes in the triangular path.
+ * @details Time-Complexity: O(V + E), where V is the number of vertices and E is the number of edges.
  */
 vector<Node*> Graph::dfsTriangular(Node* node){
     node->setVisited(true);
@@ -202,6 +212,7 @@ vector<Node*> Graph::dfsTriangular(Node* node){
  *
  * @param distance A pointer to a variable to store the total distance of the triangular path.
  * @return A vector containing the nodes in the triangular path.
+ * @details Time-Complexity: O(V^2), where V is the number of vertices.
  */
 vector<Node*> Graph::tspTriangular(double* distance) {
     primMST();
@@ -218,6 +229,16 @@ vector<Node*> Graph::tspTriangular(double* distance) {
     return H;
 }
 
+/**
+ * @brief Solves the Traveling Salesman Problem (TSP) using the insertion heuristic.
+ *        It starts with an initial cycle containing only the starting node (0),
+ *        and iteratively inserts the remaining nodes into the cycle at the position
+ *        where it results in the minimum increase in total distance.
+ *
+ * @param distance A pointer to a variable to store the total distance of the cycle.
+ * @return A vector containing the indices of the nodes in the cycle.
+ * @details Time-Complexity: O(V^2), where V is the number of vertices.
+ */
 vector<unsigned int> Graph::insertion_TSP(double* distance) {
     vector<unsigned int> path;
     path.push_back(0);
@@ -275,20 +296,27 @@ vector<unsigned int> Graph::insertion_TSP(double* distance) {
     }
 
     path.push_back(0);
-    *distance = 0;
 
+    double totalDist = 0;
     for (unsigned int i = 0; i < path.size() - 1; i++) {
-        *distance += nodes[path[i]]->getDistanceTo(nodes[path[i + 1]]);
+        totalDist += nodes[path[i]]->getDistanceTo(nodes[path[i + 1]]);
     }
+
+    *distance = totalDist;
 
     return path;
 }
 
-
+/**
+ * @brief sets the type of the graph.
+ */
 void Graph::setGraphType(GraphType type){
     this->type = type;
 }
 
+/**
+ * @brief Returns the type of the graph.
+ */
 GraphType Graph::getGraphType(){
     return type;
 }

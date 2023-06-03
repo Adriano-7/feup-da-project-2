@@ -62,6 +62,8 @@ double Node::getLongitude(){
  * @brief Gets the distance to a specified node.
  * @param node The node to calculate the distance to.
  * @return The distance to the specified node.
+ *
+ * @details Time Complexity: O(1)
  */
 double Node::getDistanceTo(Node* node){
     Edge* edge = getEdgeTo(node->getId());
@@ -80,6 +82,8 @@ double Node::getDistanceTo(Node* node){
  * @brief Gets the edge to a specified node.
  * @param v The ID of the destination node.
  * @return The edge to the specified node, or nullptr if no edge is found.
+ *
+ * @details Time Complexity: O(E), where E is the number of edges.
  */
 Edge* Node::getEdgeTo(int v){
     for(Edge* edge : adj){
@@ -120,6 +124,8 @@ void Node::setVisited(bool visited){
  * @param dest The destination node of the edge.
  * @param distance The distance of the edge.
  * @return The added edge.
+ *
+ * @details Time Complexity: O(1)
  */
 Edge *Node::addEdge(Node *dest, double distance){
     Edge *edge = new Edge(this, dest, distance);
@@ -133,6 +139,8 @@ Edge *Node::addEdge(Node *dest, double distance){
  * @param source The source node.
  * @param dest The destination node.
  * @return The haversine distance between the two nodes.
+ *
+ * @details Time Complexity: O(1)
  */
 double Node::haversineDistance(Node* source, Node* dest) {
     if(source->getLatitude()==-1 || source->getLongitude()==-1 || dest->getLatitude()==-1 || dest->getLongitude()==-1)
