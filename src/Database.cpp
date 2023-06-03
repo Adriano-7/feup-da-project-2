@@ -7,6 +7,7 @@ using namespace std;
  *
  * @param path The path to the file.
  * @return True if the graph was successfully loaded, false otherwise.
+ * @details Time-Complexity: O(E), where E is the number of edges in the graph.
  */
 bool Database::loadSmall(string path) {
     ifstream file(path);
@@ -48,6 +49,7 @@ bool Database::loadSmall(string path) {
  * @param nodesPath The path to the nodes file.
  * @param edgesPath The path to the edges file.
  * @return True if the graph was successfully loaded, false otherwise.
+ * @details Time-Complexity: O(N + E), where N is the number of nodes and E is the number of edges in the graph.
  */
 bool Database::loadMedium(const string& nodesPath, const string& edgesPath) {
     ifstream nodesInput(nodesPath);
@@ -131,6 +133,7 @@ bool Database::loadMedium(const string& nodesPath, const string& edgesPath) {
  *
  * @param path The path to the file.
  * @return True if the graph was successfully loaded, false otherwise.
+ * @details Time-Complexity: O(E), where E is the number of edges in the graph.
  */
 bool Database::loadExtra(string path){
     ifstream file(path);
@@ -171,6 +174,7 @@ bool Database::loadExtra(string path){
  * @brief Performs backtracking to find the optimal TSP solution.
  * @param distance A pointer to a double variable to store the total distance of the optimal path.
  * @return A vector of node IDs representing the optimal path.
+ * @details Time-Complexity: O(N!), where N is the number of nodes in the graph.
  */
 vector<unsigned int> Database::backtracking(double* distance) {
     return graph.Backtracking_TSP(distance);
@@ -181,6 +185,7 @@ vector<unsigned int> Database::backtracking(double* distance) {
  * @brief Finds the optimal TSP solution using the triangular inequality heuristic.
  * @param distance A pointer to a double variable to store the total distance of the optimal path.
  * @return A vector of Node pointers representing the optimal path.
+ * @details Time-Complexity: O(N^2 log N), where N is the number of nodes in the graph.
  */
 vector<Node*> Database::triangular(double* distance){
     return graph.tspTriangular(distance);
@@ -190,6 +195,7 @@ vector<Node*> Database::triangular(double* distance){
  * @brief Applies the insertion heuristic to find an approximate TSP solution.
  * @param distance A pointer to a double variable to store the total distance of the approximate path.
  * @return A vector of node IDs representing the optimal path.
+ * @details Time-Complexity: O(N^2), where N is the number of nodes in the graph.
  */
 vector<unsigned int> Database::insertionHeuristic_TSP(double* distance){
     return graph.insertion_TSP(distance);
@@ -197,6 +203,7 @@ vector<unsigned int> Database::insertionHeuristic_TSP(double* distance){
 
 /**
  * @brief Prints the graph to the console.
+ * @details Time-Complexity: O(N + E), where N is the number of nodes and E is the number of edges in the graph.
  */
 void Database::printGraph(){
     for(auto node : graph.getNodes()){
@@ -209,6 +216,7 @@ void Database::printGraph(){
 
 /**
  * @brief Clears the graph.
+ * @details Time-Complexity: O(N), where N is the number of nodes in the graph.
  */
 void Database::clear() {
     graph.clear();
