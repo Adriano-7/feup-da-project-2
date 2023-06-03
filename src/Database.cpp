@@ -2,6 +2,12 @@
 
 using namespace std;
 
+/**
+ * @brief Loads a small graph from a file.
+ *
+ * @param path The path to the file.
+ * @return True if the graph was successfully loaded, false otherwise.
+ */
 bool Database::loadSmall(string path) {
     ifstream file(path);
     file.ignore(1000, '\n');
@@ -36,6 +42,13 @@ bool Database::loadSmall(string path) {
     return true;
 }
 
+/**
+ * @brief Loads a medium-sized graph from files.
+ *
+ * @param nodesPath The path to the nodes file.
+ * @param edgesPath The path to the edges file.
+ * @return True if the graph was successfully loaded, false otherwise.
+ */
 bool Database::loadMedium(const string& nodesPath, const string& edgesPath) {
     ifstream nodesInput(nodesPath);
     ifstream edgesInput(edgesPath);
@@ -113,6 +126,12 @@ bool Database::loadMedium(const string& nodesPath, const string& edgesPath) {
     return true;
 }
 
+/**
+ * @brief Loads an extra graph from a file.
+ *
+ * @param path The path to the file.
+ * @return True if the graph was successfully loaded, false otherwise.
+ */
 bool Database::loadExtra(string path){
     ifstream file(path);
     if(!file.is_open()){
@@ -148,17 +167,37 @@ bool Database::loadExtra(string path){
     return true;
 }
 
+/**
+ * @brief Performs backtracking to find the optimal TSP solution.
+ * @param distance A pointer to a double variable to store the total distance of the optimal path.
+ * @return A vector of node IDs representing the optimal path.
+ */
 vector<unsigned int> Database::backtracking(double* distance) {
     return graph.Backtracking_TSP(distance);
 }
 
+
+/**
+ * @brief Finds the optimal TSP solution using the triangular inequality heuristic.
+ * @param distance A pointer to a double variable to store the total distance of the optimal path.
+ * @return A vector of Node pointers representing the optimal path.
+ */
 vector<Node*> Database::triangular(double* distance){
     return graph.tspTriangular(distance);
 }
+
+/**
+ * @brief Applies the insertion heuristic to find an approximate TSP solution.
+ * @param distance A pointer to a double variable to store the total distance of the approximate path.
+ * @return A vector of node IDs representing the optimal path.
+ */
 vector<unsigned int> Database::insertionHeuristic_TSP(double* distance){
     return graph.insertion_TSP(distance);
 }
 
+/**
+ * @brief Prints the graph to the console.
+ */
 void Database::printGraph(){
     for(auto node : graph.getNodes()){
         cout << "Node " << node->getId() << endl;
@@ -168,6 +207,9 @@ void Database::printGraph(){
     }
 }
 
+/**
+ * @brief Clears the graph.
+ */
 void Database::clear() {
     graph.clear();
 }

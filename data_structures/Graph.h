@@ -16,6 +16,10 @@
 #include "NodeEdge.h"
 using namespace std;
 
+/**
+ * @class Graph
+ * @brief Represents a graph data structure.
+ */
 class Graph {
 public:
     bool addNode(int id);

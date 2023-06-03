@@ -8,7 +8,11 @@ using namespace std;
 
 class Edge;
 
-class Node{
+/**
+ * @class Node
+ * @brief Represents a node in a graph.
+ */
+class Node {
 public:
     Node(int id);
     Node(int id, double latitude, double longitude);
@@ -69,4 +73,4 @@ private:
 
 
 
-#endif 
+#endif

@@ -16,8 +16,11 @@
 #include "../data_structures/NodeEdge.h"
 #include <limits>
 
-using namespace std;
-
+/**
+ * @class Database
+ *
+ * @brief Class responsible for managing the graph database.
+ */
 class Database {
 public:
     bool loadSmall(string path);
