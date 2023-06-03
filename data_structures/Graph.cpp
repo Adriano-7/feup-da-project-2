@@ -71,6 +71,52 @@ void Graph::primMST() {
     resetNodes();
 }
 
+
+void Graph::Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double &ans,
+                             vector<unsigned int> &path, vector<vector<unsigned int>> paths) {
+    if (count == nodes.size()){
+        for (auto e : nodes[curIndex]->getAdj()){
+            if (e->getOrig()->getId() == 0 || e->getDest()->getId() == 0){
+                double new_cost = cost + e->getDistance();
+                if (new_cost < ans){
+                    ans = new_cost;
+                    path = paths[curIndex];
+                }
+            }
+        }
+        return;
+    }
+
+    for (auto e : nodes[curIndex]->getAdj()){
+        int nextPos = e->getOrig()->getId() == curIndex ? e->getDest()->getId() : e->getOrig()->getId();
+        if (!nodes[nextPos]->isVisited()){
+            nodes[nextPos]->setVisited(true);
+            paths[nextPos] = paths[curIndex];
+            paths[nextPos].push_back(nextPos);
+
+            Backtracking_aux(nextPos, count + 1, cost + e->getDistance(), ans, path, paths);
+            nodes[nextPos]->setVisited(false);
+        }
+    }
+}
+
+vector<unsigned int> Graph::Backtracking_TSP(double* distance) {
+    resetNodes();
+    nodes[0]->setVisited(true);
+
+    double shortestDistance = std::numeric_limits<double>::max();
+    vector<vector<unsigned int>> paths(nodes.size());
+    vector<unsigned int> path(nodes.size());
+    paths[0].push_back(0);
+
+    Backtracking_aux(0, 1, 0, shortestDistance, path, paths);
+
+    path.push_back(0);
+    *distance = shortestDistance;
+
+    return path;
+}
+
 vector<Node*> Graph::dfsTriangular(Node* node){
     node->setVisited(true);
     vector<Node*> path = {node};
@@ -103,119 +149,72 @@ vector<Node*> Graph::tspTriangular(double* distance){
     return H;
 }
 
-
-void Graph::Backtracking_aux(unsigned int curIndex, unsigned int count, double cost, double &ans,
-                             vector<unsigned int> &path, vector<vector<unsigned int>> paths) {
-    if (count == nodes.size()){
-        for (auto e : nodes[curIndex]->getAdj()){
-            if (e->getOrig()->getId() == 0 || e->getDest()->getId() == 0){
-                double new_cost = cost + e->getDistance();
-                if (new_cost < ans){
-                    ans = new_cost;
-                    path = paths[curIndex];
-                }
-            }
-        }
-        return;
-    }
-
-    for (auto e : nodes[curIndex]->getAdj()){
-        int nextPos = e->getOrig()->getId() == curIndex ? e->getDest()->getId() : e->getOrig()->getId();
-        if (!nodes[nextPos]->isVisited()){
-            nodes[nextPos]->setVisited(true);
-            paths[nextPos] = paths[curIndex];
-            paths[nextPos].push_back(nextPos);
-
-            Backtracking_aux(nextPos, count + 1, cost + e->getDistance(), ans, path, paths);
-            nodes[nextPos]->setVisited(false);
-        }
-    }
-}
-
-pair<double, vector<unsigned int>> Graph::Backtracking_TSP(){
-    resetNodes();
-    nodes[0]->setVisited(true);
-
-    double shortestDistance = std::numeric_limits<double>::max();
-    vector<vector<unsigned int>> paths(nodes.size());
-    vector<unsigned int> path(nodes.size());
-    paths[0].push_back(0);
-
-    Backtracking_aux(0, 1, 0, shortestDistance, path, paths);
-
+vector<unsigned int> Graph::insertion_TSP(double* distance) {
+    vector<unsigned int> path;
     path.push_back(0);
 
-    return make_pair(shortestDistance, path);
-}
+    unsigned int bestPos = 0;
+    double bestCost = numeric_limits<double>::max();
 
-
-pair<double, vector<unsigned int>> Graph::insertion_TSP() {
-    int numNodes = nodes.size();
-    int bestNode = -1;
-
-    double bestCost = std::numeric_limits<double>::max();
-    int bestPos = -1;
-
-    vector<unsigned int> tour = {0};
-
-    for (auto edge : nodes[0]->getAdj()) {
-            double distance = edge->getDistance();
-            if (distance < bestCost){
-                bestCost = distance;
-                bestNode = edge->getDest()->getId();
-            }
+    for (unsigned int i = 1; i < nodes.size(); i++) {
+        double cost = nodes[0]->getDistanceTo(nodes[i]);
+        if (cost < bestCost) {
+            bestCost = cost;
+            bestPos = i;
         }
-
-    nodes[bestNode]->setVisited(true);
-    tour.push_back(bestNode);
-
-    // Start with the second node
-    for (int i = 1; i < numNodes; i++) {
-       if(nodes[i]->isVisited()) continue;
-
-        bestCost = std::numeric_limits<double>::max();
-        bestPos = -1;
-
-        for (int j = 1; j < tour.size(); j++) {
-            Node *curNode = nodes[tour[j]];
-            Node *prevNode = nodes[tour[j - 1]];
-
-            Edge *edgeNext = curNode->getEdgeTo(nodes[i]->getId());
-            Edge *edgePrev = prevNode->getEdgeTo(nodes[i]->getId());
-
-            if(edgeNext == nullptr || edgePrev == nullptr){
-                double curDist = haversineDistance(curNode, prevNode);
-                double cost = -curDist + haversineDistance(curNode, nodes[i]) + haversineDistance(prevNode, nodes[i]);
-                if (cost < bestCost) {
-                    bestCost = cost;
-                    bestPos = j;
-                }
-            }
-            else if (edgeNext != nullptr && edgePrev != nullptr) {
-                double curDist = curNode->getEdgeTo(prevNode->getId())->getDistance();
-                double cost = -curDist + edgeNext->getDistance() + edgePrev->getDistance();
-                    if (cost < bestCost) {
-                        bestCost = cost;
-                        bestPos = j;
-                    }
-                }
-        }
-
-            tour.insert(tour.begin() + bestPos + 1, nodes[i]->getId());
     }
 
-        tour.push_back(0);
-        double distance = 0;
+    path.push_back(bestPos);
 
+    while (path.size() < nodes.size()) {
+        bestPos = 0;
+        bestCost = numeric_limits<double>::max();
 
+        for (unsigned int k = 0; k < nodes.size(); k++) {
+            if (find(path.begin(), path.end(), k) == path.end()) {
+                double nearestDist = numeric_limits<double>::max();
 
-    //calculate the total distance of the tour
-        for (int i = 0; i < tour.size() - 1; i++) {
-            auto edge = nodes[tour[i]]->getEdgeTo(tour[i + 1]);
-            distance += edge ? edge->getDistance() : haversineDistance(nodes[tour[i]], nodes[tour[i + 1]]);
+                for (unsigned int j = 0; j < path.size(); j++) {
+                    double dist = nodes[path[j]]->getDistanceTo(nodes[k]);
+                    if (dist < nearestDist) {
+                        nearestDist = dist;
+                        bestPos = k;
+                    }
+                }
+
+                if (nearestDist < bestCost) {
+                    bestCost = nearestDist;
+                }
+            }
         }
-    return make_pair(distance, tour);
+
+        unsigned int insertionIndex = 0;
+        double minInsertionCost = numeric_limits<double>::max();
+
+        for (unsigned int i = 0; i < path.size() - 1; i++) {
+            unsigned int j = i + 1;
+            double insertionCost = nodes[path[i]]->getDistanceTo(nodes[bestPos]) +
+                                   nodes[bestPos]->getDistanceTo(nodes[path[j]]) -
+                                   nodes[path[i]]->getDistanceTo(nodes[path[j]]);
+            if (insertionCost < minInsertionCost) {
+                minInsertionCost = insertionCost;
+                insertionIndex = j;
+            }
+        }
+
+        path.insert(path.begin() + insertionIndex, bestPos);
+    }
+
+    path.push_back(0);
+    *distance = 0;
+
+    for (unsigned int i = 0; i < path.size() - 1; i++) {
+        *distance += nodes[path[i]]->getDistanceTo(nodes[path[i + 1]]);
+    }
+
+    return path;
 }
+
 
 void Graph::clear() {
     for(Node* node : nodes){

@@ -24,18 +24,12 @@ public:
     bool loadMedium(const string& nodesPath, const string& edgesPath);
     bool loadExtra(string path);
 
-    bool nodeExists(int id);
-
-    pair<double, vector<unsigned int>> backtracking();
+    vector<unsigned int> backtracking(double* distance);
     vector<Node*> triangular(double* distance);
-    vector<int> specialHeuristic(double* distance);
+    vector<unsigned int> insertionHeuristic_TSP(double* distance);
 
     void printGraph();
-    void drawProgressBar(int progress, int fileSize);
-    pair<int, vector<unsigned int>> insertionHeuristic_TSP();
-
-
-        void clear();
+    void clear();
 private:
     Graph graph;
 };

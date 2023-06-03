@@ -90,7 +90,6 @@ void Menu::showExtraMenu() {
     showMainMenu();
 }
 
-
 void Menu::showMainMenu(){
     while (true){
         cout << "_________________________________________________" << endl;
@@ -128,26 +127,27 @@ void Menu::showMainMenu(){
 }
 
 void Menu::showBacktrackingMenu() {
+    double distance = 0;
+
     auto start = high_resolution_clock::now();
-
-    pair<double, vector<unsigned int>> res = database.backtracking();
-
+    vector<unsigned int> path = database.backtracking(&distance);
     auto end = high_resolution_clock::now();
+
     auto duration = duration_cast<milliseconds>(end - start);
 
     cout << "_________________________________________________" << endl;
     cout << "The shortest path is: " << endl;
-    for (int i = 0; i < res.second.size(); i++) {
-        cout << res.second[i] << " ";
+    for (int i = 0; i < path.size(); i++) {
+        cout << path[i] << " ";
     }
 
     cout << endl;
-    cout << "The distance is: " << res.first << endl;
+    cout << "The distance is: " << distance << endl;
     cout << "Time taken: " << duration.count() << " milliseconds" << endl;
 }
 
 void Menu::showTriangularMenu(){
-    double distance;
+    double distance = 0;
 
     auto start = high_resolution_clock::now();
     vector<Node*> path = database.triangular(&distance);
@@ -167,21 +167,21 @@ void Menu::showTriangularMenu(){
 
 
 void Menu::showSpecialHeuristicMenu(){
-    pair<double, vector<unsigned int>> res;
+    double distance = 0;
 
     auto start = high_resolution_clock::now();
-    res = database.insertionHeuristic_TSP();
+    vector<unsigned int> path = database.insertionHeuristic_TSP(&distance);
     auto end = high_resolution_clock::now();
 
     auto duration = duration_cast<milliseconds>(end - start);
 
     cout << "_________________________________________________" << endl;
     cout << "The shortest path is: " << endl;
-    for (int i = 0; i < res.second.size(); i++) {
-        cout << res.second[i] << " -> ";
+    for (int i = 0; i < path.size(); i++) {
+        cout << path[i] << " -> ";
     }
     cout << endl;
-    cout << "The distance is: " << res.first<< endl;
+    cout << "The distance is: " << distance << endl;
     cout << "Time taken: " << duration.count() << " milliseconds" << endl;
 }
 
