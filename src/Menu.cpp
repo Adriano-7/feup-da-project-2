@@ -132,7 +132,7 @@ void Menu::showMainMenu(){
             case 4:
                 database.clear();
                 showDataSelectionMenu();
-                break;
+                return;
             case 5:
                 return;
             default:
