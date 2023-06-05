@@ -81,7 +81,7 @@ vector<Node*> Graph::getNodes() {
 /**
  * @brief Implements Prim's algorithm for finding the Minimum Spanning Tree (MST) of the graph.
  *        Sets the 'visited' and 'selected' flags of the edges accordingly.
- * @details Time-Complexity: O(E * log V), where E is the number of edges and V is the number of vertices.
+ * @details Time-Complexity: O((V + E) * log V), where E is the number of edges and V is the number of vertices.
  */
 void Graph::primMST() {
     priority_queue<Edge*, vector<Edge*>, function<bool(Edge*, Edge*)>> pq
