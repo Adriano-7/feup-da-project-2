@@ -230,14 +230,14 @@ vector<Node*> Graph::tspTriangular(double* distance) {
 }
 
 /**
- * @brief Solves the Traveling Salesman Problem (TSP) using the insertion heuristic.
+ * @brief Solves the Traveling Salesman Problem (TSP) using the cheapest insertion heuristic.
  *        It starts with an initial cycle containing only the starting node (0),
  *        and iteratively inserts the remaining nodes into the cycle at the position
  *        where it results in the minimum increase in total distance.
  *
  * @param distance A pointer to a variable to store the total distance of the cycle.
  * @return A vector containing the indices of the nodes in the cycle.
- * @details Time-Complexity: O(V^2), where V is the number of vertices.
+ * @details Time-Complexity: O(V^3), where V is the number of vertices.
  */
 vector<unsigned int> Graph::insertion_TSP(double* distance) {
     vector<unsigned int> path;
